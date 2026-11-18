@@ -63,10 +63,14 @@
   .brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;line-height:1}
   .brand-name span{color:var(--muted);font-weight:400}
   .brand-logo{height:30px;width:auto;display:block}
-  .site-nav{margin-left:auto;display:flex;gap:18px;align-items:center}
-  .site-nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600;padding:12px 2px;min-height:44px;display:inline-flex;align-items:center}
-  .site-nav a:hover{color:var(--text)}
-  .site-nav a.current{color:var(--text)}
+  .menu-btn{margin-left:auto;background:transparent;border:0;width:44px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;cursor:pointer;flex-shrink:0}
+  .menu-btn i{display:block;width:22px;height:2px;background:var(--text);border-radius:1px}
+  .menu-panel{position:absolute;top:100%;left:0;right:0;background:var(--bg-alt);border-bottom:1px solid var(--line-strong);z-index:49}
+  .menu-panel[hidden]{display:none}
+  .menu-panel a{display:block;padding:15px 18px;font-size:16px;font-weight:600;color:var(--body);text-decoration:none;border-top:1px solid var(--line)}
+  .menu-panel a:first-child{border-top:0}
+  .menu-panel a:hover{color:var(--text)}
+  .menu-panel a.current{color:var(--text)}
 
   .wrap{max-width:1160px;margin:0 auto;padding:0 18px}
 
@@ -146,9 +150,7 @@
     body{padding-bottom:92px}
     .storebar-inner{padding:0 24px;height:60px;gap:28px}
     .brand-name{font-size:17px}
-    .site-nav{gap:24px}
-    .site-nav a{font-size:14px;font-weight:400;padding:10px 2px;min-height:0}
-    .site-nav a.current{font-weight:600}
+    .menu-panel a{padding:15px 24px}
     .wrap{padding:0 24px}
 
     .hero{padding-top:72px}
@@ -184,12 +186,15 @@
     <a class="brand" href="/" aria-label="AnyMeans Audio home">
       <img class="brand-logo" src="/anymeans-lockup.svg" alt="AnyMeans Audio" />
     </a>
-    <nav class="site-nav" aria-label="Plug-ins">
-      <a href="/artfreq" class="current" aria-current="page">ArtFreq</a>
-      <a href="/creme">Crème</a>
-      <a href="/vocalyst">Vocalyst</a>
-    </nav>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Menu">
+      <i></i><i></i><i></i>
+    </button>
   </div>
+  <nav class="menu-panel" id="menuPanel" aria-label="Plug-ins" hidden>
+    <a href="/artfreq" class="current" aria-current="page">ArtFreq</a>
+    <a href="/creme">Crème</a>
+    <a href="/vocalyst">Vocalyst</a>
+  </nav>
 </header>
 
 <main>
@@ -376,6 +381,24 @@
     b.addEventListener('click', function(){ select(b.getAttribute('data-tier')); });
   });
   select('standard');
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var panel = document.getElementById('menuPanel');
+  if (!btn || !panel) return;
+  function close(){ panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function(){
+    var open = panel.hidden;
+    panel.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.addEventListener('click', function(e){ if (e.target.tagName === 'A') close(); });
+  document.addEventListener('click', function(e){
+    if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
 })();
 </script>
 </body>
