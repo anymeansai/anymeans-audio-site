@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101012'/%3E%3Crect x='14' y='24' width='8' height='16' fill='%23d95d0a'/%3E%3Crect x='28' y='14' width='8' height='36' fill='%23d95d0a'/%3E%3Crect x='42' y='20' width='8' height='24' fill='%23d95d0a'/%3E%3C/svg%3E" />
+<title>ArtFreq — Draw in Sound | AnyMeans Audio</title>
+<meta name="description" content="ArtFreq turns text, pictures and brush strokes into sound that shows up in the spectrogram. VST3 for macOS and Windows, plays in time with your track." />
+<link rel="canonical" href="https://anymeansaudio.com/artfreq" />
+<meta property="og:title" content="ArtFreq — Draw in Sound | AnyMeans Audio" />
+<meta property="og:description" content="ArtFreq turns text, pictures and brush strokes into sound that shows up in the spectrogram. VST3 for macOS and Windows, plays in time with your track." />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="https://anymeansaudio.com/artfreq" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="ArtFreq — Draw in Sound | AnyMeans Audio" />
+<meta name="twitter:description" content="ArtFreq turns text, pictures and brush strokes into sound that shows up in the spectrogram. VST3 for macOS and Windows, plays in time with your track." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ArtFreq",
+  "brand": { "@type": "Brand", "name": "AnyMeans Audio" },
+  "description": "ArtFreq turns text, pictures and brush strokes into sound that shows up in the spectrogram. VST3 for macOS and Windows, plays in time with your track.",
+  "category": "Audio Plugin"
+}
+</script>
+<style>
+  :root{
+    --bg:#101012;
+    --bg-alt:#141416;
+    --text:#f2f2ef;
+    --body:#d8d8dc;
+    --muted:#a3a3ab;
+    --muted-2:#6e6e76;
+    --line:#26262a;
+    --line-strong:#34343a;
+    --accent:#d95d0a;
+    --accent-hover:#c25208;
+    --font:"Helvetica Neue", Helvetica, -apple-system, "Segoe UI", Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:96px}
+  a{color:inherit}
+  button{font:inherit;cursor:pointer;min-height:44px}
+  ::selection{background:var(--line-strong);color:var(--text)}
+
+  /* ---------- Header ---------- */
+  .storebar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+  .storebar-inner{max-width:1160px;margin:0 auto;padding:0 18px;height:56px;display:flex;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0}
+  .brand-mark{display:flex;flex-direction:column;gap:2.5px;width:22px}
+  .brand-mark i{display:block;height:3px;border-radius:1px;background:var(--text)}
+  .brand-mark i:nth-child(1){width:22px}
+  .brand-mark i:nth-child(2){width:18px}
+  .brand-mark i:nth-child(3){width:22px}
+  .brand-mark i:nth-child(4){width:14px}
+  .brand-mark i:nth-child(5){width:19px}
+  .brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;line-height:1}
+  .brand-name span{color:var(--muted);font-weight:400}
+  .support-link{margin-left:auto;font-size:15px;font-weight:600;color:var(--body);text-decoration:none;padding:12px 4px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+  .support-link:hover{color:var(--text)}
+  .support-full{display:none}
+
+  .wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+
+  /* ---------- Shared ---------- */
+  .label{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+  .details-list{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:1fr;row-gap:14px}
+  .details-list li{display:flex;gap:12px;font-size:16.5px;line-height:1.5;color:var(--body)}
+  .details-list li::before{content:"–";color:var(--muted-2);flex-shrink:0}
+  .details-list a{color:var(--body)}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:44px 0 64px}
+  .hero-top{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  h1.product{font-size:64px;line-height:1;letter-spacing:-.03em;margin:0;font-weight:700}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:12.5px;letter-spacing:.04em;padding:7px 11px;border:1px solid var(--line-strong);color:var(--muted);display:inline-flex;align-items:center;min-height:30px}
+  .pitch{font-size:20px;line-height:1.45;margin:18px 0 0;color:var(--body);max-width:600px}
+
+  /* ---------- Feature blocks ---------- */
+  .feature{padding:64px 0}
+  .feature.alt{background:var(--bg-alt)}
+  .feature-text p{font-size:18px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:520px}
+
+  /* ---------- Details / info ---------- */
+  .details{padding:64px 0}
+  .info{padding:64px 0}
+  .info-grid{display:grid;grid-template-columns:1fr;gap:48px}
+  .info p{font-size:16.5px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:520px}
+
+  /* ---------- Versions ---------- */
+  .versions{padding:64px 0}
+  .versions p{font-size:17.5px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:560px}
+  .tier-toggle{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+  .tier-btn{border:1px solid var(--line-strong);background:transparent;color:var(--text);border-radius:4px;padding:0 20px;font-weight:600;font-size:15px;min-height:48px}
+  .tier-btn[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:64px 0 72px}
+  .faq-list{margin-top:8px}
+  .qa{border-top:1px solid var(--line);padding:22px 0}
+  .qa:first-child{border-top:0}
+  .qa h3{font-size:17px;font-weight:600;margin:0;line-height:1.4}
+  .qa p{font-size:16px;line-height:1.55;color:var(--body);margin:8px 0 0;max-width:640px}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line)}
+  .footer-inner{max-width:1160px;margin:0 auto;padding:30px 18px 36px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .footer-brand{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .footer-line{color:var(--muted);font-size:14.5px;line-height:1.5}
+  .footer-line a{color:var(--muted);text-decoration:none}
+  .footer-line a:hover{color:var(--text)}
+  .footer-nav{display:flex;gap:18px}
+  .footer-nav a{color:var(--muted);text-decoration:none;font-size:14.5px}
+  .footer-nav a:hover{color:var(--text)}
+
+  /* ---------- Sticky buy bar ---------- */
+  .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--bg);border-top:1px solid var(--line-strong)}
+  .sticky-inner{max-width:1160px;margin:0 auto;padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));display:flex;align-items:center;gap:14px}
+  .sticky-price{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1;flex-shrink:0}
+  .btn-buy{border:0;border-radius:4px;background:var(--accent);color:#fff;font-weight:600;font-size:16px;padding:0 28px;display:inline-flex;align-items:center;justify-content:center;min-height:54px;flex:1;text-decoration:none}
+  .btn-buy:hover{background:var(--accent-hover)}
+
+  /* ============ Desktop ============ */
+  @media (min-width:768px){
+    body{padding-bottom:92px}
+    .storebar-inner{padding:0 24px;height:60px;gap:28px}
+    .brand-name{font-size:17px}
+    .support-link{font-size:14px;font-weight:400;color:var(--muted);padding:10px 6px;min-height:0}
+    .support-full{display:inline}
+    .support-short{display:none}
+    .wrap{padding:0 24px}
+
+    .hero{padding:72px 0 96px}
+    .hero-top{gap:22px}
+    h1.product{font-size:clamp(72px,8vw,96px)}
+    .badge{font-size:12px;padding:6px 10px;min-height:28px}
+    .pitch{font-size:clamp(20px,2.4vw,23px);margin-top:22px}
+
+    .feature{padding:104px 0}
+    .feature-text p{font-size:20px;margin-top:16px}
+
+    .details{padding:96px 0}
+    .details-list{row-gap:14px;margin-top:30px}
+
+    .info{padding:96px 0}
+    .info-grid{grid-template-columns:1fr 1fr;gap:56px}
+
+    .versions{padding:96px 0}
+    .versions p{font-size:18px}
+
+    .faq{padding:96px 0 104px}
+    .qa{padding:26px 0}
+    .qa h3{font-size:17.5px}
+
+    .footer-inner{padding:34px 24px 44px;flex-direction:row;align-items:baseline;justify-content:space-between;gap:20px}
+
+    .sticky-inner{padding:12px 24px calc(12px + env(safe-area-inset-bottom, 0px));gap:16px}
+    .sticky-bar .btn-buy{flex:0 0 auto;min-width:220px;min-height:50px;margin-left:auto}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="storebar">
+  <div class="storebar-inner">
+    <a class="brand" href="/" aria-label="AnyMeans Audio home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="brand-name">AnyMeans <span>Audio</span></span>
+    </a>
+    <a class="support-link" href="mailto:support@anymeansaudio.com"><span class="support-full">support@anymeansaudio.com</span><span class="support-short">Support</span></a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1 class="product">ArtFreq</h1>
+        <div class="badges">
+          <span class="badge">VST3</span>
+          <span class="badge">macOS</span>
+          <span class="badge">Windows</span>
+        </div>
+      </div>
+      <p class="pitch">ArtFreq lets you draw in sound. Type, paint, or drop in a picture and it plays back in time with your track, showing up in the spectrogram.</p>
+    </div>
+  </div>
+
+  <!-- FEATURE: DRAW IT YOUR WAY -->
+  <section class="feature alt">
+    <div class="wrap">
+      <div class="feature-text">
+        <h2 class="label">Draw it your way</h2>
+        <p>Type a word, drop in a logo, paint a sweep. If it shows on the canvas, it plays.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: IN TIME WITH THE SONG -->
+  <section class="feature">
+    <div class="wrap">
+      <div class="feature-text">
+        <h2 class="label">In time with the song</h2>
+        <p>One beat or thirty-two bars. ArtFreq loops your drawing in time with the track.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="details">
+    <div class="wrap">
+      <h2 class="label">Details</h2>
+      <ul class="details-list">
+        <li>20 Hz to 20 kHz canvas, log scale</li>
+        <li>Length from 1 beat to 32 bars</li>
+        <li>Layers for stacking drawings</li>
+        <li>Frequency bands</li>
+        <li>Bounce to WAV</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FX -->
+  <section class="feature alt">
+    <div class="wrap">
+      <div class="feature-text">
+        <h2 class="label">ArtFreq FX</h2>
+        <p>ArtFreq FX is the effect version of ArtFreq. It comes with ArtFreq Pro.</p>
+      </div>
+      <ul class="details-list">
+        <li>Modes: Carve, Carve + Draw, Stencil, Draw</li>
+        <li>Depth: -120 to 0 dB, default -80 dB</li>
+        <li>Latency: 85.3 ms</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- VERSIONS -->
+  <section class="versions">
+    <div class="wrap">
+      <h2 class="label">Versions</h2>
+      <p>Standard is ArtFreq on its own, $29. Pro is ArtFreq plus ArtFreq FX, $39.</p>
+      <div class="tier-toggle" role="group" aria-label="Choose a version">
+        <button type="button" class="tier-btn" data-tier="standard" aria-pressed="true">Standard · $29</button>
+        <button type="button" class="tier-btn" data-tier="pro" aria-pressed="false">Pro · $39</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS + LICENSING -->
+  <section class="info">
+    <div class="wrap info-grid">
+      <div>
+        <h2 class="label">Requirements</h2>
+        <ul class="details-list">
+          <li>VST3 plug-in</li>
+          <li>macOS and Windows</li>
+        </ul>
+        <p>Works in any DAW that hosts VST3 plug-ins.</p>
+      </div>
+      <div>
+        <h2 class="label">Licensing</h2>
+        <ul class="details-list">
+          <li>Key arrives by email right after checkout</li>
+          <li>Two machines per key</li>
+          <li>Deactivate inside the plug-in to move to a new machine</li>
+          <li>Support: <a href="mailto:support@anymeansaudio.com">support@anymeansaudio.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <h2 class="label">Questions</h2>
+      <div class="faq-list">
+        <div class="qa">
+          <h3>Which DAWs does it work in?</h3>
+          <p>Any DAW that hosts VST3 plug-ins.</p>
+        </div>
+        <div class="qa">
+          <h3>Mac and Windows?</h3>
+          <p>Both. ArtFreq is VST3 for macOS and Windows.</p>
+        </div>
+        <div class="qa">
+          <h3>What does Pro add?</h3>
+          <p>ArtFreq FX, the effect version. Everything in Standard is included.</p>
+        </div>
+        <div class="qa">
+          <h3>How do I get my key?</h3>
+          <p>It arrives by email right after checkout.</p>
+        </div>
+        <div class="qa">
+          <h3>Can I move it to a new computer?</h3>
+          <p>Yes. Deactivate the key inside the plug-in on the old machine, then activate it on the new one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">AnyMeans Audio</span>
+    <nav class="footer-nav">
+      <a href="/">Home</a>
+      <a href="/creme">Crème</a>
+      <a href="/vocalyst">Vocalyst</a>
+    </nav>
+    <span class="footer-line"><a href="mailto:support@anymeansaudio.com">support@anymeansaudio.com</a></span>
+  </div>
+</footer>
+
+<!-- Sticky buy bar -->
+<div class="sticky-bar" aria-label="Buy ArtFreq">
+  <div class="sticky-inner">
+    <span class="sticky-price" id="buyPrice">$29</span>
+    <a class="btn-buy" id="buyBtn" href="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06">Buy ArtFreq</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tiers = {
+    standard: { price: "$29", link: "https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06", label: "Buy ArtFreq" },
+    pro: { price: "$39", link: "https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08", label: "Buy ArtFreq Pro" }
+  };
+  var price = document.getElementById('buyPrice');
+  var btn = document.getElementById('buyBtn');
+  var buttons = document.querySelectorAll('[data-tier]');
+  function select(name){
+    var t = tiers[name];
+    if (!t) return;
+    price.textContent = t.price;
+    btn.setAttribute('href', t.link);
+    btn.textContent = t.label;
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-tier') === name ? 'true' : 'false');
+    });
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ select(b.getAttribute('data-tier')); });
+  });
+  select('standard');
+})();
+</script>
+</body>
+</html>
