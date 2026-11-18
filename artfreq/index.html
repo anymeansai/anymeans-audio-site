@@ -71,32 +71,44 @@
   .details-list li{display:flex;gap:12px;font-size:16.5px;line-height:1.5;color:var(--body)}
   .details-list li::before{content:"–";color:var(--muted-2);flex-shrink:0}
   .details-list a{color:var(--body)}
+  .feat-list{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr;row-gap:12px}
+  .feat-list li{display:flex;gap:12px;font-size:16.5px;line-height:1.5;color:var(--body)}
+  .feat-list li::before{content:"–";color:var(--muted-2);flex-shrink:0}
+  .feat-list strong{color:var(--text);font-weight:600}
+  .group-label{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:34px 0 0}
+  .group-label:first-child{margin-top:0}
 
   /* ---------- Hero ---------- */
-  .hero{padding:44px 0 64px}
+  .hero{padding:44px 0 0}
   .hero-top{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
   h1.product{font-size:64px;line-height:1;letter-spacing:-.03em;margin:0;font-weight:700}
   .badges{display:flex;gap:8px;flex-wrap:wrap}
   .badge{font-size:12.5px;letter-spacing:.04em;padding:7px 11px;border:1px solid var(--line-strong);color:var(--muted);display:inline-flex;align-items:center;min-height:30px}
   .pitch{font-size:20px;line-height:1.45;margin:18px 0 0;color:var(--body);max-width:600px}
+  .hero-img{width:100%;height:auto;display:block;border:1px solid var(--line-strong);border-radius:8px;margin-top:36px;background:#17171a}
 
-  /* ---------- Feature blocks ---------- */
-  .feature{padding:64px 0}
-  .feature.alt{background:var(--bg-alt)}
-  .feature-text p{font-size:18px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:520px}
+  /* ---------- Editions ---------- */
+  .editions{padding:64px 0}
+  .edition-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
+  .edition-card{text-align:left;border:1px solid var(--line-strong);background:var(--bg-alt);border-radius:8px;padding:20px;color:var(--text);width:100%;display:block}
+  .edition-card:hover{border-color:var(--muted-2)}
+  .edition-card[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .edition-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+  .edition-name{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .edition-price{font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .edition-desc{color:var(--body);font-size:15.5px;margin:8px 0 0;line-height:1.45}
+  .edition-tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:4px 8px;margin-top:12px}
+  .panel{margin-top:30px}
+  .panel[hidden]{display:none}
+  .panel-lede{font-size:18px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:560px}
+  .panel-img{width:100%;height:auto;display:block;border:1px solid var(--line-strong);border-radius:8px;margin-top:26px;background:#17171a}
+  .includes{border:1px solid var(--accent);border-radius:8px;padding:16px 18px;font-size:17px;line-height:1.5;color:var(--body);background:var(--bg-alt);margin-top:26px;max-width:640px}
+  .includes strong{color:var(--text)}
 
   /* ---------- Details / info ---------- */
-  .details{padding:64px 0}
   .info{padding:64px 0}
   .info-grid{display:grid;grid-template-columns:1fr;gap:48px}
   .info p{font-size:16.5px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:520px}
-
-  /* ---------- Versions ---------- */
-  .versions{padding:64px 0}
-  .versions p{font-size:17.5px;line-height:1.55;color:var(--body);margin:14px 0 0;max-width:560px}
-  .tier-toggle{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-  .tier-btn{border:1px solid var(--line-strong);background:transparent;color:var(--text);border-radius:4px;padding:0 20px;font-weight:600;font-size:15px;min-height:48px}
-  .tier-btn[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
 
   /* ---------- FAQ ---------- */
   .faq{padding:64px 0 72px}
@@ -134,23 +146,19 @@
     .support-short{display:none}
     .wrap{padding:0 24px}
 
-    .hero{padding:72px 0 96px}
+    .hero{padding-top:72px}
     .hero-top{gap:22px}
     h1.product{font-size:clamp(72px,8vw,96px)}
     .badge{font-size:12px;padding:6px 10px;min-height:28px}
     .pitch{font-size:clamp(20px,2.4vw,23px);margin-top:22px}
+    .hero-img{margin-top:48px}
 
-    .feature{padding:104px 0}
-    .feature-text p{font-size:20px;margin-top:16px}
-
-    .details{padding:96px 0}
-    .details-list{row-gap:14px;margin-top:30px}
+    .editions{padding:96px 0}
+    .edition-grid{grid-template-columns:1fr 1fr;gap:16px}
+    .feat-list{grid-template-columns:1fr 1fr;column-gap:40px}
 
     .info{padding:96px 0}
     .info-grid{grid-template-columns:1fr 1fr;gap:56px}
-
-    .versions{padding:96px 0}
-    .versions p{font-size:18px}
 
     .faq{padding:96px 0 104px}
     .qa{padding:26px 0}
@@ -189,66 +197,70 @@
         </div>
       </div>
       <p class="pitch">ArtFreq lets you draw in sound. Type, paint, or drop in a picture and it plays back in time with your track, showing up in the spectrogram.</p>
+      <img class="hero-img" src="https://downloads.anymeansaudio.com/artfreq-gui.png" alt="ArtFreq plug-in interface" />
     </div>
   </div>
 
-  <!-- FEATURE: DRAW IT YOUR WAY -->
-  <section class="feature alt">
+  <!-- EDITIONS -->
+  <section class="editions">
     <div class="wrap">
-      <div class="feature-text">
-        <h2 class="label">Draw it your way</h2>
-        <p>Type a word, drop in a logo, paint a sweep. If it shows on the canvas, it plays.</p>
+      <h2 class="label">Choose your version</h2>
+      <div class="edition-grid" role="group" aria-label="Choose a version">
+        <button type="button" class="edition-card" data-tier="standard" aria-pressed="true">
+          <span class="edition-top">
+            <span class="edition-name">ArtFreq</span>
+            <span class="edition-price">$29</span>
+          </span>
+          <p class="edition-desc">The instrument on its own.</p>
+        </button>
+        <button type="button" class="edition-card" data-tier="pro" aria-pressed="false">
+          <span class="edition-top">
+            <span class="edition-name">ArtFreq Pro</span>
+            <span class="edition-price">$39</span>
+          </span>
+          <p class="edition-desc">ArtFreq plus ArtFreq FX, the effect version.</p>
+          <span class="edition-tag">Both plug-ins</span>
+        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- FEATURE: IN TIME WITH THE SONG -->
-  <section class="feature">
-    <div class="wrap">
-      <div class="feature-text">
-        <h2 class="label">In time with the song</h2>
-        <p>One beat or thirty-two bars. ArtFreq loops your drawing in time with the track.</p>
+      <!-- STANDARD PANEL -->
+      <div class="panel" id="panel-standard">
+        <p class="panel-lede">Draw something on the canvas and ArtFreq plays it as sound, in time with your track.</p>
+        <h3 class="group-label">Three ways to draw</h3>
+        <ul class="feat-list">
+          <li><span><strong>Text:</strong> type words on the canvas, they play back as sound</span></li>
+          <li><span><strong>Image:</strong> drop in a picture or a logo</span></li>
+          <li><span><strong>Brush:</strong> paint freehand on the canvas</span></li>
+        </ul>
+        <h3 class="group-label">Features</h3>
+        <ul class="feat-list">
+          <li><span><strong>In time:</strong> loops with your track, 1 beat to 32 bars</span></li>
+          <li><span><strong>Canvas:</strong> 20 Hz to 20 kHz, log scale</span></li>
+          <li><span><strong>Layers:</strong> stack drawings on top of each other</span></li>
+          <li><span><strong>Bands:</strong> split the canvas into frequency bands</span></li>
+          <li><span><strong>Spectrogram:</strong> your drawing shows up in the sound</span></li>
+          <li><span><strong>Bounce:</strong> export your drawing as a WAV</span></li>
+        </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- DETAILS -->
-  <section class="details">
-    <div class="wrap">
-      <h2 class="label">Details</h2>
-      <ul class="details-list">
-        <li>20 Hz to 20 kHz canvas, log scale</li>
-        <li>Length from 1 beat to 32 bars</li>
-        <li>Layers for stacking drawings</li>
-        <li>Frequency bands</li>
-        <li>Bounce to WAV</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- FX -->
-  <section class="feature alt">
-    <div class="wrap">
-      <div class="feature-text">
-        <h2 class="label">ArtFreq FX</h2>
-        <p>ArtFreq FX is the effect version of ArtFreq. It comes with ArtFreq Pro.</p>
-      </div>
-      <ul class="details-list">
-        <li>Modes: Carve, Carve + Draw, Stencil, Draw</li>
-        <li>Depth: -120 to 0 dB, default -80 dB</li>
-        <li>Latency: 85.3 ms</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- VERSIONS -->
-  <section class="versions">
-    <div class="wrap">
-      <h2 class="label">Versions</h2>
-      <p>Standard is ArtFreq on its own, $29. Pro is ArtFreq plus ArtFreq FX, $39.</p>
-      <div class="tier-toggle" role="group" aria-label="Choose a version">
-        <button type="button" class="tier-btn" data-tier="standard" aria-pressed="true">Standard · $29</button>
-        <button type="button" class="tier-btn" data-tier="pro" aria-pressed="false">Pro · $39</button>
+      <!-- PRO PANEL -->
+      <div class="panel" id="panel-pro" hidden>
+        <div class="includes">Pro includes <strong>both plug-ins: ArtFreq and ArtFreq FX</strong>. One purchase, one key, both in the same download.</div>
+        <img class="panel-img" src="https://downloads.anymeansaudio.com/artfreq-fx-gui.png" alt="ArtFreq FX plug-in interface" />
+        <p class="panel-lede">ArtFreq FX is the effect version. Run your own sound through a drawing. It also includes everything in Standard.</p>
+        <h3 class="group-label">FX modes</h3>
+        <ul class="feat-list">
+          <li><span><strong>Carve:</strong> your sound passes through the drawing. What's drawn stays, the rest is cut</span></li>
+          <li><span><strong>Carve + Draw:</strong> your sound and the drawing at the same time</span></li>
+          <li><span><strong>Stencil:</strong> your sound takes the drawing's shape. The gaps go quiet</span></li>
+          <li><span><strong>Draw:</strong> the drawing plays on its own, like the instrument</span></li>
+        </ul>
+        <h3 class="group-label">FX features</h3>
+        <ul class="feat-list">
+          <li><span><strong>Depth:</strong> how far the un-drawn parts are cut, −120 to 0 dB, −80 by default</span></li>
+          <li><span><strong>Same canvas:</strong> text, image and brush tools, same as the instrument</span></li>
+          <li><span><strong>Latency:</strong> 85.3 ms, reported to your DAW</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -291,11 +303,11 @@
         </div>
         <div class="qa">
           <h3>What does Pro add?</h3>
-          <p>ArtFreq FX, the effect version. Everything in Standard is included.</p>
+          <p>ArtFreq FX, the effect version. Pro includes both plug-ins, ArtFreq and ArtFreq FX, on one key.</p>
         </div>
         <div class="qa">
           <h3>How do I get my key?</h3>
-          <p>It arrives by email right after checkout.</p>
+          <p>It arrives by email right after checkout, with the download links.</p>
         </div>
         <div class="qa">
           <h3>Can I move it to a new computer?</h3>
@@ -335,6 +347,10 @@
   var price = document.getElementById('buyPrice');
   var btn = document.getElementById('buyBtn');
   var buttons = document.querySelectorAll('[data-tier]');
+  var panels = {
+    standard: document.getElementById('panel-standard'),
+    pro: document.getElementById('panel-pro')
+  };
   function select(name){
     var t = tiers[name];
     if (!t) return;
@@ -343,6 +359,9 @@
     btn.textContent = t.label;
     buttons.forEach(function(b){
       b.setAttribute('aria-pressed', b.getAttribute('data-tier') === name ? 'true' : 'false');
+    });
+    Object.keys(panels).forEach(function(k){
+      panels[k].hidden = k !== name;
     });
   }
   buttons.forEach(function(b){
