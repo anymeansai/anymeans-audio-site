@@ -3,7 +3,8 @@
   DRAFT. Not deployed: drafts/ is listed in .vercelignore.
   This is the full Vocalyst product page. It replaces the "coming soon" vocalyst.html on launch day.
   Launch checklist (move images out of /drafts/img, flip Vocalyst to "Out now" on every page, TODOs below): drafts/README.md
-  Shared blocks (@shared, @menu, @product, @buy) are filled by: python3 tools/sync-shared.py drafts/vocalyst.html
+  Shared blocks (@shared, @menu, @product, @buy, @header, @footer) are filled by: python3 tools/sync-shared.py drafts/vocalyst.html
+  The header menu and footer say "Soon" for Vocalyst until index.html is flipped on launch day (README step 4).
 -->
 <html lang="en">
 <head>
@@ -92,8 +93,8 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .h-xl{font-size:clamp(46px,8vw,104px);letter-spacing:-.045em;line-height:.98}
 .h-lg{font-size:clamp(32px,4.8vw,58px);letter-spacing:-.037em}
 .h-md{font-size:clamp(24px,2.6vw,30px);letter-spacing:-.025em;line-height:1.15}
-.lede{font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--body);max-width:58ch}
-.copy{font-size:16.5px;line-height:1.65;color:var(--body);max-width:56ch}
+.lede{font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--body);max-width:58ch;text-wrap:pretty}
+.copy{font-size:16.5px;line-height:1.65;color:var(--body);max-width:56ch;text-wrap:pretty}
 .copy + .copy{margin-top:14px}
 .copy a,.lede a{color:var(--text);text-decoration-color:var(--line-3);text-underline-offset:3px}
 .copy a:hover,.lede a:hover{text-decoration-color:var(--amber)}
@@ -147,11 +148,18 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .menu__foot .menu__mail{flex-basis:100%;color:var(--body)}
 html.menu-open{overflow:hidden}
 
-/* Product glyphs (small app-icon tiles) */
-.glyph{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;background:#0d0f14;border:1px solid var(--line-2);font-weight:700;font-size:19px;letter-spacing:-.04em;overflow:hidden}
-.glyph img{width:100%;height:100%}
-.glyph--creme span{background:linear-gradient(90deg,#fff6e2,#f0c477 55%,#c9862f);-webkit-background-clip:text;background-clip:text;color:transparent}
-.glyph--vocalyst{background:linear-gradient(145deg,#8f8fff,#5b4fd6);border-color:rgba(255,255,255,.18);color:#fff}
+/* Product tiles, drawn like cells of the periodic table: number, symbol, name.
+   Size with --el (default 46px). Add .el--lg to show the name (use it from about 84px up). */
+.el{--el:46px;position:relative;flex-shrink:0;width:var(--el);height:var(--el);font-size:var(--el);line-height:1;display:grid;place-items:center;border-radius:.1em;border:1px solid var(--el-line);background:linear-gradient(155deg,var(--el-bg-a),var(--el-bg-b)),#0e1117;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 28px -16px rgba(0,0,0,.95);overflow:hidden}
+.el__n{position:absolute;left:calc(var(--el)*.11);top:calc(var(--el)*.09);font-family:var(--mono);font-size:max(9px,calc(var(--el)*.17));font-weight:500;line-height:1;color:var(--el-soft)}
+.el__sym{font-size:.47em;font-weight:650;letter-spacing:-.035em;padding:0 .02em;background:var(--el-ink);-webkit-background-clip:text;background-clip:text;color:transparent}
+.el__name{position:absolute;left:0;right:0;bottom:calc(var(--el)*.1);text-align:center;font-size:max(9px,calc(var(--el)*.115));font-weight:550;letter-spacing:.01em;line-height:1;color:var(--el-soft)}
+.el--lg .el__n{font-size:calc(var(--el)*.14)}
+.el:not(.el--lg) .el__sym{transform:translateY(calc(var(--el)*.05))}
+.el--lg .el__sym{font-size:.44em;transform:translateY(-.05em)}
+.el--artfreq{--el-bg-a:rgba(249,161,58,.22);--el-bg-b:rgba(184,58,110,.1);--el-line:rgba(249,161,58,.5);--el-ink:linear-gradient(100deg,#fff8e6 0%,#fce7a0 30%,#f9a13a 62%,#e8664a 100%);--el-soft:rgba(252,231,160,.8)}
+.el--creme{--el-bg-a:rgba(240,196,119,.22);--el-bg-b:rgba(201,134,47,.08);--el-line:rgba(240,196,119,.5);--el-ink:linear-gradient(100deg,#fffaf0,#f6ead2 30%,#f0c477 65%,#c9862f);--el-soft:rgba(246,234,210,.8)}
+.el--vocalyst{--el-bg-a:rgba(138,138,255,.26);--el-bg-b:rgba(109,93,252,.1);--el-line:rgba(160,160,255,.55);--el-ink:linear-gradient(100deg,#ffffff,#d6d6ff 35%,#a9a9ff 70%,#8a7dff);--el-soft:rgba(220,220,255,.82)}
 
 /* Screenshots */
 .shot{position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:#0a0c10;border:1px solid var(--line-2);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 50px 100px -40px rgba(0,0,0,.9),0 20px 40px -24px rgba(0,0,0,.7)}
@@ -224,7 +232,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .pp-hero{position:relative;padding:clamp(52px,8vw,108px) 0 0;text-align:center;isolation:isolate;overflow-x:clip}
 .pp-hero::before{content:"";position:absolute;z-index:-1;left:50%;top:-140px;width:min(1200px,150vw);height:760px;transform:translateX(-50%);background:radial-gradient(38% 42% at 38% 50%,var(--tint-a),transparent 72%),radial-gradient(36% 40% at 64% 54%,var(--tint-b),transparent 72%);opacity:.17;filter:blur(50px);pointer-events:none}
 .pp-hero__in{display:flex;flex-direction:column;align-items:center;gap:20px}
-.pp-icon{width:clamp(64px,7vw,84px);height:auto;aspect-ratio:1;border-radius:22%;box-shadow:0 22px 44px -18px rgba(0,0,0,.9),0 0 0 1px var(--line-2)}
+.pp-icon{--el:clamp(84px,8vw,108px)}
 .pp-title{font-size:clamp(62px,11.5vw,148px);letter-spacing:-.055em;line-height:.9;font-weight:650;margin-top:4px}
 .pp-tagline{font-size:clamp(22px,2.7vw,34px);letter-spacing:-.028em;line-height:1.18;font-weight:550;color:var(--text);max-width:21ch;text-wrap:balance}
 .pp-hero .lede{text-align:center;max-width:54ch}
@@ -234,6 +242,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .pp-hero__shot .shot{border-radius:clamp(10px,1.4vw,18px)}
 
 .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(36px,4.5vw,56px)}
+@media (min-width:640px){.steps{grid-template-columns:1fr 1fr}}
 .step{padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px}
 .step__num{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--tint-a)}
 .step h3{font-size:20px;letter-spacing:-.02em}
@@ -288,7 +297,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .js .buybar.is-on{transform:none;visibility:visible}
 .buybar__in{display:flex;align-items:center;gap:10px;min-height:76px;padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
 .buybar__prod{display:none;align-items:center;gap:12px;min-width:0}
-.buybar__prod .glyph{width:38px;height:38px;border-radius:10px;font-size:15px}
+.buybar__prod .el{--el:38px}
 .buybar__name{display:flex;flex-direction:column;line-height:1.25}
 .buybar__name strong{font-weight:650;letter-spacing:-.015em}
 .buybar__name span{font-size:13px;color:var(--muted)}
@@ -305,8 +314,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   .plans{grid-template-columns:1fr 1fr;gap:20px}
 }
 @media (min-width:900px){
-  .steps{grid-template-columns:repeat(3,1fr)}
   .frow{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,88px)}
+  .steps--4{grid-template-columns:repeat(4,1fr)}
   .frow--flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .frow--flip .frow__copy{order:2}
   .knobs{grid-template-columns:repeat(4,1fr)}
@@ -322,11 +331,13 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 <style>
 /* Vocalyst only, not synced. One edition, so one price card and a buy bar without the version
    toggle (same class names as drafts/creme.html). The six Simple-mode macros sit in a 3 x 2 grid.
-   If both drafts keep these at launch, move the shared ones into the @product block in artfreq.html. */
+   If both drafts keep these at launch, move the shared ones into the @product block in artfreq.html.
+   gap:0 on the buy bar button: the &nbsp; before "Vocalyst" already spaces the words, and the button's
+   10px gap on top of it looked too wide (artfreq.html's bar has the same wide gap). */
 .plans.plans--one{grid-template-columns:1fr;max-width:480px}
 .plan--vocalyst{border:1px solid transparent;background:linear-gradient(180deg,#171b25,#12161e) padding-box,linear-gradient(140deg,rgba(196,196,255,.7),rgba(138,138,255,.5) 45%,rgba(109,93,252,.5)) border-box}
 .buybar--one .buybar__prod{display:flex}
-.buybar--one .btn{margin-left:auto}
+.buybar--one .btn{margin-left:auto;gap:0}
 @media (min-width:600px){.knobs--six{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:900px){.knobs--six{grid-template-columns:repeat(3,1fr)}}
 </style>
@@ -334,6 +345,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 <body class="has-buybar" style="--tint-a:#8a8aff;--tint-b:#6d5dfc">
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- @header:start -->
 <header class="site-header">
   <div class="site-header__in">
     <a class="brand" href="/" aria-label="AnyMeans Audio home">
@@ -348,19 +360,19 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <p class="eyebrow menu__label">Plug-ins</p>
       <ul class="menu__list">
         <li><a href="/artfreq">
-          <span class="glyph"><img src="/assets/img/artfreq-icon.webp" alt="" width="46" height="46" /></span>
+          <span class="el el--artfreq" aria-hidden="true"><span class="el__n">1</span><span class="el__sym">Af</span></span>
           <span class="menu__text"><span class="menu__name">ArtFreq</span><span class="menu__desc">Draw on your spectrogram</span></span>
           <span class="menu__status menu__status--live">Out now</span>
         </a></li>
         <li><a href="/creme">
-          <span class="glyph glyph--creme" aria-hidden="true"><span>Cr</span></span>
+          <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
           <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">A smoother top end</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
         <li><a href="/vocalyst" aria-current="page">
-          <span class="glyph glyph--vocalyst" aria-hidden="true"><span>V</span></span>
+          <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
           <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">A vocal chain in one plug-in</span></span>
-          <span class="menu__status menu__status--live">Out now</span>
+          <span class="menu__status">Soon</span>
         </a></li>
       </ul>
       <div class="menu__foot">
@@ -372,19 +384,20 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     </nav>
   </div>
 </header>
+<!-- @header:end -->
 
 <main id="main">
 
   <section class="pp-hero" data-hide-buybar>
     <div class="wrap pp-hero__in">
-      <img class="pp-icon" src="/drafts/img/vocalyst-icon.svg" alt="" width="84" height="84" />
-      <p class="eyebrow"><span class="dot"></span>Vocal chain · Out now</p>
+      <span class="el el--vocalyst el--lg pp-icon" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span><span class="el__name">Vocalyst</span></span>
+      <p class="eyebrow"><span class="dot"></span>Out now</p>
       <h1 class="pp-title">Vocalyst</h1>
-      <p class="pp-tagline">A whole vocal chain in one plug-in.</p>
+      <p class="pp-tagline">A whole vocal&nbsp;chain in one plug-in</p>
       <p class="lede">Put it on a raw vocal and it opens on a finished pop chain, with tuning, cleanup, compression and space already set. Swap in a chain for your genre, set the key, and change whatever you want from there.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#buy">Buy for $39</a>
-        <a class="btn btn-ghost btn-lg" href="#how">How it works</a>
+        <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
       </div>
       <p class="formats">VST3 · AU · macOS · Windows</p>
     </div>
@@ -398,18 +411,18 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="frow">
         <div class="frow__copy">
           <p class="eyebrow">How it works</p>
-          <h2 class="h-lg">Every preset is a whole vocal chain.</h2>
+          <h2 class="h-lg">Every preset is a full chain</h2>
           <p class="copy">There are 59 chains for lead vocals and 37 for ad-libs, sorted into ten genres: Pop, R&amp;B, Trap, Rage, Hip-Hop, Soul, Afrobeats, Indie, Hyperpop and Plugg.</p>
-          <p class="copy">Each one is a complete chain of effects, and you can open it and change anything inside. Or start from an empty chain and build your own.</p>
+          <p class="copy">Open any of them and every effect in it can be changed, moved or taken out. If you'd rather build your own, start from an empty chain.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-presets.webp" alt="The preset browser: genres down the left, main vocal chains in a list with a short description and effect count for each" width="1160" height="680" loading="lazy" /></div></div>
       </div>
 
-      <div class="steps">
+      <div class="steps steps--4">
         <div class="card step">
           <span class="step__num">01</span>
           <h3>Pick a preset</h3>
-          <p>It opens on Pop - Radio Ready. Browse the rest by genre, or press New Chain and start from nothing.</p>
+          <p>A new instance opens on Pop - Radio Ready. Browse the rest by genre, or press New Chain and start from nothing.</p>
         </div>
         <div class="card step">
           <span class="step__num">02</span>
@@ -421,6 +434,11 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <h3>Press Analyze</h3>
           <p>Play the vocal and Vocalyst suggests gate, de-esser, compression and EQ settings for that take. One click applies them.</p>
         </div>
+        <div class="card step">
+          <span class="step__num">04</span>
+          <h3>Adjust the chain</h3>
+          <p>Turn the six knobs in Simple mode, or switch to Advanced and edit any effect in the chain. Save the result as your own preset.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -429,38 +447,35 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="frow frow--flip">
         <div class="frow__copy">
-          <p class="eyebrow">Analyze</p>
-          <h3>Start from settings that fit your take.</h3>
+          <h3>Analyze the raw vocal</h3>
           <p class="copy">Press Analyze and play the song. Vocalyst measures the raw vocal while it plays: the noise floor, how loud the loud and quiet phrases are, plosives, sibilance, the overall tilt and any resonances that stick out.</p>
-          <p class="copy">Then it proposes a low cut, gate, de-esser, compressor and EQ, with the reason for each one. Apply them all, or read the reasons and set it up yourself.</p>
+          <p class="copy">Then it proposes a low cut, gate, de-esser, compressor and EQ, with the reason for each one. Apply them all with one click, or read the reasons and set things up yourself.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-analyze.webp" alt="The Analyze window: measurements of the raw vocal across the top, and suggested low cut, gate, compressor and EQ settings below, each with its reasoning" width="1160" height="680" loading="lazy" /></div></div>
       </div>
 
       <div class="frow">
         <div class="frow__copy">
-          <p class="eyebrow">Tune</p>
-          <h3>Pitch correction is built in.</h3>
-          <p class="copy">Set the key and scale, click notes on the keyboard to allow or block them, and pick how hard it pulls. Natural keeps slides and vibrato. Tight is quick but still human. Hard is the instant snap.</p>
+          <h3>Pitch correction built in</h3>
+          <p class="copy">Set the key and scale, click notes on the keyboard to allow or block them, and choose how hard it pulls, from Natural, which keeps slides and vibrato, to Hard, which snaps straight to the note.</p>
           <p class="copy">There are two engines. Modern keeps the singer's formants where they are, so big corrections still sound like the same person. Classic moves them with the pitch, for the older hard-tuned sound.</p>
-          <p class="copy">Recording? Press Live and Tune switches to a mode with almost no delay, so the singer can track through the whole chain with correction on.</p>
+          <p class="copy">For tracking, press Live. Tune switches to a mode with almost no delay, so the singer can record through the whole chain with correction on.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-tune.webp" alt="The Tune page: key, scale and a keyboard of allowed notes on the left, the pitch display in the middle and the correction knobs on the right" width="1160" height="680" loading="lazy" /></div></div>
       </div>
 
       <div class="frow frow--flip">
         <div class="frow__copy">
-          <p class="eyebrow">Simple mode</p>
-          <h3>Six knobs, when that's all you need.</h3>
-          <p class="copy">Simple mode puts six macros on top of whatever preset is loaded. They bend the preset without rewriting it. With every knob in the middle, you hear the preset exactly as it was designed.</p>
-          <p class="copy">Want the detail? Switch to Advanced and every parameter of every effect is there.</p>
+          <h3>Six knobs in Simple mode</h3>
+          <p class="copy">Simple mode puts six macros on top of whatever preset is loaded. They bend the preset without rewriting it, and with every knob in the middle you hear the preset exactly as it was made.</p>
+          <p class="copy">When you want more than that, switch to Advanced and every parameter of every effect is there.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-simple.webp" alt="Simple mode in the brushed metal skin: six large knobs labelled Tune, Clean, Tone, Drive, Width and Space, with the active chain listed underneath" width="1160" height="680" loading="lazy" /></div></div>
       </div>
 
       <dl class="knobs knobs--six">
-        <div><dt>Tune</dt><dd>How strongly and how quickly the pitch gets corrected.</dd></div>
-        <div><dt>Clean</dt><dd>Gate, de-esser and compression, together.</dd></div>
+        <div><dt>Tune</dt><dd>How hard and how fast the pitch gets corrected.</dd></div>
+        <div><dt>Clean</dt><dd>How much the gate, de-esser and compression do.</dd></div>
         <div><dt>Tone</dt><dd>Tilts the whole vocal darker or brighter.</dd></div>
         <div><dt>Drive</dt><dd>Saturation, distortion and exciter.</dd></div>
         <div><dt>Width</dt><dd>Doubler, widener and chorus.</dd></div>
@@ -473,26 +488,26 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow"><span class="dot"></span>Advanced mode</p>
-        <h2 class="h-lg">29 effects, in any order you like.</h2>
+        <h2 class="h-lg">29 effects, in any order you like</h2>
         <p class="lede">Advanced mode lays the chain out as a row of tiles. Click one to edit it, drag it to move it, add any effect from the list or take one out. Every effect has its own preset menu too, from gentle de-essing to a dotted throw on the delay.</p>
       </div>
       <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-advanced.webp" alt="Advanced mode in the Brushed Metal skin: the chain as a row of tiles across the top, with the selected gate's knobs below" width="1160" height="680" loading="lazy" /></div></div>
 
-      <div class="modes">
+      <p class="copy" style="margin-top:clamp(28px,4vw,44px)">It comes in three skins. Switch between them in Settings and every Vocalyst window follows, Auto Key included.</p>
+      <div class="modes" style="margin-top:20px">
         <div class="card mode">
           <img src="/drafts/img/vocalyst-skin-metal.webp" alt="The top of the Vocalyst window in the Brushed Metal skin: silver panels and an orange highlight on the selected tile" width="600" height="245" loading="lazy" />
-          <div class="mode__body"><h3>Brushed Metal</h3><p>Machined metal, chrome knobs and amber readouts, like a hardware channel strip.</p></div>
+          <div class="mode__body"><h3>Brushed Metal</h3><p>Brushed aluminum, screws, chrome knobs and LCD readouts.</p></div>
         </div>
         <div class="card mode">
           <img src="/drafts/img/vocalyst-skin-white.webp" alt="The top of the Vocalyst window in the White skin: white cards with an indigo outline on the selected tile" width="600" height="245" loading="lazy" />
-          <div class="mode__body"><h3>White</h3><p>Clean and bright, with an indigo accent on the knobs and buttons.</p></div>
+          <div class="mode__body"><h3>White</h3><p>Clean and bright, with indigo on the knobs and buttons.</p></div>
         </div>
         <div class="card mode">
           <img src="/drafts/img/vocalyst-skin-dark.webp" alt="The top of the Vocalyst window in the Dark skin: graphite cards on a near-black background" width="600" height="245" loading="lazy" />
-          <div class="mode__body"><h3>Dark</h3><p>The same layout as White, in a dark room.</p></div>
+          <div class="mode__body"><h3>Dark</h3><p>The same layout as White, on graphite and near-black.</p></div>
         </div>
       </div>
-      <p class="copy" style="margin-top:22px">Those are the three skins. None of them changes the sound. Pick one in Settings and every Vocalyst window follows, Auto Key included.</p>
       <div class="chips">
         <span class="chip">Bypass on every effect</span>
         <span class="chip">Gain-matched A/B</span>
@@ -506,29 +521,28 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="section-head section-head--center">
         <p class="eyebrow">Pricing</p>
-        <h2 class="h-lg">One version. Pay once.</h2>
+        <h2 class="h-lg">One version, no subscription</h2>
       </div>
       <div class="plans plans--one">
         <div class="card plan plan--vocalyst">
           <div class="plan__head">
             <div>
               <h3 class="plan__name">Vocalyst</h3>
-              <p class="plan__desc">The full plug-in, plus Vocalyst Auto Key.</p>
+              <p class="plan__desc">Comes with Vocalyst Auto Key</p>
             </div>
           </div>
           <p class="plan__price">$39</p>
           <ul class="ticks">
-            <li>96 vocal chains across ten genres</li>
+            <li>96 vocal chains in ten genres</li>
             <li>29 effects, in Simple and Advanced modes</li>
-            <li>Built-in pitch correction, with Live mode for tracking</li>
+            <li>Pitch correction, with Live mode for tracking</li>
             <li>Analyze, meters and gain match</li>
-            <li>Vocalyst Auto Key, free</li>
             <!-- TODO confirm: Vocalyst Tune licensing is still open (Vocalyst-vst TODO.md: separate product or included). If it ships on the Vocalyst key, add: <li>Vocalyst Tune, the tuning on its own</li> -->
           </ul>
           <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/8x24gA6Vu1ty6Ud2avfYY07">Buy Vocalyst</a>
         </div>
       </div>
-      <p class="plans-note">Your licence key and download links arrive by email right after checkout.</p>
+      <p class="plans-note">You'll get your license key and download links by email as soon as you check out.</p>
     </div>
   </section>
 
@@ -541,9 +555,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <div><dt>Systems</dt><dd>macOS (Apple Silicon and Intel) and Windows</dd></div>
           <div><dt>Plug-ins</dt><dd>Vocalyst, plus the free Vocalyst Auto Key for the beat or master bus</dd></div>
           <div><dt>Presets</dt><dd>59 lead vocal and 37 ad-lib chains in ten genres, plus three starting points</dd></div>
-          <div><dt>Effects</dt><dd>29: cleanup, dynamics, tone, color, modulation and space</dd></div>
+          <div><dt>Effects</dt><dd>29, in six groups: cleanup, dynamics, tone, color, modulation and space</dd></div>
           <div><dt>Tuning</dt><dd>Modern and Classic engines, Live mode for tracking, nine scales</dd></div>
-          <div><dt>Latency</dt><dd>None unless Tune is on, and then it's reported to your DAW. Under 5&nbsp;ms in Live mode.</dd></div>
+          <div><dt>Latency</dt><dd>None, unless Tune is in the chain. Then it's reported to your DAW, or kept under 5&nbsp;ms in Live mode.</dd></div>
           <div><dt>Interface</dt><dd>Three skins. Resizable from 90 to 150%.</dd></div>
         </dl>
       </div>
@@ -568,15 +582,16 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="faq">
         <details class="qa">
           <summary>Which DAWs does it work in?</summary>
-          <p>Anything that loads VST3, like Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper. On a Mac it's also an Audio Unit, so it works in Logic Pro and GarageBand too.</p>
+          <p>Any DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others. On a Mac it also comes as an Audio Unit, so Logic Pro can load it.</p>
         </details>
         <details class="qa">
           <summary>Will it work in Pro Tools?</summary>
-          <p>No. Pro Tools only loads AAX, and Vocalyst doesn't come in AAX.</p>
+          <!-- TODO confirm: the README says AAX builds only when CMake is pointed at an AAX SDK. If an AAX version ships, rewrite this answer and add AAX to the formats line, Specs and meta tags. -->
+          <p>No. Pro Tools only loads AAX, and Vocalyst isn't available as AAX.</p>
         </details>
         <details class="qa">
           <summary>Can I record through it?</summary>
-          <p>Yes. Press Live in the footer and Tune switches to a mode with almost no delay. Every other effect already runs without latency, so the singer can track through the whole chain with tuning on. Turn Live off when you mix and Tune goes back to its studio engine.</p>
+          <p>Yes. Press Live at the bottom of the plug-in window and Tune switches to a mode with almost no delay. Every other effect already runs without latency, so the singer can track through the whole chain with tuning on. Turn Live off when you mix and Tune goes back to its studio engine.</p>
         </details>
         <details class="qa">
           <summary>Which effects are in it?</summary>
@@ -588,17 +603,20 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </details>
         <details class="qa">
           <summary>Is there a version that only does the tuning?</summary>
-          <!-- TODO confirm: Vocalyst Tune licensing is TBD in the plug-in repo (today it takes a Vocalyst key). Check before launch, or drop this question. -->
-          <p>Yes. Vocalyst Tune is the Tune page as a plug-in of its own, with the same engine. It comes in the same download and works with your Vocalyst key.</p>
+          <!-- TODO confirm: Vocalyst Tune licensing is still open in the plug-in repo (TODO.md: separate product or included; today it activates with a Vocalyst key).
+               If it ships with Vocalyst on the same key, add: "It's in the same download and activates with your Vocalyst key." If it becomes its own product, link to it instead. -->
+          <p>Yes. Vocalyst Tune is the Tune page as a plug-in of its own, with the same engine.</p>
         </details>
         <details class="qa">
           <summary>I can hear a dry vocal under the processed one. Why?</summary>
-          <p>Vocalyst is fully wet by default, so the dry voice is coming from somewhere else. Check that direct monitoring on your audio interface is off, and that there isn't a second copy of the vocal track playing. If you want some dry signal on purpose, that's what the Dry/Wet knob in the footer is for.</p>
+          <p>Vocalyst is fully wet by default, so the dry voice is coming from somewhere else. Check that direct monitoring on your audio interface is off, and that there isn't a second copy of the vocal track playing. If you want some dry signal on purpose, that's what the Dry/Wet knob at the bottom of the window is for.</p>
         </details>
         <details class="qa">
           <summary>Can I share my presets?</summary>
           <p>Yes. Press Share and your chain is saved as a .vocalystpreset file in the Community folder. Send the file to someone, they add it to theirs, and it shows up in their Community tab. No account needed.</p>
         </details>
+        <!-- TODO confirm: the Mac installer in the plug-in repo isn't notarized, so macOS asks once before it runs (Vocalyst-vst docs/INSTALL-macOS.md).
+             If the store download is still that installer, add a question here explaining how to allow it. -->
         <details class="qa">
           <summary>How do I get my key?</summary>
           <p>It's emailed to you right after checkout, along with the download links. Activate it once and Vocalyst works offline from then on.</p>
@@ -612,11 +630,11 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   </section>
 </main>
 
+<!-- @footer:start -->
 <footer class="site-footer">
   <div class="wrap site-footer__top">
     <div class="site-footer__brand">
       <img src="/anymeans-lockup.svg" alt="AnyMeans" width="1057" height="256" />
-      <p>Audio plug-ins for producers, mix engineers and anyone who likes looking at a spectrogram.</p>
     </div>
     <div class="site-footer__cols">
       <div>
@@ -624,7 +642,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <ul>
           <li><a href="/artfreq">ArtFreq</a></li>
           <li><a href="/creme">Crème</a><span class="site-footer__soon">Soon</span></li>
-          <li><a href="/vocalyst" aria-current="page">Vocalyst</a></li>
+          <li><a href="/vocalyst" aria-current="page">Vocalyst</a><span class="site-footer__soon">Soon</span></li>
         </ul>
       </div>
       <div>
@@ -648,11 +666,12 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <a href="mailto:support@anymeansaudio.com" style="color:inherit;text-decoration:none">support@anymeansaudio.com</a>
   </div>
 </footer>
+<!-- @footer:end -->
 
 <div class="buybar buybar--one" id="buybar">
   <div class="wrap buybar__in">
     <div class="buybar__prod">
-      <span class="glyph"><img src="/drafts/img/vocalyst-icon.svg" alt="" width="38" height="38" /></span>
+      <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
       <span class="buybar__name"><strong>Vocalyst</strong><span>$39 · VST3 · AU</span></span>
     </div>
     <a class="btn btn-primary" id="buyBtn" href="https://buy.stripe.com/8x24gA6Vu1ty6Ud2avfYY07">Buy<span class="buy-what">&nbsp;Vocalyst</span></a>
