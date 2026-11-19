@@ -401,7 +401,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
               <h3>Vocalyst</h3>
               <span class="eyebrow"><span class="dot dot--soon"></span>Soon</span>
             </div>
-            <p class="copy">Your whole vocal chain in one plug-in: 29 effects, pitch correction among them. It opens on a finished pop preset instead of an empty chain, and there are 95 more sorted by genre.</p>
+            <p class="copy">Vocalyst puts a whole vocal chain in one plug-in: 29 effects, pitch correction among them. It opens on a finished pop preset instead of an empty chain, and there are 95 more sorted by genre.</p>
             <span class="formats">VST3 · AU · macOS · Windows</span>
           </div>
         </a>
@@ -482,7 +482,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
-  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
+  function leave(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);}
+  panel.addEventListener('focusout',leave);
+  btn.addEventListener('focusout',leave);
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });

@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/dm-mono-500.woff2" as="font" type="font/woff2" crossorigin />
-<title>Crème | A smoother top end | AnyMeans Audio</title>
+<title>Crème: brighter highs that don't get harsh | AnyMeans Audio</title>
 <meta name="description" content="Crème gives a vocal, drums, a bus or the master a fuller, silkier top end without the harshness of an EQ boost. The parallel crushed-highs trick in one plug-in. VST3 for macOS and Windows, $19." />
 <link rel="canonical" href="https://anymeansaudio.com/creme" />
 <meta property="og:site_name" content="AnyMeans Audio" />
@@ -280,7 +280,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .plan__head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .plan__name{font-size:22px;letter-spacing:-.022em}
 .plan__desc{color:var(--muted);font-size:15px;margin-top:6px;line-height:1.45}
-.plan__badge{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1d1206;background:var(--spectrum);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.plan__badge{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1d1206;background:linear-gradient(90deg,#fce7a0 0%,#f9a13a 45%,#e8664a 100%);padding:6px 10px;border-radius:999px;white-space:nowrap}
 .plan__price{font-size:52px;font-weight:650;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
 .plan__price small{font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted);margin-left:8px}
 .ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
@@ -352,7 +352,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .mode--text .mode__body{padding-top:24px}
 .nb{white-space:nowrap}
 .buybar--one .buybar__prod{display:flex}
-.buybar--one .btn{margin-left:auto}
+.buybar--one .btn{margin-left:auto;gap:0}
 @media (max-width:639px){.art--hero text{font-size:24px}}
 @media (min-width:640px){.art--hero{aspect-ratio:2/1}}
 </style>
@@ -467,7 +467,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="frow frow--flip">
         <div class="frow__copy">
           <h3>Choose which part of the top it works on</h3>
-          <p class="copy">Two handles on the Range slider set the band Crème takes, crushes and blends back, anywhere from 1 to 20&nbsp;kHz. CREAM, about 4 to 16&nbsp;kHz, is the zone for a smooth, silky top, and it's where a new instance starts. AIR, 10 to 20&nbsp;kHz, adds air and leaves the upper mids alone.</p>
+          <p class="copy">Two handles on the Range slider set the band Crème works on, anywhere from 1 to 20&nbsp;kHz. A new instance starts on CREAM, 4 to 16&nbsp;kHz. Below 4&nbsp;kHz you're getting into the 2 to 5&nbsp;kHz area where harshness lives, so use less there and turn Smooth on.</p>
           <p class="copy">Click a zone's name to jump to it, or drag the bar between the handles to move both at once.</p>
         </div>
         <!-- TODO screenshot: close-up of the Range slider, /assets/img/creme-range.webp (1600 x 1029, like the ArtFreq shots). -->
@@ -509,7 +509,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="section-head">
         <p class="eyebrow"><span class="dot"></span>Compared with a parallel bus</p>
         <h2 class="h-lg">Doing it by hand has a few catches</h2>
-        <p class="lede">On a parallel bus the filtered copy can cancel against the dry track where the two meet. The limiter can alias, and linear-phase filters ring before every hit. Crème is built to avoid all three.</p>
+        <p class="lede">On a parallel bus the filtered copy can cancel against the dry track where the two meet. The limiter can alias, and linear-phase filters ring before every hit and add latency.</p>
       </div>
       <div class="modes">
         <div class="card mode mode--text">
@@ -519,7 +519,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <div class="mode__body"><h3>Latency</h3><p>There's no look-ahead and no linear-phase filter. Nothing rings ahead of a transient, and your DAW has no delay to make up.</p></div>
         </div>
         <div class="card mode mode--text">
-          <div class="mode__body"><h3>Aliasing</h3><p>The limiter's gain moves too slowly to fold anything back into the audible range. What aliases stays more than 80&nbsp;dB under the signal.</p></div>
+          <div class="mode__body"><h3>Aliasing</h3><p>The limiter's gain moves smoothly enough that any aliasing stays more than 80&nbsp;dB under the signal.</p></div>
         </div>
       </div>
       <div class="chips">
@@ -534,7 +534,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="section-head section-head--center">
         <p class="eyebrow">Pricing</p>
-        <h2 class="h-lg">One version, no subscription</h2>
+        <h2 class="h-lg">No subscription</h2>
       </div>
       <div class="plans plans--one">
         <div class="card plan plan--creme">
@@ -594,7 +594,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="faq">
         <details class="qa">
           <summary>Which DAWs does it work in?</summary>
-          <p>Any 64-bit DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others.</p>
+          <p>Any DAW that loads VST3 plug-ins, on macOS or Windows.</p>
         </details>
         <details class="qa">
           <summary>Will it work in Logic or Pro Tools?</summary>
@@ -602,11 +602,11 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </details>
         <details class="qa">
           <summary>How is it different from a high shelf?</summary>
-          <p>A shelf turns up everything up there, spikes included, and a plain EQ boost tends to sound thin or harsh. Crème crushes the spikes in its copy before blending it in, so the lift goes into the body and tail of each sound and the original transients stay as they were. On a drum loop the peaks in the band rise by about 1&nbsp;dB instead of the whole lift.</p>
+          <p>A shelf turns up everything up there, spikes included, and a plain EQ boost tends to sound thin or harsh. On a drum loop, Crème raises the peaks in the band by about 1&nbsp;dB instead of the whole lift. Quiet detail like breaths, the room and reverb tails isn't crushed, so it gets all of it.</p>
         </details>
         <details class="qa">
           <summary>How much should I use?</summary>
-          <p>Less than you'd think. Each 10% is about 1&nbsp;dB of lift on steady material. Start at 10 to 20% on a mix bus or the master and 15 to 30% on a vocal or a single instrument. Past that it's an effect more than a polish.</p>
+          <p>Start at 10 to 20% on a mix bus or the master and 15 to 30% on a vocal or a single instrument, then watch the Balance meter and stop when it reaches BALANCED. Go further only on a dark recording.</p>
         </details>
         <details class="qa">
           <summary>Does it add latency?</summary>
@@ -667,7 +667,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </footer>
 <!-- @footer:end -->
 
-<div class="buybar buybar--one" id="buybar">
+<div class="buybar buybar--one" id="buybar" role="region" aria-label="Buy Crème">
   <div class="wrap buybar__in">
     <div class="buybar__prod">
       <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
@@ -694,7 +694,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
-  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
+  function leave(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);}
+  panel.addEventListener('focusout',leave);
+  btn.addEventListener('focusout',leave);
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });

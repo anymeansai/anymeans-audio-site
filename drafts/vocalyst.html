@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/dm-mono-500.woff2" as="font" type="font/woff2" crossorigin />
-<title>Vocalyst | A whole vocal chain in one plug-in | AnyMeans Audio</title>
+<title>Vocalyst: your whole vocal chain in one plug-in | AnyMeans Audio</title>
 <meta name="description" content="Vocalyst puts a whole vocal chain in one plug-in: 96 preset chains across ten genres, 29 effects and built-in pitch correction. VST3 for macOS and Windows, AU on Mac. $39." />
 <link rel="canonical" href="https://anymeansaudio.com/vocalyst" />
 <meta property="og:site_name" content="AnyMeans Audio" />
@@ -281,7 +281,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .plan__head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .plan__name{font-size:22px;letter-spacing:-.022em}
 .plan__desc{color:var(--muted);font-size:15px;margin-top:6px;line-height:1.45}
-.plan__badge{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1d1206;background:var(--spectrum);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.plan__badge{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1d1206;background:linear-gradient(90deg,#fce7a0 0%,#f9a13a 45%,#e8664a 100%);padding:6px 10px;border-radius:999px;white-space:nowrap}
 .plan__price{font-size:52px;font-weight:650;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
 .plan__price small{font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted);margin-left:8px}
 .ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
@@ -462,7 +462,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="frow frow--flip">
         <div class="frow__copy">
           <h3>Analyze the raw vocal</h3>
-          <p class="copy">Press Analyze and play the song. Vocalyst measures the raw vocal while it plays: the noise floor, how loud the loud and quiet phrases are, plosives, sibilance, the overall tilt and any resonances that stick out.</p>
+          <p class="copy">While the song plays, Vocalyst measures the raw vocal: the noise floor, how loud the loud and quiet phrases are, plosives, sibilance, the overall tilt and any resonances that stick out.</p>
           <p class="copy">Then it proposes a low cut, gate, de-esser, compressor and EQ, with the reason for each one. Apply them all with one click, or read the reasons and set things up yourself.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-analyze.webp" alt="The Analyze window: measurements of the raw vocal across the top, and suggested low cut, gate, compressor and EQ settings below, each with its reasoning" width="1160" height="680" loading="lazy" /></div></div>
@@ -487,6 +487,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-simple.webp" alt="Simple mode in the brushed metal skin: six large knobs labelled Tune, Clean, Tone, Drive, Width and Space, with the active chain listed underneath" width="1160" height="680" loading="lazy" /></div></div>
       </div>
 
+      <p class="eyebrow knobs-label">Simple mode knobs</p>
       <dl class="knobs knobs--six">
         <div><dt>Tune</dt><dd>How hard and how fast the pitch gets corrected.</dd></div>
         <div><dt>Clean</dt><dd>How much the gate, de-esser and compression do.</dd></div>
@@ -503,7 +504,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="section-head">
         <p class="eyebrow"><span class="dot"></span>Advanced mode</p>
         <h2 class="h-lg">29 effects, in any order you like</h2>
-        <p class="lede">Advanced mode lays the chain out as a row of tiles. Click one to edit it, drag it to move it, add any effect from the list or take one out. Every effect has its own preset menu too, from gentle de-essing to a dotted throw on the delay.</p>
+        <p class="lede">Advanced mode lays the chain out as a row of tiles. Click one to edit it, drag it to move it, add any effect from the list or take one out. Every effect has its own preset menu too. The de-esser's has Gentle, Medium and Strong, for example, and the delay's has Eighth Pop and Dotted Throw.</p>
       </div>
       <div class="glow"><div class="shot"><img src="/drafts/img/vocalyst-advanced.webp" alt="Advanced mode in the Brushed Metal skin: the chain as a row of tiles across the top, with the selected gate's knobs below" width="1160" height="680" loading="lazy" /></div></div>
 
@@ -535,7 +536,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="section-head section-head--center">
         <p class="eyebrow">Pricing</p>
-        <h2 class="h-lg">One version, no subscription</h2>
+        <h2 class="h-lg">No subscription</h2>
       </div>
       <div class="plans plans--one">
         <div class="card plan plan--vocalyst">
@@ -597,7 +598,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="faq">
         <details class="qa">
           <summary>Which DAWs does it work in?</summary>
-          <p>Any 64-bit DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others. On a Mac it also comes as an Audio Unit, so Logic Pro can load it.</p>
+          <p>Any DAW that loads VST3 plug-ins, on macOS or Windows. On a Mac it also comes as an Audio Unit, so Logic Pro can load it.</p>
         </details>
         <details class="qa">
           <summary>Will it work in Pro Tools?</summary>
@@ -606,7 +607,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </details>
         <details class="qa">
           <summary>Can I record through it?</summary>
-          <p>Yes. Press Live at the bottom of the plug-in window and Tune switches to a mode with almost no delay. Every other effect already runs without latency, so the singer can track through the whole chain with tuning on. Turn Live off when you mix and Tune goes back to its studio engine.</p>
+          <p>Yes. Press Live at the bottom of the plug-in window and Tune adds less than 5&nbsp;ms of delay, close to none when the singer is on pitch. None of the other effects add latency, so the singer can track through the whole chain with tuning on. Turn Live off when you mix and Tune goes back to its studio engine.</p>
         </details>
         <details class="qa">
           <summary>Which effects are in it?</summary>
@@ -683,7 +684,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </footer>
 <!-- @footer:end -->
 
-<div class="buybar buybar--one" id="buybar">
+<div class="buybar buybar--one" id="buybar" role="region" aria-label="Buy Vocalyst">
   <div class="wrap buybar__in">
     <div class="buybar__prod">
       <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
@@ -710,7 +711,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
-  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
+  function leave(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);}
+  panel.addEventListener('focusout',leave);
+  btn.addEventListener('focusout',leave);
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });

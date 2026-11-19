@@ -274,7 +274,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .plan__head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .plan__name{font-size:22px;letter-spacing:-.022em}
 .plan__desc{color:var(--muted);font-size:15px;margin-top:6px;line-height:1.45}
-.plan__badge{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1d1206;background:var(--spectrum);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.plan__badge{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1d1206;background:linear-gradient(90deg,#fce7a0 0%,#f9a13a 45%,#e8664a 100%);padding:6px 10px;border-radius:999px;white-space:nowrap}
 .plan__price{font-size:52px;font-weight:650;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
 .plan__price small{font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted);margin-left:8px}
 .ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
@@ -407,7 +407,6 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <p class="eyebrow">How it works</p>
           <h2 class="h-lg">The canvas is the analyzer screen</h2>
           <p class="copy">Time runs left to right, anywhere from 1&nbsp;beat to 32&nbsp;bars, and it follows your project's tempo, so a 4-bar drawing lasts exactly 4&nbsp;bars. Frequency runs bottom to top, 20&nbsp;Hz to 20&nbsp;kHz on a log scale by default.</p>
-          <p class="copy">So whatever you put on the canvas is what your analyzer will show.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-rich.webp" alt="The ArtFreq canvas with the word HELLO in the highs, a sine wave in the lows and a picture on the right" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
@@ -451,7 +450,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <div class="frow__copy">
           <h3>Layers and frequency bands</h3>
           <p class="copy">Every text box and image gets its own layer. You can hide or reorder them in the Layers panel and snap any of them into the low, mid or high band. Text comes in five fonts, solid or outlined.</p>
-          <p class="copy">A tip: small text reads best up high. Analyzers have much more detail in the top octaves, and the bottom few always come out blurry.</p>
+          <p class="copy">Small text reads best up high. Analyzers have much more detail in the top octaves, and the bottom few always come out blurry.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-layers.webp" alt="The Layers panel listing two pictures, three text boxes and the paint layer, with one text box hidden" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
@@ -586,7 +585,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="faq">
         <details class="qa">
           <summary>Which DAWs does it work in?</summary>
-          <p>Any 64-bit DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others.</p>
+          <p>Any 64-bit DAW that loads VST3 plug-ins, on macOS or Windows.</p>
         </details>
         <details class="qa">
           <summary>Will it work in Logic or Pro Tools?</summary>
@@ -594,7 +593,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </details>
         <details class="qa">
           <summary>Which analyzer should I use?</summary>
-          <p>Any analyzer with a scrolling spectrogram works. ArtFreq's defaults are a log scale from 20&nbsp;Hz to 20&nbsp;kHz. If yours is set differently, match its scale and range in ArtFreq's settings.</p>
+          <p>Any analyzer with a scrolling spectrogram, as long as its scale and range match ArtFreq's settings. It also helps to fit the drawing to the screen: if your spectrogram shows about 8&nbsp;seconds across, a drawing about 8&nbsp;seconds long fits in one piece.</p>
         </details>
         <details class="qa">
           <summary>What does Pro add?</summary>
@@ -659,7 +658,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </footer>
 <!-- @footer:end -->
 
-<div class="buybar" id="buybar">
+<div class="buybar" id="buybar" role="region" aria-label="Buy ArtFreq">
   <div class="wrap buybar__in">
     <div class="buybar__prod">
       <span class="el el--artfreq" aria-hidden="true"><span class="el__n">1</span><span class="el__sym">Af</span></span>
@@ -690,7 +689,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
-  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
+  function leave(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);}
+  panel.addEventListener('focusout',leave);
+  btn.addEventListener('focusout',leave);
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });

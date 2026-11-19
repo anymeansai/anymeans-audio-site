@@ -259,7 +259,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap nf__in">
       <p class="code">404</p>
       <h1 class="h-xl">Page not found</h1>
-      <p class="lede">The link might be broken, or the page may have moved.</p>
+      <p class="lede">There's nothing at this address. If one of our own links sent you here, email <a href="mailto:support@anymeansaudio.com">support@anymeansaudio.com</a> and we'll fix it.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="/">Home</a>
         <a class="btn btn-ghost" href="/artfreq">ArtFreq</a>
@@ -323,7 +323,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
-  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
+  function leave(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);}
+  panel.addEventListener('focusout',leave);
+  btn.addEventListener('focusout',leave);
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });
