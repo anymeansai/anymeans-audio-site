@@ -236,6 +236,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .pp-hero .lede{text-align:center;max-width:50ch}
 .pp-hero .cta-row{justify-content:center;margin-top:10px}
 .pp-hero .formats{margin-top:2px}
+.pp-hero__note{color:var(--muted);font-size:15px;line-height:1.5;max-width:52ch;text-wrap:pretty}
+.pp-hero__note a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
 .pp-hero__shot{margin-top:clamp(28px,4vw,56px)}
 @media (max-width:599px){.pp-icon{--el:68px}.pp-hero .lede{font-size:16.5px}.pp-hero .cta-row{align-self:stretch}}
 .pp-hero__shot .shot{border-radius:clamp(10px,1.4vw,18px)}
@@ -281,6 +283,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .ticks li{display:flex;gap:12px;font-size:15.5px;line-height:1.45;color:var(--body)}
 .ticks li::before{content:"";flex-shrink:0;width:18px;height:18px;margin-top:1px;border-radius:50%;background:rgba(249,161,58,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.6l4.6-5' fill='none' stroke='%23f9a13a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
 .plan .btn{margin-top:auto;width:100%}
+.plan__text{color:var(--body);font-size:16px;line-height:1.55;text-wrap:pretty}
 .plans-note{text-align:center;color:var(--muted);font-size:14.5px;margin-top:24px}
 
 .details{display:grid;grid-template-columns:1fr;gap:52px}
@@ -390,9 +393,10 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <p class="pp-tagline">Put words and pictures in your spectrogram</p>
       <p class="lede">Type some text or drop in an image and press play. ArtFreq turns it into sound, and that sound draws your picture on any spectrogram analyzer, in time with your project.</p>
       <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="#buy">Buy from $29</a>
-        <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
+        <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06">Buy ArtFreq <span class="amt">$29</span></a>
+        <a class="btn btn-ghost btn-lg" href="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08">Buy ArtFreq Pro <span class="amt">$39</span></a>
       </div>
+      <p class="pp-hero__note">Pro includes ArtFreq, plus ArtFreq FX for carving the drawing out of audio you already have. <a href="#buy">Compare</a></p>
       <p class="formats">VST3 · macOS · Windows</p>
     </div>
     <div class="wrap pp-hero__shot">
@@ -463,22 +467,15 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-export.webp" alt="A freshly bounced WAV file ready to drag from ArtFreq's export area into the DAW" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
-      <p class="eyebrow knobs-label">Sound settings</p>
-      <dl class="knobs">
-        <div><dt>Density</dt><dd>How many sine lines make up the picture, from 16 to 1024. Fewer lines look like old scan lines. More fill the shapes in.</dd></div>
-        <div><dt>Contrast</dt><dd>The level gap between the brightest and faintest parts of the picture, from 12 to 72&nbsp;dB.</dd></div>
-        <div><dt>Lows</dt><dd>How the bottom end is drawn. Smooth fills low shapes in. Stripes plays separate lines, which long FFTs show as stripes.</dd></div>
-        <div><dt>Level</dt><dd>Output volume. Before this knob, the loudest part of the drawing sits at −12&nbsp;dBFS&nbsp;RMS.</dd></div>
-      </dl>
     </div>
   </section>
 
   <section class="band section" id="fx">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow"><span class="dot"></span>ArtFreq FX · Included with Pro</p>
-        <h2 class="h-lg">Put the drawing inside a song</h2>
-        <p class="lede">ArtFreq FX is the effect version. It works on audio you already have: put it on a track, a bus or the master and it cuts the drawing into that audio, so the shapes show up on the spectrogram even in a busy mix.</p>
+        <p class="eyebrow"><span class="dot"></span>ArtFreq FX · Comes with Pro</p>
+        <h2 class="h-lg">Carve the drawing into your own audio</h2>
+        <p class="lede">ArtFreq FX goes on audio you already have, like a vocal, a beat or your whole mix. It cuts the drawing's frequencies out of that audio, so the drawing shows up on the spectrogram inside your track.</p>
       </div>
       <div class="glow"><div class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-fx-gui.png" alt="The ArtFreq FX window, with a drawing carved into the spectrogram of a full song" width="1440" height="880" loading="lazy" /></div></div>
 
@@ -496,57 +493,41 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <div class="mode__body"><h3>Stencil</h3><p>The reverse of Carve. Only the audio inside the drawing gets through and the rest is muted.</p></div>
         </div>
       </div>
-      <p class="copy" style="margin-top:22px">There's also Draw mode, which plays the drawing on top of the song without carving anything.</p>
-      <p class="copy">Carve and Stencil wait for audio before they start. If you press play at bar 1 and the vocal comes in at bar 9, the carving starts at bar 9.</p>
-      <div class="chips">
-        <span class="chip">Depth −120 to 0&nbsp;dB</span>
-        <span class="chip">85.3&nbsp;ms latency, reported to your DAW</span>
-      </div>
+      <p class="copy" style="margin-top:22px">There's also a Draw mode that plays the drawing on top without cutting anything.</p>
     </div>
   </section>
 
   <section class="section" id="buy" data-hide-buybar>
     <div class="wrap">
       <div class="section-head section-head--center">
-        <p class="eyebrow">Pricing</p>
-        <h2 class="h-lg">Two versions, no subscription</h2>
+        <h2 class="h-lg">ArtFreq or ArtFreq Pro</h2>
+        <p class="lede">Both are a one-time purchase. Your license key and download link come by email right after checkout.</p>
       </div>
       <div class="plans">
         <div class="card plan">
           <div class="plan__head">
             <div>
               <h3 class="plan__name">ArtFreq</h3>
-              <p class="plan__desc">Just the instrument</p>
+              <p class="plan__desc">The instrument</p>
             </div>
           </div>
           <p class="plan__price">$29</p>
-          <ul class="ticks">
-            <li>Text, image and brush tools</li>
-            <li>Layers, frequency bands and five fonts</li>
-            <li>Live spectrogram view</li>
-            <li>Bounce to WAV</li>
-          </ul>
+          <p class="plan__text">Type text, drop in an image or paint, and ArtFreq plays it as sound that draws the picture on a spectrogram.</p>
           <a class="btn btn-ghost btn-lg" href="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06">Buy ArtFreq</a>
         </div>
         <div class="card plan plan--pro">
           <div class="plan__head">
             <div>
               <h3 class="plan__name">ArtFreq Pro</h3>
-              <p class="plan__desc">ArtFreq and ArtFreq FX on one key</p>
+              <p class="plan__desc">ArtFreq + ArtFreq FX</p>
             </div>
-            <span class="plan__badge">Both plug-ins</span>
+            <span class="plan__badge">Includes ArtFreq</span>
           </div>
           <p class="plan__price">$39</p>
-          <ul class="ticks">
-            <li>Everything in ArtFreq</li>
-            <li>ArtFreq FX for audio tracks, buses and the master</li>
-            <li>Carve, Carve + Draw, Stencil and Draw modes</li>
-            <li>Mode and Depth can be automated</li>
-          </ul>
+          <p class="plan__text">Everything in ArtFreq, plus ArtFreq FX. ArtFreq FX goes on audio you already have and carves the drawing into it by cutting out those frequencies.</p>
           <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08">Buy ArtFreq Pro</a>
         </div>
       </div>
-      <p class="plans-note">You'll get your license key and download links by email as soon as you check out.</p>
     </div>
   </section>
 
