@@ -106,6 +106,8 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .btn-ghost{color:var(--text);background:rgba(255,255,255,.04);border-color:var(--line-2)}
 .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:var(--line-3)}
 .btn-lg{--h:56px;padding:0 30px;font-size:16.5px}
+.btn-sm{--h:38px;padding:0 15px;font-size:14px;border-radius:10px;gap:8px}
+.btn-sm svg{width:14px;height:14px}
 .btn .amt{font-variant-numeric:tabular-nums;font-weight:600;opacity:.72}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 @media (max-width:479px){.cta-row>.btn{flex:1 1 auto}}
@@ -396,7 +398,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <a class="btn btn-ghost btn-lg" href="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06">Buy ArtFreq <span class="amt">$29</span></a>
         <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08">Buy ArtFreq Pro <span class="amt">$39</span></a>
       </div>
-      <p class="pp-hero__note">Pro includes ArtFreq, plus ArtFreq FX for carving the drawing out of audio you already have. <a href="#buy">Compare</a></p>
+      <p class="pp-hero__note">Pro includes ArtFreq, plus ArtFreq FX for carving the drawing out of audio you already have.</p>
+      <a class="btn btn-ghost btn-sm" href="#buy">Compare ArtFreq and Pro <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v9.5M3.5 8.5 8 13l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <p class="formats">VST3 · macOS · Windows</p>
     </div>
     <div class="wrap pp-hero__shot">
