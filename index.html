@@ -84,8 +84,8 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .h-xl{font-size:clamp(46px,8vw,104px);letter-spacing:-.045em;line-height:.98}
 .h-lg{font-size:clamp(32px,4.8vw,58px);letter-spacing:-.037em}
 .h-md{font-size:clamp(24px,2.6vw,30px);letter-spacing:-.025em;line-height:1.15}
-.lede{font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--body);max-width:58ch}
-.copy{font-size:16.5px;line-height:1.65;color:var(--body);max-width:56ch}
+.lede{font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--body);max-width:58ch;text-wrap:pretty}
+.copy{font-size:16.5px;line-height:1.65;color:var(--body);max-width:56ch;text-wrap:pretty}
 .copy + .copy{margin-top:14px}
 .copy a,.lede a{color:var(--text);text-decoration-color:var(--line-3);text-underline-offset:3px}
 .copy a:hover,.lede a:hover{text-decoration-color:var(--amber)}
@@ -139,11 +139,18 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .menu__foot .menu__mail{flex-basis:100%;color:var(--body)}
 html.menu-open{overflow:hidden}
 
-/* Product glyphs (small app-icon tiles) */
-.glyph{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;background:#0d0f14;border:1px solid var(--line-2);font-weight:700;font-size:19px;letter-spacing:-.04em;overflow:hidden}
-.glyph img{width:100%;height:100%}
-.glyph--creme span{background:linear-gradient(90deg,#fff6e2,#f0c477 55%,#c9862f);-webkit-background-clip:text;background-clip:text;color:transparent}
-.glyph--vocalyst{background:linear-gradient(145deg,#8f8fff,#5b4fd6);border-color:rgba(255,255,255,.18);color:#fff}
+/* Product tiles, drawn like cells of the periodic table: number, symbol, name.
+   Size with --el (default 46px). Add .el--lg to show the name (use it from about 84px up). */
+.el{--el:46px;position:relative;flex-shrink:0;width:var(--el);height:var(--el);font-size:var(--el);line-height:1;display:grid;place-items:center;border-radius:.1em;border:1px solid var(--el-line);background:linear-gradient(155deg,var(--el-bg-a),var(--el-bg-b)),#0e1117;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 28px -16px rgba(0,0,0,.95);overflow:hidden}
+.el__n{position:absolute;left:calc(var(--el)*.11);top:calc(var(--el)*.09);font-family:var(--mono);font-size:max(9px,calc(var(--el)*.17));font-weight:500;line-height:1;color:var(--el-soft)}
+.el__sym{font-size:.47em;font-weight:650;letter-spacing:-.035em;padding:0 .02em;background:var(--el-ink);-webkit-background-clip:text;background-clip:text;color:transparent}
+.el__name{position:absolute;left:0;right:0;bottom:calc(var(--el)*.1);text-align:center;font-size:max(9px,calc(var(--el)*.115));font-weight:550;letter-spacing:.01em;line-height:1;color:var(--el-soft)}
+.el--lg .el__n{font-size:calc(var(--el)*.14)}
+.el:not(.el--lg) .el__sym{transform:translateY(calc(var(--el)*.05))}
+.el--lg .el__sym{font-size:.44em;transform:translateY(-.05em)}
+.el--artfreq{--el-bg-a:rgba(249,161,58,.22);--el-bg-b:rgba(184,58,110,.1);--el-line:rgba(249,161,58,.5);--el-ink:linear-gradient(100deg,#fff8e6 0%,#fce7a0 30%,#f9a13a 62%,#e8664a 100%);--el-soft:rgba(252,231,160,.8)}
+.el--creme{--el-bg-a:rgba(240,196,119,.22);--el-bg-b:rgba(201,134,47,.08);--el-line:rgba(240,196,119,.5);--el-ink:linear-gradient(100deg,#fffaf0,#f6ead2 30%,#f0c477 65%,#c9862f);--el-soft:rgba(246,234,210,.8)}
+.el--vocalyst{--el-bg-a:rgba(138,138,255,.26);--el-bg-b:rgba(109,93,252,.1);--el-line:rgba(160,160,255,.55);--el-ink:linear-gradient(100deg,#ffffff,#d6d6ff 35%,#a9a9ff 70%,#8a7dff);--el-soft:rgba(220,220,255,.82)}
 
 /* Screenshots */
 .shot{position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:#0a0c10;border:1px solid var(--line-2);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 50px 100px -40px rgba(0,0,0,.9),0 20px 40px -24px rgba(0,0,0,.7)}
@@ -217,9 +224,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .home-hero__grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
 .home-hero__copy{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 .home-hero__title{display:flex;align-items:center;gap:18px}
-.home-hero__title .glyph{width:clamp(54px,5vw,68px);height:clamp(54px,5vw,68px);border-radius:16px;box-shadow:0 18px 40px -18px rgba(0,0,0,.9)}
+.home-hero__title .el{--el:clamp(68px,6.4vw,88px)}
 .home-hero h1{font-size:clamp(56px,8vw,112px);letter-spacing:-.055em;line-height:.92}
-.home-hero__tag{font-size:clamp(22px,2.5vw,30px);letter-spacing:-.025em;line-height:1.2;font-weight:550}
+.home-hero__tag{font-size:clamp(22px,2.5vw,30px);letter-spacing:-.025em;line-height:1.2;font-weight:550;text-wrap:balance}
 .home-hero .lede{max-width:46ch}
 .home-hero .cta-row{margin-top:6px}
 .home-hero__price{color:var(--muted);font-size:15px}
@@ -275,17 +282,17 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <p class="eyebrow menu__label">Plug-ins</p>
       <ul class="menu__list">
         <li><a href="/artfreq">
-          <span class="glyph"><img src="/assets/img/artfreq-icon.webp" alt="" width="46" height="46" /></span>
+          <span class="el el--artfreq" aria-hidden="true"><span class="el__n">1</span><span class="el__sym">Af</span></span>
           <span class="menu__text"><span class="menu__name">ArtFreq</span><span class="menu__desc">Draw on your spectrogram</span></span>
           <span class="menu__status menu__status--live">Out now</span>
         </a></li>
         <li><a href="/creme">
-          <span class="glyph glyph--creme" aria-hidden="true"><span>Cr</span></span>
+          <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
           <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">A smoother top end</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
         <li><a href="/vocalyst">
-          <span class="glyph glyph--vocalyst" aria-hidden="true"><span>V</span></span>
+          <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
           <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">A vocal chain in one plug-in</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
@@ -308,7 +315,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="home-hero__copy">
         <p class="eyebrow"><span class="dot"></span>Out now</p>
         <div class="home-hero__title">
-          <span class="glyph"><img src="/assets/img/artfreq-icon.webp" alt="" width="68" height="68" /></span>
+          <span class="el el--artfreq el--lg" aria-hidden="true"><span class="el__n">1</span><span class="el__sym">Af</span><span class="el__name">ArtFreq</span></span>
           <h1 id="hero-title">ArtFreq</h1>
         </div>
         <p class="home-hero__tag">A synth that plays pictures</p>
@@ -356,7 +363,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           </div>
           <div class="soon-card__body">
             <div class="soon-card__top">
-              <span class="glyph glyph--creme"><span>Cr</span></span>
+              <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
               <h3>Crème</h3>
               <span class="eyebrow"><span class="dot dot--soon"></span>Soon</span>
             </div>
@@ -387,7 +394,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           </div>
           <div class="soon-card__body">
             <div class="soon-card__top">
-              <span class="glyph glyph--vocalyst"><span>V</span></span>
+              <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
               <h3>Vocalyst</h3>
               <span class="eyebrow"><span class="dot dot--soon"></span>Soon</span>
             </div>
