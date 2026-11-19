@@ -12,20 +12,20 @@
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <title>ArtFreq | Put words and pictures in your spectrogram | AnyMeans Audio</title>
-<meta name="description" content="ArtFreq turns text, pictures and brush strokes into sound that shows up on a spectrogram, in time with your track. VST3 for macOS and Windows, from $29." />
+<meta name="description" content="ArtFreq is a synth that plays pictures. Type text or drop in an image and the sound it makes draws that picture on a spectrogram. VST3 for macOS and Windows, from $29." />
 <link rel="canonical" href="https://anymeansaudio.com/artfreq" />
 <meta property="og:site_name" content="AnyMeans Audio" />
 <meta property="og:title" content="ArtFreq: put words and pictures in your spectrogram" />
-<meta property="og:description" content="ArtFreq turns text, pictures and brush strokes into sound that shows up on a spectrogram, in time with your track. VST3 for macOS and Windows, from $29." />
+<meta property="og:description" content="ArtFreq is a synth that plays pictures. Type text or drop in an image and the sound it makes draws that picture on a spectrogram. VST3 for macOS and Windows, from $29." />
 <meta property="og:type" content="product" />
 <meta property="og:url" content="https://anymeansaudio.com/artfreq" />
 <meta property="og:image" content="https://anymeansaudio.com/assets/og/artfreq.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="The ArtFreq plug-in with HELLO, a sine wave and a picture drawn on its canvas" />
+<meta property="og:image:alt" content="The ArtFreq plug-in with the word HELLO, a sine wave and a picture drawn on its canvas" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="ArtFreq: put words and pictures in your spectrogram" />
-<meta name="twitter:description" content="ArtFreq turns text, pictures and brush strokes into sound that shows up on a spectrogram, in time with your track. VST3 for macOS and Windows, from $29." />
+<meta name="twitter:description" content="ArtFreq is a synth that plays pictures. Type text or drop in an image and the sound it makes draws that picture on a spectrogram. VST3 for macOS and Windows, from $29." />
 <meta name="twitter:image" content="https://anymeansaudio.com/assets/og/artfreq.png" />
 <script type="application/ld+json">
 {
@@ -33,7 +33,7 @@
   "@type": "Product",
   "name": "ArtFreq",
   "brand": { "@type": "Brand", "name": "AnyMeans Audio" },
-  "description": "ArtFreq turns text, pictures and brush strokes into sound that shows up on a spectrogram, in time with your track. VST3 for macOS and Windows.",
+  "description": "ArtFreq is a synth that plays pictures. Type text or drop in an image and the sound it makes draws that picture on a spectrogram. VST3 for macOS and Windows.",
   "category": "Audio Plugin",
   "image": "https://anymeansaudio.com/assets/og/artfreq.png",
   "url": "https://anymeansaudio.com/artfreq",
@@ -228,6 +228,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .pp-hero__shot .shot{border-radius:clamp(10px,1.4vw,18px)}
 
 .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(36px,4.5vw,56px)}
+@media (min-width:640px){.steps{grid-template-columns:1fr 1fr}}
 .step{padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px}
 .step__num{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--tint-a)}
 .step h3{font-size:20px;letter-spacing:-.02em}
@@ -299,8 +300,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   .plans{grid-template-columns:1fr 1fr;gap:20px}
 }
 @media (min-width:900px){
-  .steps{grid-template-columns:repeat(3,1fr)}
   .frow{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,88px)}
+  .steps--4{grid-template-columns:repeat(4,1fr)}
   .frow--flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .frow--flip .frow__copy{order:2}
   .knobs{grid-template-columns:repeat(4,1fr)}
@@ -363,13 +364,13 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   <section class="pp-hero" data-hide-buybar>
     <div class="wrap pp-hero__in">
       <img class="pp-icon" src="/assets/img/artfreq-icon.webp" alt="" width="84" height="84" />
-      <p class="eyebrow"><span class="dot"></span>Instrument + effect · Out now</p>
+      <p class="eyebrow"><span class="dot"></span>Out now</p>
       <h1 class="pp-title">ArtFreq</h1>
-      <p class="pp-tagline">Put words and pictures in your spectrogram.</p>
-      <p class="lede">Type a word, drop in a logo or paint on the canvas. ArtFreq plays it back as sound, in time with your track, and it shows up on MiniMeters or whatever spectrogram you have open.</p>
+      <p class="pp-tagline">Put words and pictures in your spectrogram</p>
+      <p class="lede">ArtFreq is a synth that plays pictures. Type some text or drop in an image, press play, and the sound it makes draws that picture on a spectrogram analyzer like MiniMeters. It follows your project's tempo, so a 4-bar drawing lasts exactly 4 bars.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#buy">Buy from $29</a>
-        <a class="btn btn-ghost btn-lg" href="#how">How it works</a>
+        <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
       </div>
       <p class="formats">VST3 · macOS · Windows</p>
     </div>
@@ -383,28 +384,33 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="frow">
         <div class="frow__copy">
           <p class="eyebrow">How it works</p>
-          <h2 class="h-lg">The canvas is a picture of your spectrogram.</h2>
-          <p class="copy">Left to right is time, from one beat up to 32 bars, locked to your DAW's tempo. Bottom to top is frequency, 20 Hz to 20 kHz on a log scale, the way most analysers draw it.</p>
-          <p class="copy">So whatever you put on the canvas is what you'll see on the analyser.</p>
+          <h2 class="h-lg">The canvas is the analyzer screen</h2>
+          <p class="copy">Time runs left to right, anywhere from one beat to 32 bars. Frequency runs bottom to top, 20 Hz to 20 kHz on a log scale, which is how most spectrogram analyzers are set up out of the box.</p>
+          <p class="copy">If yours uses a different scale or range, set the same thing in ArtFreq's settings and the two will line up.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-rich.webp" alt="The ArtFreq canvas with the word HELLO in the highs, a sine wave in the lows and a picture on the right" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
-      <div class="steps">
+      <div class="steps steps--4">
         <div class="card step">
           <span class="step__num">01</span>
-          <h3>Draw something</h3>
-          <p>Add text, drop in an image or paint with the brush. PNG, JPEG and GIF work on both systems, and on a Mac so do HEIC, WebP and TIFF.</p>
+          <h3>Load it on an instrument track</h3>
+          <p>ArtFreq makes its own sound, so it goes on a MIDI or instrument track. A fresh instance already has the word ArtFreq on the canvas.</p>
         </div>
         <div class="card step">
           <span class="step__num">02</span>
-          <h3>Press play</h3>
-          <p>It plays once from wherever you hit play. You can also loop it every few bars, pin it to a bar of the song, or fire it from MIDI notes.</p>
+          <h3>Open a spectrogram</h3>
+          <p>Put MiniMeters, or any analyzer with a scrolling spectrogram, on the output.</p>
         </div>
         <div class="card step">
           <span class="step__num">03</span>
-          <h3>Open an analyser</h3>
-          <p>Put MiniMeters, or any scrolling spectrogram, on the output and watch your drawing go by.</p>
+          <h3>Match the settings</h3>
+          <p>The defaults match a standard MiniMeters setup. If your analyzer is set differently, change Scale, Low and High in ArtFreq's settings.</p>
+        </div>
+        <div class="card step">
+          <span class="step__num">04</span>
+          <h3>Press play</h3>
+          <p>It plays once from wherever you start playback. You can also loop it, start it at a set bar, or trigger it with MIDI notes.</p>
         </div>
       </div>
     </div>
@@ -414,37 +420,34 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="frow frow--flip">
         <div class="frow__copy">
-          <p class="eyebrow">Live view</p>
-          <h3>Check it without leaving the plug-in.</h3>
-          <p class="copy">Switch from Canvas to Live and ArtFreq shows its own output as a scrolling spectrogram, on the same scale as the canvas. It's the quickest way to see whether a drawing reads the way you meant it to.</p>
+          <h3>A spectrogram built in</h3>
+          <p class="copy">Flip the switch at the top of the window from Canvas to Live and ArtFreq shows its own output as a scrolling spectrogram, on the same scale as the canvas. Useful for a quick check when you don't want to open another plug-in.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-live.webp" alt="ArtFreq's Live view: the drawing scrolling past as a real spectrogram of the plug-in's output" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
       <div class="frow">
         <div class="frow__copy">
-          <p class="eyebrow">Layers</p>
-          <h3>Stack text, pictures and paint.</h3>
-          <p class="copy">Every text box and picture gets its own layer. Reorder them, hide one, or snap it into the low, mid or high band. Text comes in five fonts, solid or outline.</p>
-          <p class="copy">Small detail reads best up high. Analysers have the most resolution there, so that's where text looks sharpest.</p>
+          <h3>Layers and frequency bands</h3>
+          <p class="copy">Every text box and image gets its own layer. You can hide or reorder them in the Layers panel and snap any of them into the low, mid or high band. Text comes in five fonts, solid or outlined.</p>
+          <p class="copy">A tip: small text reads best up high. Analyzers have much more detail in the top octaves, and the bottom few always come out blurry.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-layers.webp" alt="The Layers panel listing a picture, two text boxes and the paint layer, one of them hidden" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
       <div class="frow frow--flip">
         <div class="frow__copy">
-          <p class="eyebrow">Export</p>
-          <h3>Bounce it to a WAV.</h3>
-          <p class="copy">Bounce WAV renders one pass in the background and hands you a file to drag straight into your arrangement. Change the drawing, the length or the level and it renders again, so the file always matches the canvas.</p>
+          <h3>Bounce to WAV</h3>
+          <p class="copy">Bounce WAV renders one pass of the drawing in the background, and you drag the file straight into your arrangement. If you change the drawing afterwards it renders a new file by itself, so you never end up dragging in an old version.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-export.webp" alt="A freshly bounced WAV file ready to drag from ArtFreq's export area into the DAW" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
       <dl class="knobs">
-        <div><dt>Density</dt><dd>16 to 1024 lines. Low for a scan-line look, high for solid shapes.</dd></div>
-        <div><dt>Contrast</dt><dd>How far the faint parts sit under the bright ones, 12 to 72 dB.</dd></div>
-        <div><dt>Lows</dt><dd>Smooth keeps low shapes filled in. Stripes plays separate lines instead.</dd></div>
-        <div><dt>Level</dt><dd>Output volume. The loudest moment sits at −12 dBFS RMS before this.</dd></div>
+        <div><dt>Density</dt><dd>How many sine lines make up the picture, from 16 to 1024. Fewer lines look like old scan lines. More fill the shapes in.</dd></div>
+        <div><dt>Contrast</dt><dd>The level gap between the brightest and faintest parts of the picture, from 12 to 72 dB.</dd></div>
+        <div><dt>Lows</dt><dd>How the bottom end is drawn. Smooth fills low shapes in. Stripes plays separate lines, which long FFTs show as stripes.</dd></div>
+        <div><dt>Level</dt><dd>Output volume. Before this knob, the loudest part of the drawing sits at −12 dBFS RMS.</dd></div>
       </dl>
     </div>
   </section>
@@ -452,31 +455,31 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   <section class="band section" id="fx">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow"><span class="dot"></span>ArtFreq FX · Comes with Pro</p>
-        <h2 class="h-lg">Carve the drawing into a song.</h2>
-        <p class="lede">The instrument makes its own sound. ArtFreq FX works on audio you already have. Put it on a vocal, a bus or the master and the drawing shows up inside the mix, even when the track is dense.</p>
+        <p class="eyebrow"><span class="dot"></span>ArtFreq FX · Included with Pro</p>
+        <h2 class="h-lg">Put the drawing inside a song</h2>
+        <p class="lede">ArtFreq FX is the effect version. It doesn't make sound of its own. Put it on a track or on your master and it cuts the drawing out of whatever is playing, so the shapes show up on the spectrogram even in a busy mix.</p>
       </div>
       <div class="glow"><div class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-fx-gui.png" alt="The ArtFreq FX window, with a drawing carved into the spectrogram of a full song" width="1440" height="880" loading="lazy" /></div></div>
 
       <div class="modes">
         <div class="card mode">
           <img src="/assets/img/artfreq-fx-carve-canvas.webp" alt="Carve mode: the drawing shows as black shapes cut out of a busy spectrogram" width="1200" height="490" loading="lazy" />
-          <div class="mode__body"><h3>Carve</h3><p>Mutes the drawing's frequencies, so it shows up as dark shapes in the song.</p></div>
+          <div class="mode__body"><h3>Carve</h3><p>Mutes the frequencies under the drawing, so it shows up as dark shapes in the song.</p></div>
         </div>
         <div class="card mode">
           <img src="/assets/img/artfreq-fx-carve-draw-canvas.webp" alt="Carve + Draw mode: the drawing glows inside a dark outline" width="1200" height="490" loading="lazy" />
-          <div class="mode__body"><h3>Carve + Draw</h3><p>Cuts a slightly wider hole and plays the drawing inside it. Bright shapes with a dark outline.</p></div>
+          <div class="mode__body"><h3>Carve + Draw</h3><p>Carves a slightly bigger hole and plays the drawing's own sound inside it, so you get bright shapes with a dark outline.</p></div>
         </div>
         <div class="card mode">
           <img src="/assets/img/artfreq-fx-stencil-canvas.webp" alt="Stencil mode: only the drawn shapes let the song through, the rest is black" width="1200" height="490" loading="lazy" />
-          <div class="mode__body"><h3>Stencil</h3><p>The other way round. Only the drawing lets the song through and everything else goes quiet.</p></div>
+          <div class="mode__body"><h3>Stencil</h3><p>The reverse of Carve. Only the audio inside the drawing gets through and the rest is muted.</p></div>
         </div>
       </div>
-      <p class="copy" style="margin-top:22px">There's a fourth mode, Draw, which plays the drawing on top of the song and leaves the audio alone.</p>
+      <p class="copy" style="margin-top:22px">There's also Draw mode, which plays the drawing on top of the song without carving anything.</p>
+      <p class="copy">Carve and Stencil wait for audio before they start. If you press play at bar 1 and the vocal comes in at bar 9, the carving starts at bar 9.</p>
       <div class="chips">
         <span class="chip">Depth −120 to 0 dB</span>
         <span class="chip">85.3 ms latency, reported to your DAW</span>
-        <span class="chip">Waits for the audio before it carves</span>
       </div>
     </div>
   </section>
@@ -485,14 +488,14 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="section-head section-head--center">
         <p class="eyebrow">Pricing</p>
-        <h2 class="h-lg">Pick a version. Pay once.</h2>
+        <h2 class="h-lg">Two versions, no subscription</h2>
       </div>
       <div class="plans">
         <div class="card plan">
           <div class="plan__head">
             <div>
               <h3 class="plan__name">ArtFreq</h3>
-              <p class="plan__desc">The instrument.</p>
+              <p class="plan__desc">Just the instrument</p>
             </div>
           </div>
           <p class="plan__price">$29</p>
@@ -508,7 +511,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <div class="plan__head">
             <div>
               <h3 class="plan__name">ArtFreq Pro</h3>
-              <p class="plan__desc">ArtFreq and ArtFreq FX on one key.</p>
+              <p class="plan__desc">ArtFreq and ArtFreq FX on one key</p>
             </div>
             <span class="plan__badge">Both plug-ins</span>
           </div>
@@ -522,7 +525,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08">Buy ArtFreq Pro</a>
         </div>
       </div>
-      <p class="plans-note">Your licence key and download links arrive by email right after checkout.</p>
+      <p class="plans-note">You'll get your license key and download links by email as soon as you check out.</p>
     </div>
   </section>
 
@@ -533,7 +536,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <dl class="dl">
           <div><dt>Format</dt><dd>VST3</dd></div>
           <div><dt>Systems</dt><dd>macOS and Windows</dd></div>
-          <div><dt>Plug-ins</dt><dd>ArtFreq, an instrument. ArtFreq FX, an effect (Pro).</dd></div>
+          <div><dt>Plug-ins</dt><dd>ArtFreq (instrument). ArtFreq FX (effect, Pro only).</dd></div>
           <div><dt>Canvas</dt><dd>20 Hz to 20 kHz by default. Log, linear or mel scale.</dd></div>
           <div><dt>Length</dt><dd>1 beat to 32 bars, in time with your DAW</dd></div>
           <div><dt>Trigger</dt><dd>Your DAW's transport or MIDI notes</dd></div>
@@ -567,8 +570,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <p>No. Logic only loads Audio Units and Pro Tools only loads AAX. ArtFreq is VST3.</p>
         </details>
         <details class="qa">
-          <summary>Which analyser should I use?</summary>
-          <p>Anything with a scrolling spectrogram. MiniMeters works well. ArtFreq's defaults (log scale, 20 Hz to 20 kHz) match a standard MiniMeters setup, and if yours is set up differently you can match it in ArtFreq's settings.</p>
+          <summary>Which analyzer should I use?</summary>
+          <p>Anything with a scrolling spectrogram. MiniMeters works well, and ArtFreq's defaults (log scale, 20 Hz to 20 kHz) already match a standard MiniMeters setup. If you use something else, match its scale and range in ArtFreq's settings.</p>
         </details>
         <details class="qa">
           <summary>What does Pro add?</summary>
@@ -576,7 +579,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </details>
         <details class="qa">
           <summary>Do I need to send it MIDI?</summary>
-          <p>No. Out of the box it plays when you press play in your DAW. MIDI triggering is there if you'd rather each note fire the drawing.</p>
+          <p>No. By default it plays when you press play in your DAW. You can switch it to MIDI if you want each note to start the drawing.</p>
         </details>
         <details class="qa">
           <summary>How do I get my key?</summary>
@@ -596,7 +599,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   <div class="wrap site-footer__top">
     <div class="site-footer__brand">
       <img src="/anymeans-lockup.svg" alt="AnyMeans" width="1057" height="256" />
-      <p>Audio plug-ins for producers, mix engineers and anyone who likes looking at a spectrogram.</p>
+      <p>Audio plug-ins for macOS and Windows.</p>
     </div>
     <div class="site-footer__cols">
       <div>
