@@ -122,14 +122,16 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .brand{display:inline-flex;align-items:center;gap:0;text-decoration:none;color:var(--wordmark);flex-shrink:0}
 .brand img{height:30px;width:auto}
 .brand span{font-size:16px;font-weight:600;letter-spacing:-.012em;line-height:1;margin-left:-1px}
-.menu-btn{margin-left:auto;display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 14px 0 16px;border-radius:12px;border:1px solid var(--line-2);background:rgba(255,255,255,.035);font-size:14.5px;font-weight:550;cursor:pointer;transition:background .2s,border-color .2s}
-.menu-btn:hover{background:rgba(255,255,255,.07);border-color:var(--line-3)}
-.menu-btn__icon{position:relative;width:16px;height:12px}
-.menu-btn__icon i{position:absolute;left:0;width:16px;height:1.6px;border-radius:2px;background:currentColor;transition:transform .25s,top .25s}
-.menu-btn__icon i:nth-child(1){top:2px}
-.menu-btn__icon i:nth-child(2){top:8.4px}
-.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(1){top:5.2px;transform:rotate(45deg)}
-.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(2){top:5.2px;transform:rotate(-45deg)}
+.menu-btn{margin-left:auto;margin-right:-10px;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:10px;background:transparent;cursor:pointer;color:var(--text);transition:background .2s}
+.menu-btn:hover{background:rgba(255,255,255,.06)}
+.menu-btn__icon{position:relative;width:22px;height:16px}
+.menu-btn__icon i{position:absolute;left:0;width:22px;height:2px;border-radius:2px;background:currentColor;transition:transform .25s,top .25s,opacity .2s}
+.menu-btn__icon i:nth-child(1){top:1px}
+.menu-btn__icon i:nth-child(2){top:7px}
+.menu-btn__icon i:nth-child(3){top:13px}
+.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(1){top:7px;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(3){top:7px;transform:rotate(-45deg)}
 .menu{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;z-index:59;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;padding:12px var(--gutter) calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column}
 .menu[hidden]{display:none}
 .menu__label{padding:14px 2px 6px}
@@ -351,9 +353,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <img src="/anymeans-lockup.svg" alt="" width="1057" height="256" />
       <span aria-hidden="true">Audio</span>
     </a>
-    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel">
-      <span>Menu</span>
-      <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Menu">
+      <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
     <nav class="menu" id="menuPanel" aria-label="Plug-ins" hidden>
       <p class="eyebrow menu__label">Plug-ins</p>
