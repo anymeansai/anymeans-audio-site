@@ -10,21 +10,21 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://downloads.anymeansaudio.com/favicon-16.png" />
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<title>AnyMeans Audio | Audio plug-ins for macOS and Windows</title>
-<meta name="description" content="AnyMeans makes audio plug-ins for macOS and Windows. ArtFreq, out now, turns text and images into sound that shows up on a spectrogram. Crème and Vocalyst are coming soon." />
+<title>AnyMeans Audio | ArtFreq, Crème and Vocalyst plug-ins</title>
+<meta name="description" content="ArtFreq is out now: a synth that plays pictures, so text and images you put on its canvas show up on a spectrogram. Crème and Vocalyst are coming soon from AnyMeans Audio." />
 <link rel="canonical" href="https://anymeansaudio.com/" />
 <meta property="og:site_name" content="AnyMeans Audio" />
 <meta property="og:title" content="AnyMeans Audio" />
-<meta property="og:description" content="AnyMeans makes audio plug-ins for macOS and Windows. ArtFreq, out now, turns text and images into sound that shows up on a spectrogram. Crème and Vocalyst are coming soon." />
+<meta property="og:description" content="ArtFreq is out now: a synth that plays pictures, so text and images you put on its canvas show up on a spectrogram. Crème and Vocalyst are coming soon from AnyMeans Audio." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://anymeansaudio.com/" />
 <meta property="og:image" content="https://anymeansaudio.com/assets/og/home.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="AnyMeans Audio: plug-ins for macOS and Windows" />
+<meta property="og:image:alt" content="ArtFreq by AnyMeans Audio, out now" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AnyMeans Audio" />
-<meta name="twitter:description" content="AnyMeans makes audio plug-ins for macOS and Windows. ArtFreq, out now, turns text and images into sound that shows up on a spectrogram. Crème and Vocalyst are coming soon." />
+<meta name="twitter:description" content="ArtFreq is out now: a synth that plays pictures, so text and images you put on its canvas show up on a spectrogram. Crème and Vocalyst are coming soon from AnyMeans Audio." />
 <meta name="twitter:image" content="https://anymeansaudio.com/assets/og/home.png" />
 <script type="application/ld+json">
 {
@@ -211,25 +211,22 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 /* @shared:end */
 
 /* ---------- Home ---------- */
-.home-hero{position:relative;padding:clamp(64px,10vw,140px) 0 clamp(40px,6vw,72px);overflow:hidden}
-.hero-lines{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(64vw,880px);height:auto;aspect-ratio:800/520;opacity:.5;pointer-events:none}
-@media (max-width:767px){.hero-lines{width:120vw;right:-30vw;top:auto;bottom:-6%;transform:none;opacity:.22}}
-.home-hero__in{position:relative;display:flex;flex-direction:column;gap:22px}
-.home-hero h1{max-width:13ch;font-size:clamp(44px,7vw,92px)}
-.home-hero .lede{max-width:44ch}
-
-.feature-card{display:grid;grid-template-columns:1fr;--tint-a:#f9a13a;--tint-b:#b83a6e}
-.feature-card__copy{padding:28px 24px 8px;display:flex;flex-direction:column;gap:16px;position:relative;z-index:1}
-.feature-card__title{display:flex;align-items:center;gap:14px}
-.feature-card__title h2{font-size:clamp(34px,4vw,48px);letter-spacing:-.04em}
-.feature-card__tag{font-size:clamp(19px,1.8vw,22px);line-height:1.35;letter-spacing:-.015em;color:var(--text);font-weight:550;max-width:24ch}
-.feature-card .copy{font-size:16px}
-.price-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
-.price-line strong{font-size:28px;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.price-line span{color:var(--muted);font-size:15px}
-.feature-card__media{position:relative;padding:8px 24px 28px}
-.feature-card__media::before{content:"";position:absolute;inset:10% 0 0;background:radial-gradient(60% 60% at 60% 60%,rgba(232,102,74,.28),transparent 70%);filter:blur(30px);pointer-events:none}
-.feature-card__media .shot{border-radius:12px}
+.home-hero{position:relative;padding:clamp(48px,7vw,104px) 0 clamp(64px,8vw,112px);isolation:isolate;--tint-a:#f9a13a;--tint-b:#b83a6e}
+.home-hero::before{content:"";position:absolute;z-index:-1;left:50%;top:-160px;width:min(1300px,160vw);height:820px;transform:translateX(-50%);background:radial-gradient(34% 40% at 64% 52%,var(--tint-a),transparent 72%),radial-gradient(30% 36% at 82% 62%,var(--tint-b),transparent 72%);opacity:.16;filter:blur(56px);pointer-events:none}
+.home-hero .hero-lines{position:absolute;z-index:-1;right:0;top:0;width:min(58vw,780px);height:auto;opacity:.32;pointer-events:none}
+.home-hero__grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+.home-hero__copy{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.home-hero__title{display:flex;align-items:center;gap:18px}
+.home-hero__title .glyph{width:clamp(54px,5vw,68px);height:clamp(54px,5vw,68px);border-radius:16px;box-shadow:0 18px 40px -18px rgba(0,0,0,.9)}
+.home-hero h1{font-size:clamp(56px,8vw,112px);letter-spacing:-.055em;line-height:.92}
+.home-hero__tag{font-size:clamp(22px,2.5vw,30px);letter-spacing:-.025em;line-height:1.2;font-weight:550}
+.home-hero .lede{max-width:46ch}
+.home-hero .cta-row{margin-top:6px}
+.home-hero__price{color:var(--muted);font-size:15px}
+.home-hero__price strong{color:var(--text);font-weight:650}
+.home-hero__shot{display:block;border-radius:clamp(10px,1.2vw,16px);transition:transform .3s}
+.home-hero__shot:hover{transform:translateY(-3px)}
+.home-hero__shot .shot{display:block;border-radius:inherit}
 
 .soon-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
 .soon-card{display:flex;flex-direction:column}
@@ -249,10 +246,11 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .contact .copy{margin-top:12px}
 .contact__links{display:flex;flex-wrap:wrap;gap:10px}
 
+@media (min-width:980px){
+  .home-hero__grid{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px}
+}
+@media (max-width:767px){.home-hero .hero-lines{width:120vw;right:-40vw;top:-20px;opacity:.18}}
 @media (min-width:768px){
-  .feature-card{grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);align-items:center}
-  .feature-card__copy{padding:48px 8px 48px 48px}
-  .feature-card__media{padding:40px 40px 40px 16px}
   .soon-grid{grid-template-columns:1fr 1fr;gap:20px}
   .soon-card__body{padding:28px}
   .contact{grid-template-columns:1.4fr auto}
@@ -304,33 +302,25 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 <!-- @header:end -->
 
 <main id="main">
-  <section class="home-hero">
+  <section class="home-hero" aria-labelledby="hero-title">
     <svg class="hero-lines" viewBox="0 0 800 520" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><defs><linearGradient id="hl-g" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#fce7a0"/><stop offset=".55" stop-color="#f9a13a"/><stop offset=".78" stop-color="#e8664a"/><stop offset="1" stop-color="#b83a6e"/></linearGradient><linearGradient id="hl-f" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="hl-m"><rect width="800" height="520" fill="url(#hl-f)"/></mask></defs><g stroke="url(#hl-g)" stroke-linecap="butt" mask="url(#hl-m)"><line x1="282" y1="8.0" x2="800" y2="8.0" stroke-width="2.6" stroke-opacity="0.55"/><line x1="295" y1="23.3" x2="800" y2="23.3" stroke-width="1.8" stroke-opacity="0.59"/><line x1="306" y1="38.5" x2="800" y2="38.5" stroke-width="2.6" stroke-opacity="0.64"/><line x1="312" y1="53.8" x2="800" y2="53.8" stroke-width="1.8" stroke-opacity="0.68"/><line x1="314" y1="69.1" x2="800" y2="69.1" stroke-width="2.6" stroke-opacity="0.72"/><line x1="312" y1="84.4" x2="800" y2="84.4" stroke-width="1.8" stroke-opacity="0.76"/><line x1="306" y1="99.6" x2="800" y2="99.6" stroke-width="2.6" stroke-opacity="0.79"/><line x1="296" y1="114.9" x2="800" y2="114.9" stroke-width="1.8" stroke-opacity="0.83"/><line x1="282" y1="130.2" x2="800" y2="130.2" stroke-width="2.6" stroke-opacity="0.86"/><line x1="267" y1="145.5" x2="800" y2="145.5" stroke-width="1.8" stroke-opacity="0.89"/><line x1="249" y1="160.7" x2="800" y2="160.7" stroke-width="2.6" stroke-opacity="0.92"/><line x1="232" y1="176.0" x2="800" y2="176.0" stroke-width="1.8" stroke-opacity="0.94"/><line x1="214" y1="191.3" x2="800" y2="191.3" stroke-width="2.6" stroke-opacity="0.96"/><line x1="197" y1="206.5" x2="800" y2="206.5" stroke-width="1.8" stroke-opacity="0.98"/><line x1="182" y1="221.8" x2="800" y2="221.8" stroke-width="2.6" stroke-opacity="0.99"/><line x1="169" y1="237.1" x2="800" y2="237.1" stroke-width="1.8" stroke-opacity="1.00"/><line x1="159" y1="252.4" x2="800" y2="252.4" stroke-width="2.6" stroke-opacity="1.00"/><line x1="152" y1="267.6" x2="800" y2="267.6" stroke-width="1.8" stroke-opacity="1.00"/><line x1="147" y1="282.9" x2="800" y2="282.9" stroke-width="2.6" stroke-opacity="1.00"/><line x1="144" y1="298.2" x2="800" y2="298.2" stroke-width="1.8" stroke-opacity="0.99"/><line x1="144" y1="313.5" x2="800" y2="313.5" stroke-width="2.6" stroke-opacity="0.98"/><line x1="146" y1="328.7" x2="800" y2="328.7" stroke-width="1.8" stroke-opacity="0.96"/><line x1="148" y1="344.0" x2="800" y2="344.0" stroke-width="2.6" stroke-opacity="0.94"/><line x1="152" y1="359.3" x2="800" y2="359.3" stroke-width="1.8" stroke-opacity="0.92"/><line x1="156" y1="374.5" x2="800" y2="374.5" stroke-width="2.6" stroke-opacity="0.89"/><line x1="160" y1="389.8" x2="800" y2="389.8" stroke-width="1.8" stroke-opacity="0.86"/><line x1="164" y1="405.1" x2="800" y2="405.1" stroke-width="2.6" stroke-opacity="0.83"/><line x1="167" y1="420.4" x2="800" y2="420.4" stroke-width="1.8" stroke-opacity="0.79"/><line x1="170" y1="435.6" x2="800" y2="435.6" stroke-width="2.6" stroke-opacity="0.76"/><line x1="172" y1="450.9" x2="800" y2="450.9" stroke-width="1.8" stroke-opacity="0.72"/><line x1="174" y1="466.2" x2="800" y2="466.2" stroke-width="2.6" stroke-opacity="0.68"/><line x1="176" y1="481.5" x2="800" y2="481.5" stroke-width="1.8" stroke-opacity="0.64"/><line x1="177" y1="496.7" x2="800" y2="496.7" stroke-width="2.6" stroke-opacity="0.59"/><line x1="178" y1="512.0" x2="800" y2="512.0" stroke-width="1.8" stroke-opacity="0.55"/></g></svg>
-    <div class="wrap home-hero__in">
-      <p class="eyebrow">AnyMeans Audio</p>
-      <h1 class="h-xl">Plug-ins for macOS and Windows</h1>
-      <p class="lede">ArtFreq is out now. Crème and Vocalyst are coming soon.</p>
-    </div>
-  </section>
-
-  <section class="section--tight" aria-labelledby="artfreq-title" style="padding-top:0">
-    <div class="wrap">
-      <a class="card feature-card" href="/artfreq">
-        <div class="feature-card__copy">
-          <p class="eyebrow"><span class="dot"></span>Out now</p>
-          <div class="feature-card__title">
-            <span class="glyph"><img src="/assets/img/artfreq-icon.webp" alt="" width="46" height="46" /></span>
-            <h2 id="artfreq-title">ArtFreq</h2>
-          </div>
-          <p class="feature-card__tag">Put words and pictures in your spectrogram</p>
-          <p class="copy">Type some text or drop in an image, press play, and the sound ArtFreq makes draws that picture on a spectrogram. It follows your project's tempo, so a 4-bar drawing lasts 4 bars.</p>
-          <div class="price-line"><strong>$29</strong><span>or $39 with ArtFreq FX</span></div>
-          <span class="formats">VST3 · macOS · Windows</span>
-          <span class="text-link">See ArtFreq <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9.5M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="wrap home-hero__grid">
+      <div class="home-hero__copy">
+        <p class="eyebrow"><span class="dot"></span>Out now</p>
+        <div class="home-hero__title">
+          <span class="glyph"><img src="/assets/img/artfreq-icon.webp" alt="" width="68" height="68" /></span>
+          <h1 id="hero-title">ArtFreq</h1>
         </div>
-        <div class="feature-card__media">
-          <div class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-gui.png" alt="The ArtFreq plug-in window, with text, a sine wave and a picture drawn on the canvas" width="2240" height="1440" loading="eager" fetchpriority="high" /></div>
+        <p class="home-hero__tag">A synth that plays pictures</p>
+        <p class="lede">Type some text or drop in an image, press play, and the sound it makes draws that picture on a spectrogram. It follows your project's tempo, so a 4-bar drawing lasts 4&nbsp;bars.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="/artfreq#buy">Buy from $29</a>
+          <a class="btn btn-ghost btn-lg" href="/artfreq">See ArtFreq</a>
         </div>
+        <p class="home-hero__price"><strong>$29</strong>, or $39 for Pro with ArtFreq FX. VST3 for macOS and Windows.</p>
+      </div>
+      <a class="home-hero__shot glow" href="/artfreq" aria-label="See ArtFreq">
+        <span class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-gui.png" alt="The ArtFreq plug-in window, with text, a sine wave and a picture drawn on the canvas" width="2240" height="1440" fetchpriority="high" /></span>
       </a>
     </div>
   </section>
@@ -432,7 +422,6 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   <div class="wrap site-footer__top">
     <div class="site-footer__brand">
       <img src="/anymeans-lockup.svg" alt="AnyMeans" width="1057" height="256" />
-      <p>Audio plug-ins for macOS and Windows.</p>
     </div>
     <div class="site-footer__cols">
       <div>
