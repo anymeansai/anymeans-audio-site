@@ -17,6 +17,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://downloads.anymeansaudio.com/favicon-16.png" />
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/dm-mono-500.woff2" as="font" type="font/woff2" crossorigin />
 <title>Crème | A smoother top end | AnyMeans Audio</title>
 <meta name="description" content="Crème gives a vocal, drums, a bus or the master a fuller, silkier top end without the harshness of an EQ boost. The parallel crushed-highs trick in one plug-in. VST3 for macOS and Windows, $19." />
 <link rel="canonical" href="https://anymeansaudio.com/creme" />
@@ -34,6 +35,7 @@
 <meta name="twitter:title" content="Crème: a smoother top end" />
 <meta name="twitter:description" content="Crème gives a vocal, drums, a bus or the master a fuller, silkier top end without the harshness of an EQ boost. VST3 for macOS and Windows, $19." />
 <meta name="twitter:image" content="https://anymeansaudio.com/assets/og/creme.png" />
+<meta name="twitter:image:alt" content="Crème by AnyMeans Audio" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,7 +43,7 @@
   "name": "Crème",
   "brand": { "@type": "Brand", "name": "AnyMeans Audio" },
   "description": "Crème gives a vocal, drums, a bus or the master a fuller, silkier top end without the harshness of an EQ boost. The parallel crushed-highs trick in one VST3 plug-in for macOS and Windows, with no latency.",
-  "category": "Audio Plugin",
+  "category": "Audio plug-in",
   "image": "https://anymeansaudio.com/assets/og/creme.png",
   "url": "https://anymeansaudio.com/creme",
   "offers": [
@@ -59,7 +61,7 @@
 :root{
   --bg:#0b0d12;--bg-2:#0e1117;--surface:#12161e;--surface-2:#181d27;
   --line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.12);--line-3:rgba(255,255,255,.22);
-  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#646b7c;--wordmark:#e8ebf2;
+  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#7e8598;--wordmark:#e8ebf2;
   --sun:#fce7a0;--amber:#f9a13a;--coral:#e8664a;--magenta:#b83a6e;
   --spectrum:linear-gradient(90deg,#fce7a0 0%,#f9a13a 34%,#e8664a 67%,#b83a6e 100%);
   --tint-a:#f9a13a;--tint-b:#b83a6e;
@@ -72,6 +74,7 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + 20px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
 main{overflow-x:clip}
+main:focus{outline:none}
 img,svg{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit}
@@ -111,6 +114,7 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .btn-lg{--h:56px;padding:0 30px;font-size:16.5px}
 .btn .amt{font-variant-numeric:tabular-nums;font-weight:600;opacity:.72}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+@media (max-width:479px){.cta-row>.btn{flex:1 1 auto}}
 .text-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15.5px;text-decoration:none;color:var(--text)}
 .text-link svg{width:15px;height:15px;transition:transform .2s}
 .text-link:hover svg{transform:translateX(3px)}
@@ -141,7 +145,7 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .menu__status{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .menu__status--live{color:var(--amber)}
 .menu__list a[aria-current="page"] .menu__name::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);margin-left:10px;vertical-align:middle}
-.menu__foot{margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
+.menu__foot{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
 .menu__foot a{text-decoration:none}
 .menu__foot a:hover{color:var(--text)}
 .menu__foot .menu__mail{flex-basis:100%;color:var(--body)}
@@ -191,7 +195,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .qa summary::after{content:"";flex-shrink:0;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 12px no-repeat;color:var(--muted);transition:transform .25s}
 .qa[open] summary::after{transform:rotate(45deg)}
 .qa summary:hover::after{color:var(--text)}
-.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch}
+.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch;text-wrap:pretty}
 .qa p + p{margin-top:-10px}
 .qa a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
 
@@ -205,8 +209,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .site-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .site-footer li a{color:var(--body);text-decoration:none;font-size:15px}
 .site-footer li a:hover{color:var(--text)}
-.site-footer__soon{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
-.site-footer__bottom{border-top:1px solid var(--line);padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
+.site-footer__soon{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
+.site-footer__bottom::before{content:"";position:absolute;top:0;left:var(--gutter);right:var(--gutter);height:1px;background:var(--line)}
+.site-footer__bottom{position:relative;padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
 
 @media (min-width:768px){
   .menu{position:absolute;top:calc(100% + 6px);left:auto;right:var(--gutter);bottom:auto;width:420px;max-height:calc(100vh - var(--header-h) - 24px);padding:8px;border-radius:18px;border:1px solid var(--line-2);background:rgba(17,20,28,.97);box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(0,0,0,.5)}
@@ -228,16 +233,17 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 /* @product:start
    Layout for full product pages. Shared by artfreq.html and the pages in drafts/.
    Each page sets its own --tint-a / --tint-b on <body> for the glows. */
-.pp-hero{position:relative;padding:clamp(52px,8vw,108px) 0 0;text-align:center;isolation:isolate;overflow-x:clip}
+.pp-hero{position:relative;padding:clamp(32px,5vw,72px) 0 0;text-align:center;isolation:isolate;overflow-x:clip}
 .pp-hero::before{content:"";position:absolute;z-index:-1;left:50%;top:-140px;width:min(1200px,150vw);height:760px;transform:translateX(-50%);background:radial-gradient(38% 42% at 38% 50%,var(--tint-a),transparent 72%),radial-gradient(36% 40% at 64% 54%,var(--tint-b),transparent 72%);opacity:.17;filter:blur(50px);pointer-events:none}
-.pp-hero__in{display:flex;flex-direction:column;align-items:center;gap:20px}
+.pp-hero__in{display:flex;flex-direction:column;align-items:center;gap:16px}
 .pp-icon{--el:clamp(84px,8vw,108px)}
-.pp-title{font-size:clamp(62px,11.5vw,148px);letter-spacing:-.055em;line-height:.9;font-weight:650;margin-top:4px}
+.pp-title{font-size:clamp(56px,9vw,120px);letter-spacing:-.055em;line-height:.9;font-weight:650;margin-top:4px}
 .pp-tagline{font-size:clamp(22px,2.7vw,34px);letter-spacing:-.028em;line-height:1.18;font-weight:550;color:var(--text);max-width:21ch;text-wrap:balance}
-.pp-hero .lede{text-align:center;max-width:54ch}
+.pp-hero .lede{text-align:center;max-width:50ch}
 .pp-hero .cta-row{justify-content:center;margin-top:10px}
 .pp-hero .formats{margin-top:2px}
-.pp-hero__shot{margin-top:clamp(44px,6vw,80px)}
+.pp-hero__shot{margin-top:clamp(28px,4vw,56px)}
+@media (max-width:599px){.pp-icon{--el:68px}.pp-hero .lede{font-size:16.5px}.pp-hero .cta-row{align-self:stretch}}
 .pp-hero__shot .shot{border-radius:clamp(10px,1.4vw,18px)}
 
 .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(36px,4.5vw,56px)}
@@ -250,9 +256,10 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .frow{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
 .frow + .frow{margin-top:clamp(72px,10vw,136px)}
 .frow__copy{display:flex;flex-direction:column;gap:16px}
-.frow__copy h3{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.036em;line-height:1.08}
+.frow__copy h3,.frow__copy .h-lg{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.036em;line-height:1.08}
 
-.knobs{display:grid;grid-template-columns:1fr;gap:1px;margin:28px 0 0;padding:0;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.knobs-label{margin-top:clamp(64px,8vw,112px)}
+.knobs{display:grid;grid-template-columns:1fr;gap:1px;margin:16px 0 0;padding:0;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .knobs div{background:var(--bg);padding:20px 22px}
 .knobs dt{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--text)}
 .knobs dd{margin:8px 0 0;color:var(--body);font-size:15px;line-height:1.55}
@@ -260,7 +267,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .band{position:relative;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);isolation:isolate;overflow:hidden}
 .band::before{content:"";position:absolute;z-index:-1;left:50%;top:-260px;width:min(1300px,160vw);height:700px;transform:translateX(-50%);background:radial-gradient(40% 45% at 35% 50%,var(--tint-b),transparent 70%),radial-gradient(40% 45% at 65% 50%,var(--tint-a),transparent 70%);opacity:.13;filter:blur(60px);pointer-events:none}
 .modes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(28px,4vw,44px)}
-.mode img{width:100%;aspect-ratio:1200/490;object-fit:cover;border-bottom:1px solid var(--line)}
+.mode img{width:100%;aspect-ratio:1200/494;object-fit:cover;border-bottom:1px solid var(--line)}
 .mode__body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
 .mode h3{font-size:19px;letter-spacing:-.018em}
 .mode p{color:var(--body);font-size:15px;line-height:1.55}
@@ -287,7 +294,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .dl div{display:grid;grid-template-columns:minmax(104px,32%) 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
 .dl dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 .dl dd{margin:0;color:var(--body);font-size:15.5px;line-height:1.55}
-.dl a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
+.dl a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3);overflow-wrap:anywhere}
+.details>div{min-width:0}
 
 .has-buybar{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 .buybar{position:fixed;left:0;right:0;bottom:0;z-index:55;border-top:1px solid var(--line-2);transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility .35s}
@@ -303,18 +311,24 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .seg{display:inline-flex;padding:4px;gap:2px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid var(--line-2)}
 .seg button{border:0;background:transparent;min-height:40px;padding:0 12px;border-radius:9px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
 .seg button:hover{color:var(--text)}
-.seg button span{font-variant-numeric:tabular-nums;font-weight:500;margin-left:5px}
+.seg button span{font-variant-numeric:tabular-nums;font-weight:500;margin-left:1px}
 .seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 2px 10px rgba(0,0,0,.45)}
 .buybar .btn{--h:48px;margin-left:auto;padding:0 20px}
-@media (max-width:479px){.buy-what{display:none}}
+@media (max-width:479px){.buy-what{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (max-width:479px){.plan__head{flex-direction:column-reverse;align-items:flex-start;gap:12px}}
 
+@media (min-width:1200px){.steps--4{grid-template-columns:repeat(4,1fr)}.steps--4 .step h3{min-height:2.12em}}
+@media (min-width:900px){
+  .faq-layout{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
+  .faq-layout .section-head{position:sticky;top:calc(var(--header-h) + 32px);margin:0}
+  .faq-layout .faq{max-width:none}
+}
 @media (min-width:760px){
   .modes{grid-template-columns:repeat(3,1fr)}
   .plans{grid-template-columns:1fr 1fr;gap:20px}
 }
 @media (min-width:900px){
   .frow{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,88px)}
-  .steps--4{grid-template-columns:repeat(4,1fr)}
   .frow--flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .frow--flip .frow__copy{order:2}
   .knobs{grid-template-columns:repeat(4,1fr)}
@@ -339,6 +353,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .nb{white-space:nowrap}
 .buybar--one .buybar__prod{display:flex}
 .buybar--one .btn{margin-left:auto}
+@media (max-width:639px){.art--hero text{font-size:24px}}
 @media (min-width:640px){.art--hero{aspect-ratio:2/1}}
 </style>
 </head>
@@ -366,12 +381,12 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </a></li>
         <li><a href="/creme" aria-current="page">
           <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
-          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">A smoother top end</span></span>
+          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">Brighter highs that don't get harsh</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
         <li><a href="/vocalyst">
           <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
-          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">A vocal chain in one plug-in</span></span>
+          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">Your whole vocal chain in one plug-in</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
       </ul>
@@ -386,14 +401,14 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </header>
 <!-- @header:end -->
 
-<main id="main">
+<main id="main" tabindex="-1">
 
   <section class="pp-hero" data-hide-buybar>
     <div class="wrap pp-hero__in">
       <span class="el el--creme el--lg pp-icon" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span><span class="el__name">Crème</span></span>
       <p class="eyebrow"><span class="dot"></span>Out now</p>
       <h1 class="pp-title">Crème</h1>
-      <p class="pp-tagline">A smoother top end</p>
+      <p class="pp-tagline">Brighter highs that don't get harsh</p>
       <p class="lede">Crème takes a copy of the top of your track, crushes its spiky peaks and blends it back in under the original. The top gets fuller and silkier without getting harsher, and the transients stay as they were.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#buy">Buy for $19</a>
@@ -451,7 +466,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="frow frow--flip">
         <div class="frow__copy">
-          <h3>Pick the part of the top it works on</h3>
+          <h3>Choose which part of the top it works on</h3>
           <p class="copy">Two handles on the Range slider set the band Crème takes, crushes and blends back, anywhere from 1 to 20&nbsp;kHz. CREAM, about 4 to 16&nbsp;kHz, is the zone for a smooth, silky top, and it's where a new instance starts. AIR, 10 to 20&nbsp;kHz, adds air and leaves the upper mids alone.</p>
           <p class="copy">Click a zone's name to jump to it, or drag the bar between the handles to move both at once.</p>
         </div>
@@ -472,13 +487,14 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="frow frow--flip">
         <div class="frow__copy">
           <h3>Lift the top only where it needs it</h3>
-          <p class="copy">Smooth is a dynamic EQ on what Crème adds, and only on that. Twelve bands hold the lift back wherever it would go past that balanced curve, and on piercing notes and hard &ldquo;s&rdquo; sounds. Everything under the curve keeps its full lift.</p>
+          <p class="copy">Smooth is a dynamic EQ on what Crème adds, and only on that. Twelve bands hold the lift back wherever it would go past that balanced curve, and on piercing notes and hard "s" sounds. Everything under the curve keeps its full lift.</p>
           <p class="copy">It never cuts the original signal, and it's off until you switch it on. The lights under the switch show how much it's holding back.</p>
         </div>
         <!-- TODO screenshot: the plug-in with Smooth on and its lights lit, /assets/img/creme-smooth.webp (1600 x 1029). -->
         <div class="glow"><div class="shot art"><svg viewBox="0 0 800 515" role="img" aria-label="Smooth across twelve bands. Ten bands keep their full lift under the balanced curve, and the two that would go past it are held back to the curve"><defs><linearGradient id="sc-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0c477"/><stop offset="1" stop-color="#c9862f" stop-opacity=".55"/></linearGradient><radialGradient id="sc-glow" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#d76e7e" stop-opacity=".18"/><stop offset="1" stop-color="#d76e7e" stop-opacity="0"/></radialGradient></defs><rect width="800" height="515" fill="#100e0c"/><rect width="800" height="515" fill="url(#sc-glow)"/><text x="64" y="72" font-family="DM Mono, ui-monospace, monospace" font-size="22" letter-spacing="2" fill="#fff" fill-opacity=".55">SMOOTH</text><circle cx="200" cy="65" r="6" fill="#d76e7e" fill-opacity="1"/><circle cx="220" cy="65" r="6" fill="#d76e7e" fill-opacity="1"/><circle cx="240" cy="65" r="6" fill="#d76e7e" fill-opacity="1"/><circle cx="260" cy="65" r="6" fill="#d76e7e" fill-opacity=".22"/><circle cx="280" cy="65" r="6" fill="#d76e7e" fill-opacity=".22"/><circle cx="300" cy="65" r="6" fill="#d76e7e" fill-opacity=".22"/><path d="M64 430H736" stroke="#fff" stroke-opacity=".16"/><rect x="92" y="262" width="30" height="168" rx="4" fill="url(#sc-bar)"/><rect x="144" y="248" width="30" height="182" rx="4" fill="url(#sc-bar)"/><rect x="196" y="236" width="30" height="194" rx="4" fill="url(#sc-bar)"/><rect x="248" y="160" width="30" height="53.7" rx="4" fill="#d76e7e" fill-opacity=".14" stroke="#d76e7e" stroke-opacity=".8" stroke-dasharray="4 4"/><rect x="248" y="209.7" width="30" height="220.3" rx="4" fill="url(#sc-bar)"/><rect x="300" y="238" width="30" height="192" rx="4" fill="url(#sc-bar)"/><rect x="352" y="252" width="30" height="178" rx="4" fill="url(#sc-bar)"/><rect x="404" y="246" width="30" height="184" rx="4" fill="url(#sc-bar)"/><rect x="456" y="258" width="30" height="172" rx="4" fill="url(#sc-bar)"/><rect x="508" y="182" width="30" height="51.2" rx="4" fill="#d76e7e" fill-opacity=".14" stroke="#d76e7e" stroke-opacity=".8" stroke-dasharray="4 4"/><rect x="508" y="229.2" width="30" height="200.8" rx="4" fill="url(#sc-bar)"/><rect x="560" y="266" width="30" height="164" rx="4" fill="url(#sc-bar)"/><rect x="612" y="274" width="30" height="156" rx="4" fill="url(#sc-bar)"/><rect x="664" y="280" width="30" height="150" rx="4" fill="url(#sc-bar)"/><path d="M64 194.8 L736 245.2" stroke="#fff6e2" stroke-width="2" stroke-dasharray="7 6"/><g font-family="DM Mono, ui-monospace, monospace" font-size="19" letter-spacing="2"><text x="263" y="144" fill="#d76e7e" text-anchor="middle">HELD BACK</text><text x="736" y="231.2" fill="#fff6e2" fill-opacity=".8" text-anchor="end">BALANCED</text></g></svg></div></div>
       </div>
 
+      <p class="eyebrow knobs-label">Controls</p>
       <dl class="knobs">
         <div><dt>Crème</dt><dd>How much of the crushed top goes under the original. At 0% the output is the input, bit for bit.</dd></div>
         <div><dt>Delta</dt><dd>Plays only what Crème adds, like soloing the parallel bus. It should sound smooth, not fizzy.</dd></div>
@@ -560,8 +576,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <h2 class="eyebrow">Licensing</h2>
         <dl class="dl">
           <div><dt>Delivery</dt><dd>Key and download links by email, right after checkout</dd></div>
-          <!-- TODO confirm: the Crème README and docs/ACTIVATION.md say a key works on 2 computers (the ArtFreq README says 2 as well), but the live ArtFreq page says "One machine per key". Check the store's limit before launch and make both pages say the same. -->
-          <div><dt>Machines</dt><dd>Two machines per key</dd></div>
+          <div><dt>Machines</dt><dd>One machine per key</dd></div>
           <div><dt>Activation</dt><dd>Online once. After that it works offline.</dd></div>
           <div><dt>Moving</dt><dd>Deactivate in the gear menu, then activate on the new machine</dd></div>
           <div><dt>Support</dt><dd><a href="mailto:support@anymeansaudio.com">support@anymeansaudio.com</a></dd></div>
@@ -571,14 +586,15 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   </section>
 
   <section class="section" style="padding-top:0" id="faq">
-    <div class="wrap">
+    <div class="wrap faq-layout">
       <div class="section-head">
+        <p class="eyebrow">FAQ</p>
         <h2 class="h-lg">Questions</h2>
       </div>
       <div class="faq">
         <details class="qa">
           <summary>Which DAWs does it work in?</summary>
-          <p>Any DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others.</p>
+          <p>Any 64-bit DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others.</p>
         </details>
         <details class="qa">
           <summary>Will it work in Logic or Pro Tools?</summary>
@@ -678,6 +694,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });
@@ -697,7 +714,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   function pick(o){
     options.forEach(function(b){b.setAttribute('aria-pressed',b===o?'true':'false');});
     btn.setAttribute('href',o.getAttribute('data-link'));
-    if(what)what.textContent=' '+o.getAttribute('data-label');
+    if(what)what.textContent=o.getAttribute('data-label');
   }
   options.forEach(function(b){b.addEventListener('click',function(){pick(b);});});
 

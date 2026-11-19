@@ -29,15 +29,16 @@ Search the draft for `TODO` first. Each one is something to confirm or a screens
 1. **Screenshots.** Export real screenshots, convert them to WebP (about 1600 px wide), put them in
    `assets/img/` and point the `TODO screenshot` frames at them. If the draft uses images from
    `drafts/img/`, move those to `assets/img/` and change `/drafts/img/` to `/assets/img/` in the page.
-2. **Facts.** Confirm the price, the Stripe link and the number of machines per key (the plug-in READMEs
-   say 2 computers, the ArtFreq page says one machine per key).
+2. **Facts.** Confirm the price and the Stripe link. Licensing is one machine per key: that's what the
+   store enforces ("Keys allow 1 machine each" in its activation spec), even though the plug-in READMEs
+   still say 2 computers.
 3. **Swap the page in.** Replace the coming-soon page with the draft, e.g. `git mv -f drafts/creme.html creme.html`.
    Then delete the DRAFT comment at the top and the `<meta name="robots" content="noindex">` line.
 4. **Menu and footer.** The header menu and the footer are the same on every page. Edit them once in
-   `index.html` (change `Soon` to `Out now`, add `menu__status--live`), then run
-   `python3 tools/sync-shared.py` to copy them, and the shared CSS, to every page.
-5. **Home page.** Move the plug-in out of the "Coming soon" grid in `index.html`. Copy the ArtFreq
-   `feature-card` block for it, with its screenshot and price.
+   `index.html` (in the menu, change `Soon` to `Out now` and add `menu__status--live`; in the footer, remove
+   the `Soon` tag), then run `python3 tools/sync-shared.py` to copy them, and the shared CSS, to every page.
+5. **Home page.** Move the plug-in out of the "Coming soon" grid in `index.html` and give it a card with
+   its screenshot, price and a link to its page. The ArtFreq hero at the top of the home page is the model.
 6. **Share image.** `assets/og/<name>.png` still says "Coming soon". Make a new 1200 x 630 image.
 7. **Sitemap.** Bump `<lastmod>` for the page in `sitemap.xml`.
 8. Push to a branch, check the Vercel preview on a phone and a laptop, then merge to `main`.
