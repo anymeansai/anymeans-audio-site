@@ -123,10 +123,13 @@
   /* ---------- FAQ ---------- */
   .faq{padding:64px 0 72px}
   .faq-list{margin-top:8px}
-  .qa{border-top:1px solid var(--line);padding:22px 0}
+  .qa{border-top:1px solid var(--line)}
   .qa:first-child{border-top:0}
-  .qa h3{font-size:17px;font-weight:600;margin:0;line-height:1.4}
-  .qa p{font-size:16px;line-height:1.55;color:var(--body);margin:8px 0 0;max-width:640px}
+  .qa summary{font-size:17px;font-weight:600;line-height:1.4;color:var(--text);padding:20px 32px 20px 0;cursor:pointer;list-style:none;position:relative}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:var(--muted)}
+  .qa[open] summary::after{content:"\2013"}
+  .qa p{font-size:16px;line-height:1.55;color:var(--body);margin:0 0 20px;max-width:640px}
 
   /* ---------- Footer ---------- */
   footer{border-top:1px solid var(--line)}
@@ -163,14 +166,12 @@
 
     .editions{padding:96px 0}
     .edition-grid{grid-template-columns:1fr 1fr;gap:16px}
-    .feat-list{grid-template-columns:1fr 1fr;column-gap:40px}
 
     .info{padding:96px 0}
     .info-grid{grid-template-columns:1fr 1fr;gap:56px}
 
     .faq{padding:96px 0 104px}
-    .qa{padding:26px 0}
-    .qa h3{font-size:17.5px}
+    .qa summary{padding:24px 32px 24px 0;font-size:17.5px}
 
     .footer-inner{padding:34px 24px 44px;flex-direction:row;align-items:baseline;justify-content:space-between;gap:20px}
 
@@ -308,26 +309,26 @@
     <div class="wrap">
       <h2 class="label">Questions</h2>
       <div class="faq-list">
-        <div class="qa">
-          <h3>Which DAWs does it work in?</h3>
+        <details class="qa">
+          <summary>Which DAWs does it work in?</summary>
           <p>Any DAW that hosts VST3 plug-ins.</p>
-        </div>
-        <div class="qa">
-          <h3>Mac and Windows?</h3>
+        </details>
+        <details class="qa">
+          <summary>Mac and Windows?</summary>
           <p>Both. ArtFreq is VST3 for macOS and Windows.</p>
-        </div>
-        <div class="qa">
-          <h3>What does Pro add?</h3>
+        </details>
+        <details class="qa">
+          <summary>What does Pro add?</summary>
           <p>ArtFreq FX, the effect version. Pro includes both plug-ins, ArtFreq and ArtFreq FX, on one key.</p>
-        </div>
-        <div class="qa">
-          <h3>How do I get my key?</h3>
+        </details>
+        <details class="qa">
+          <summary>How do I get my key?</summary>
           <p>It arrives by email right after checkout, with the download links.</p>
-        </div>
-        <div class="qa">
-          <h3>Can I move it to a new computer?</h3>
+        </details>
+        <details class="qa">
+          <summary>Can I move it to a new computer?</summary>
           <p>Yes. Deactivate the key inside the plug-in on the old machine, then activate it on the new one.</p>
-        </div>
+        </details>
       </div>
     </div>
   </section>
