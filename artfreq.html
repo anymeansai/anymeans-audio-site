@@ -11,7 +11,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://downloads.anymeansaudio.com/favicon-16.png" />
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<title>ArtFreq | Put words and pictures in your spectrogram | AnyMeans Audio</title>
+<link rel="preload" href="/assets/fonts/dm-mono-500.woff2" as="font" type="font/woff2" crossorigin />
+<title>ArtFreq: put words and pictures in your spectrogram | AnyMeans Audio</title>
 <meta name="description" content="ArtFreq turns text and images into sound that draws the same picture on a spectrogram, in time with your track. VST3 for macOS and Windows, from $29." />
 <link rel="canonical" href="https://anymeansaudio.com/artfreq" />
 <meta property="og:site_name" content="AnyMeans Audio" />
@@ -27,6 +28,7 @@
 <meta name="twitter:title" content="ArtFreq: put words and pictures in your spectrogram" />
 <meta name="twitter:description" content="ArtFreq turns text and images into sound that draws the same picture on a spectrogram, in time with your track. VST3 for macOS and Windows, from $29." />
 <meta name="twitter:image" content="https://anymeansaudio.com/assets/og/artfreq.png" />
+<meta name="twitter:image:alt" content="The ArtFreq plug-in with the word HELLO, a sine wave and a picture drawn on its canvas" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,7 +36,7 @@
   "name": "ArtFreq",
   "brand": { "@type": "Brand", "name": "AnyMeans Audio" },
   "description": "ArtFreq turns text and images into sound that draws the same picture on a spectrogram, in time with your track. VST3 for macOS and Windows.",
-  "category": "Audio Plugin",
+  "category": "Audio plug-in",
   "image": "https://anymeansaudio.com/assets/og/artfreq.png",
   "url": "https://anymeansaudio.com/artfreq",
   "offers": [
@@ -53,7 +55,7 @@
 :root{
   --bg:#0b0d12;--bg-2:#0e1117;--surface:#12161e;--surface-2:#181d27;
   --line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.12);--line-3:rgba(255,255,255,.22);
-  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#646b7c;--wordmark:#e8ebf2;
+  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#7e8598;--wordmark:#e8ebf2;
   --sun:#fce7a0;--amber:#f9a13a;--coral:#e8664a;--magenta:#b83a6e;
   --spectrum:linear-gradient(90deg,#fce7a0 0%,#f9a13a 34%,#e8664a 67%,#b83a6e 100%);
   --tint-a:#f9a13a;--tint-b:#b83a6e;
@@ -66,6 +68,7 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + 20px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
 main{overflow-x:clip}
+main:focus{outline:none}
 img,svg{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit}
@@ -105,6 +108,7 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .btn-lg{--h:56px;padding:0 30px;font-size:16.5px}
 .btn .amt{font-variant-numeric:tabular-nums;font-weight:600;opacity:.72}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+@media (max-width:479px){.cta-row>.btn{flex:1 1 auto}}
 .text-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15.5px;text-decoration:none;color:var(--text)}
 .text-link svg{width:15px;height:15px;transition:transform .2s}
 .text-link:hover svg{transform:translateX(3px)}
@@ -135,7 +139,7 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .menu__status{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .menu__status--live{color:var(--amber)}
 .menu__list a[aria-current="page"] .menu__name::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);margin-left:10px;vertical-align:middle}
-.menu__foot{margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
+.menu__foot{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
 .menu__foot a{text-decoration:none}
 .menu__foot a:hover{color:var(--text)}
 .menu__foot .menu__mail{flex-basis:100%;color:var(--body)}
@@ -185,7 +189,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .qa summary::after{content:"";flex-shrink:0;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 12px no-repeat;color:var(--muted);transition:transform .25s}
 .qa[open] summary::after{transform:rotate(45deg)}
 .qa summary:hover::after{color:var(--text)}
-.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch}
+.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch;text-wrap:pretty}
 .qa p + p{margin-top:-10px}
 .qa a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
 
@@ -199,8 +203,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .site-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .site-footer li a{color:var(--body);text-decoration:none;font-size:15px}
 .site-footer li a:hover{color:var(--text)}
-.site-footer__soon{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
-.site-footer__bottom{border-top:1px solid var(--line);padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
+.site-footer__soon{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
+.site-footer__bottom::before{content:"";position:absolute;top:0;left:var(--gutter);right:var(--gutter);height:1px;background:var(--line)}
+.site-footer__bottom{position:relative;padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
 
 @media (min-width:768px){
   .menu{position:absolute;top:calc(100% + 6px);left:auto;right:var(--gutter);bottom:auto;width:420px;max-height:calc(100vh - var(--header-h) - 24px);padding:8px;border-radius:18px;border:1px solid var(--line-2);background:rgba(17,20,28,.97);box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(0,0,0,.5)}
@@ -222,16 +227,17 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 /* @product:start
    Layout for full product pages. Shared by artfreq.html and the pages in drafts/.
    Each page sets its own --tint-a / --tint-b on <body> for the glows. */
-.pp-hero{position:relative;padding:clamp(52px,8vw,108px) 0 0;text-align:center;isolation:isolate;overflow-x:clip}
+.pp-hero{position:relative;padding:clamp(32px,5vw,72px) 0 0;text-align:center;isolation:isolate;overflow-x:clip}
 .pp-hero::before{content:"";position:absolute;z-index:-1;left:50%;top:-140px;width:min(1200px,150vw);height:760px;transform:translateX(-50%);background:radial-gradient(38% 42% at 38% 50%,var(--tint-a),transparent 72%),radial-gradient(36% 40% at 64% 54%,var(--tint-b),transparent 72%);opacity:.17;filter:blur(50px);pointer-events:none}
-.pp-hero__in{display:flex;flex-direction:column;align-items:center;gap:20px}
+.pp-hero__in{display:flex;flex-direction:column;align-items:center;gap:16px}
 .pp-icon{--el:clamp(84px,8vw,108px)}
-.pp-title{font-size:clamp(62px,11.5vw,148px);letter-spacing:-.055em;line-height:.9;font-weight:650;margin-top:4px}
+.pp-title{font-size:clamp(56px,9vw,120px);letter-spacing:-.055em;line-height:.9;font-weight:650;margin-top:4px}
 .pp-tagline{font-size:clamp(22px,2.7vw,34px);letter-spacing:-.028em;line-height:1.18;font-weight:550;color:var(--text);max-width:21ch;text-wrap:balance}
-.pp-hero .lede{text-align:center;max-width:54ch}
+.pp-hero .lede{text-align:center;max-width:50ch}
 .pp-hero .cta-row{justify-content:center;margin-top:10px}
 .pp-hero .formats{margin-top:2px}
-.pp-hero__shot{margin-top:clamp(44px,6vw,80px)}
+.pp-hero__shot{margin-top:clamp(28px,4vw,56px)}
+@media (max-width:599px){.pp-icon{--el:68px}.pp-hero .lede{font-size:16.5px}.pp-hero .cta-row{align-self:stretch}}
 .pp-hero__shot .shot{border-radius:clamp(10px,1.4vw,18px)}
 
 .steps{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(36px,4.5vw,56px)}
@@ -244,9 +250,10 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .frow{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
 .frow + .frow{margin-top:clamp(72px,10vw,136px)}
 .frow__copy{display:flex;flex-direction:column;gap:16px}
-.frow__copy h3{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.036em;line-height:1.08}
+.frow__copy h3,.frow__copy .h-lg{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.036em;line-height:1.08}
 
-.knobs{display:grid;grid-template-columns:1fr;gap:1px;margin:28px 0 0;padding:0;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.knobs-label{margin-top:clamp(64px,8vw,112px)}
+.knobs{display:grid;grid-template-columns:1fr;gap:1px;margin:16px 0 0;padding:0;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .knobs div{background:var(--bg);padding:20px 22px}
 .knobs dt{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--text)}
 .knobs dd{margin:8px 0 0;color:var(--body);font-size:15px;line-height:1.55}
@@ -254,7 +261,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .band{position:relative;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);isolation:isolate;overflow:hidden}
 .band::before{content:"";position:absolute;z-index:-1;left:50%;top:-260px;width:min(1300px,160vw);height:700px;transform:translateX(-50%);background:radial-gradient(40% 45% at 35% 50%,var(--tint-b),transparent 70%),radial-gradient(40% 45% at 65% 50%,var(--tint-a),transparent 70%);opacity:.13;filter:blur(60px);pointer-events:none}
 .modes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(28px,4vw,44px)}
-.mode img{width:100%;aspect-ratio:1200/490;object-fit:cover;border-bottom:1px solid var(--line)}
+.mode img{width:100%;aspect-ratio:1200/494;object-fit:cover;border-bottom:1px solid var(--line)}
 .mode__body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
 .mode h3{font-size:19px;letter-spacing:-.018em}
 .mode p{color:var(--body);font-size:15px;line-height:1.55}
@@ -281,7 +288,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .dl div{display:grid;grid-template-columns:minmax(104px,32%) 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
 .dl dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 .dl dd{margin:0;color:var(--body);font-size:15.5px;line-height:1.55}
-.dl a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
+.dl a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3);overflow-wrap:anywhere}
+.details>div{min-width:0}
 
 .has-buybar{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 .buybar{position:fixed;left:0;right:0;bottom:0;z-index:55;border-top:1px solid var(--line-2);transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility .35s}
@@ -297,18 +305,24 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .seg{display:inline-flex;padding:4px;gap:2px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid var(--line-2)}
 .seg button{border:0;background:transparent;min-height:40px;padding:0 12px;border-radius:9px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
 .seg button:hover{color:var(--text)}
-.seg button span{font-variant-numeric:tabular-nums;font-weight:500;margin-left:5px}
+.seg button span{font-variant-numeric:tabular-nums;font-weight:500;margin-left:1px}
 .seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 2px 10px rgba(0,0,0,.45)}
 .buybar .btn{--h:48px;margin-left:auto;padding:0 20px}
-@media (max-width:479px){.buy-what{display:none}}
+@media (max-width:479px){.buy-what{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (max-width:479px){.plan__head{flex-direction:column-reverse;align-items:flex-start;gap:12px}}
 
+@media (min-width:1200px){.steps--4{grid-template-columns:repeat(4,1fr)}.steps--4 .step h3{min-height:2.12em}}
+@media (min-width:900px){
+  .faq-layout{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
+  .faq-layout .section-head{position:sticky;top:calc(var(--header-h) + 32px);margin:0}
+  .faq-layout .faq{max-width:none}
+}
 @media (min-width:760px){
   .modes{grid-template-columns:repeat(3,1fr)}
   .plans{grid-template-columns:1fr 1fr;gap:20px}
 }
 @media (min-width:900px){
   .frow{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,88px)}
-  .steps--4{grid-template-columns:repeat(4,1fr)}
   .frow--flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .frow--flip .frow__copy{order:2}
   .knobs{grid-template-columns:repeat(4,1fr)}
@@ -346,12 +360,12 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </a></li>
         <li><a href="/creme">
           <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
-          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">A smoother top end</span></span>
+          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">Brighter highs that don't get harsh</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
         <li><a href="/vocalyst">
           <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
-          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">A vocal chain in one plug-in</span></span>
+          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">Your whole vocal chain in one plug-in</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
       </ul>
@@ -366,7 +380,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </header>
 <!-- @header:end -->
 
-<main id="main">
+<main id="main" tabindex="-1">
 
   <section class="pp-hero" data-hide-buybar>
     <div class="wrap pp-hero__in">
@@ -374,7 +388,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <p class="eyebrow"><span class="dot"></span>Out now</p>
       <h1 class="pp-title">ArtFreq</h1>
       <p class="pp-tagline">Put words and pictures in your spectrogram</p>
-      <p class="lede">Type some text or drop in an image and press play. ArtFreq turns it into sound, and that sound draws your picture on any spectrogram analyzer. It follows your project's tempo, so a 4-bar drawing lasts exactly 4&nbsp;bars.</p>
+      <p class="lede">Type some text or drop in an image and press play. ArtFreq turns it into sound, and that sound draws your picture on any spectrogram analyzer, in time with your project.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#buy">Buy from $29</a>
         <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
@@ -392,8 +406,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <div class="frow__copy">
           <p class="eyebrow">How it works</p>
           <h2 class="h-lg">The canvas is the analyzer screen</h2>
-          <p class="copy">Time runs left to right, anywhere from one beat to 32 bars. Frequency runs bottom to top, 20 Hz to 20 kHz on a log scale, which is how most spectrogram analyzers are set up out of the box.</p>
-          <p class="copy">If yours uses a different scale or range, set the same thing in ArtFreq's settings and the two will line up.</p>
+          <p class="copy">Time runs left to right, anywhere from 1&nbsp;beat to 32&nbsp;bars, and it follows your project's tempo, so a 4-bar drawing lasts exactly 4&nbsp;bars. Frequency runs bottom to top, 20&nbsp;Hz to 20&nbsp;kHz on a log scale by default.</p>
+          <p class="copy">So whatever you put on the canvas is what your analyzer will show.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-rich.webp" alt="The ArtFreq canvas with the word HELLO in the highs, a sine wave in the lows and a picture on the right" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
@@ -412,7 +426,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <div class="card step">
           <span class="step__num">03</span>
           <h3>Match the settings</h3>
-          <p>The defaults are a log scale from 20 Hz to 20 kHz. If your analyzer is set differently, change Scale, Low and High in ArtFreq's settings.</p>
+          <p>The defaults are a log scale from 20&nbsp;Hz to 20&nbsp;kHz. If your analyzer is set differently, change Scale, Low, High and Slope in ArtFreq's settings.</p>
         </div>
         <div class="card step">
           <span class="step__num">04</span>
@@ -428,7 +442,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="frow frow--flip">
         <div class="frow__copy">
           <h3>A spectrogram built in</h3>
-          <p class="copy">Flip the switch at the top of the window from Canvas to Live and ArtFreq shows its own output as a scrolling spectrogram, on the same scale as the canvas. Useful for a quick check when you don't want to open another plug-in.</p>
+          <p class="copy">Flip the switch at the top of the window from Canvas to Live and ArtFreq shows its own output as a scrolling spectrogram, on the same scale as the canvas. It's handy for a quick check when you don't have an analyzer open.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-live.webp" alt="ArtFreq's Live view: the drawing scrolling past as a real spectrogram of the plug-in's output" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
@@ -439,22 +453,23 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
           <p class="copy">Every text box and image gets its own layer. You can hide or reorder them in the Layers panel and snap any of them into the low, mid or high band. Text comes in five fonts, solid or outlined.</p>
           <p class="copy">A tip: small text reads best up high. Analyzers have much more detail in the top octaves, and the bottom few always come out blurry.</p>
         </div>
-        <div class="glow"><div class="shot"><img src="/assets/img/artfreq-layers.webp" alt="The Layers panel listing a picture, two text boxes and the paint layer, one of them hidden" width="1600" height="1029" loading="lazy" /></div></div>
+        <div class="glow"><div class="shot"><img src="/assets/img/artfreq-layers.webp" alt="The Layers panel listing two pictures, three text boxes and the paint layer, with one text box hidden" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
       <div class="frow frow--flip">
         <div class="frow__copy">
           <h3>Bounce to WAV</h3>
-          <p class="copy">Bounce WAV renders one pass of the drawing in the background, and you drag the file straight into your arrangement. If you change the drawing afterwards it renders a new file by itself, so you never end up dragging in an old version.</p>
+          <p class="copy">Bounce WAV renders one pass of the drawing in the background, and you drag the file straight into your arrangement. If you change the drawing afterward, it renders a new file by itself, so you never end up dragging in an old version.</p>
         </div>
         <div class="glow"><div class="shot"><img src="/assets/img/artfreq-export.webp" alt="A freshly bounced WAV file ready to drag from ArtFreq's export area into the DAW" width="1600" height="1029" loading="lazy" /></div></div>
       </div>
 
+      <p class="eyebrow knobs-label">Sound settings</p>
       <dl class="knobs">
         <div><dt>Density</dt><dd>How many sine lines make up the picture, from 16 to 1024. Fewer lines look like old scan lines. More fill the shapes in.</dd></div>
-        <div><dt>Contrast</dt><dd>The level gap between the brightest and faintest parts of the picture, from 12 to 72 dB.</dd></div>
+        <div><dt>Contrast</dt><dd>The level gap between the brightest and faintest parts of the picture, from 12 to 72&nbsp;dB.</dd></div>
         <div><dt>Lows</dt><dd>How the bottom end is drawn. Smooth fills low shapes in. Stripes plays separate lines, which long FFTs show as stripes.</dd></div>
-        <div><dt>Level</dt><dd>Output volume. Before this knob, the loudest part of the drawing sits at −12 dBFS RMS.</dd></div>
+        <div><dt>Level</dt><dd>Output volume. Before this knob, the loudest part of the drawing sits at −12&nbsp;dBFS&nbsp;RMS.</dd></div>
       </dl>
     </div>
   </section>
@@ -464,29 +479,29 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div class="section-head">
         <p class="eyebrow"><span class="dot"></span>ArtFreq FX · Included with Pro</p>
         <h2 class="h-lg">Put the drawing inside a song</h2>
-        <p class="lede">ArtFreq FX is the effect version. It doesn't make sound of its own. Put it on a track or on your master and it cuts the drawing out of whatever is playing, so the shapes show up on the spectrogram even in a busy mix.</p>
+        <p class="lede">ArtFreq FX is the effect version. It works on audio you already have: put it on a track, a bus or the master and it cuts the drawing into that audio, so the shapes show up on the spectrogram even in a busy mix.</p>
       </div>
       <div class="glow"><div class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-fx-gui.png" alt="The ArtFreq FX window, with a drawing carved into the spectrogram of a full song" width="1440" height="880" loading="lazy" /></div></div>
 
       <div class="modes">
         <div class="card mode">
-          <img src="/assets/img/artfreq-fx-carve-canvas.webp" alt="Carve mode: the drawing shows as black shapes cut out of a busy spectrogram" width="1200" height="490" loading="lazy" />
+          <img src="/assets/img/artfreq-fx-carve-canvas.webp" alt="Carve mode: the drawing shows as black shapes cut out of a busy spectrogram" width="1200" height="494" loading="lazy" />
           <div class="mode__body"><h3>Carve</h3><p>Mutes the frequencies under the drawing, so it shows up as dark shapes in the song.</p></div>
         </div>
         <div class="card mode">
-          <img src="/assets/img/artfreq-fx-carve-draw-canvas.webp" alt="Carve + Draw mode: the drawing glows inside a dark outline" width="1200" height="490" loading="lazy" />
+          <img src="/assets/img/artfreq-fx-carve-draw-canvas.webp" alt="Carve + Draw mode: the drawing glows inside a dark outline" width="1200" height="494" loading="lazy" />
           <div class="mode__body"><h3>Carve + Draw</h3><p>Carves a slightly bigger hole and plays the drawing's own sound inside it, so you get bright shapes with a dark outline.</p></div>
         </div>
         <div class="card mode">
-          <img src="/assets/img/artfreq-fx-stencil-canvas.webp" alt="Stencil mode: only the drawn shapes let the song through, the rest is black" width="1200" height="490" loading="lazy" />
+          <img src="/assets/img/artfreq-fx-stencil-canvas.webp" alt="Stencil mode: only the drawn shapes let the song through, the rest is black" width="1200" height="494" loading="lazy" />
           <div class="mode__body"><h3>Stencil</h3><p>The reverse of Carve. Only the audio inside the drawing gets through and the rest is muted.</p></div>
         </div>
       </div>
       <p class="copy" style="margin-top:22px">There's also Draw mode, which plays the drawing on top of the song without carving anything.</p>
       <p class="copy">Carve and Stencil wait for audio before they start. If you press play at bar 1 and the vocal comes in at bar 9, the carving starts at bar 9.</p>
       <div class="chips">
-        <span class="chip">Depth −120 to 0 dB</span>
-        <span class="chip">85.3 ms latency, reported to your DAW</span>
+        <span class="chip">Depth −120 to 0&nbsp;dB</span>
+        <span class="chip">85.3&nbsp;ms latency, reported to your DAW</span>
       </div>
     </div>
   </section>
@@ -527,7 +542,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
             <li>Everything in ArtFreq</li>
             <li>ArtFreq FX for audio tracks, buses and the master</li>
             <li>Carve, Carve + Draw, Stencil and Draw modes</li>
-            <li>One download, one key</li>
+            <li>Mode and Depth can be automated</li>
           </ul>
           <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08">Buy ArtFreq Pro</a>
         </div>
@@ -541,13 +556,13 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <div>
         <h2 class="eyebrow">Specs</h2>
         <dl class="dl">
-          <div><dt>Format</dt><dd>VST3</dd></div>
-          <div><dt>Systems</dt><dd>macOS and Windows</dd></div>
+          <div><dt>Format</dt><dd>VST3, for 64-bit DAWs</dd></div>
+          <div><dt>Systems</dt><dd>macOS 10.15 or later (Apple Silicon and Intel). Windows 10 or 11, 64-bit.</dd></div>
           <div><dt>Plug-ins</dt><dd>ArtFreq (instrument). ArtFreq FX (effect, Pro only).</dd></div>
-          <div><dt>Canvas</dt><dd>20 Hz to 20 kHz by default. Log, linear or mel scale.</dd></div>
+          <div><dt>Canvas</dt><dd>20&nbsp;Hz to 20&nbsp;kHz by default. Log, linear or mel scale.</dd></div>
           <div><dt>Length</dt><dd>1 beat to 32 bars, in time with your DAW</dd></div>
           <div><dt>Trigger</dt><dd>Your DAW's transport or MIDI notes</dd></div>
-          <div><dt>Latency</dt><dd>None on the instrument. 85.3 ms on ArtFreq FX, reported to your DAW.</dd></div>
+          <div><dt>Latency</dt><dd>None on the instrument. 85.3&nbsp;ms on ArtFreq FX, reported to your DAW.</dd></div>
         </dl>
       </div>
       <div>
@@ -563,14 +578,15 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   </section>
 
   <section class="section" style="padding-top:0" id="faq">
-    <div class="wrap">
+    <div class="wrap faq-layout">
       <div class="section-head">
+        <p class="eyebrow">FAQ</p>
         <h2 class="h-lg">Questions</h2>
       </div>
       <div class="faq">
         <details class="qa">
           <summary>Which DAWs does it work in?</summary>
-          <p>Any DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others.</p>
+          <p>Any 64-bit DAW that loads VST3 plug-ins. That covers Ableton Live, FL Studio, Cubase, Studio One, Bitwig and Reaper, among others.</p>
         </details>
         <details class="qa">
           <summary>Will it work in Logic or Pro Tools?</summary>
@@ -578,11 +594,11 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </details>
         <details class="qa">
           <summary>Which analyzer should I use?</summary>
-          <p>Any analyzer with a scrolling spectrogram works. ArtFreq's defaults are a log scale from 20 Hz to 20 kHz, which is how most of them are set up. If yours is different, match its scale and range in ArtFreq's settings.</p>
+          <p>Any analyzer with a scrolling spectrogram works. ArtFreq's defaults are a log scale from 20&nbsp;Hz to 20&nbsp;kHz. If yours is set differently, match its scale and range in ArtFreq's settings.</p>
         </details>
         <details class="qa">
           <summary>What does Pro add?</summary>
-          <p>ArtFreq FX, the effect version, which carves the drawing into audio you already have. Pro gets you both plug-ins on one key, in the same download.</p>
+          <p>ArtFreq FX, the effect version, which carves the drawing into audio you already have. One Pro key unlocks both plug-ins.</p>
         </details>
         <details class="qa">
           <summary>Do I need to send it MIDI?</summary>
@@ -591,6 +607,10 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <details class="qa">
           <summary>How do I get my key?</summary>
           <p>It's emailed to you right after checkout, along with the download links.</p>
+        </details>
+        <details class="qa">
+          <summary>Does it need an internet connection?</summary>
+          <p>Only to activate or deactivate. After that it checks the license on your computer and doesn't go online.</p>
         </details>
         <details class="qa">
           <summary>Can I move it to a new computer?</summary>
@@ -646,10 +666,10 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
       <span class="buybar__name"><strong>ArtFreq</strong><span>VST3 · macOS · Windows</span></span>
     </div>
     <div class="seg" role="group" aria-label="Version">
-      <button type="button" aria-pressed="true" data-link="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06" data-label="ArtFreq">ArtFreq<span>$29</span></button>
-      <button type="button" aria-pressed="false" data-link="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08" data-label="ArtFreq Pro">Pro<span>$39</span></button>
+      <button type="button" aria-pressed="true" data-link="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06" data-label="ArtFreq">ArtFreq <span>$29</span></button>
+      <button type="button" aria-pressed="false" data-link="https://buy.stripe.com/5kQ4gA1Ba0pu3I16qLfYY08" data-label="ArtFreq Pro">Pro <span>$39</span></button>
     </div>
-    <a class="btn btn-primary" id="buyBtn" href="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06">Buy<span class="buy-what">&nbsp;ArtFreq</span></a>
+    <a class="btn btn-primary" id="buyBtn" href="https://buy.stripe.com/3cI6oIa7G5JO7Yh16rfYY06">Buy<span class="buy-what">ArtFreq</span></a>
   </div>
 </div>
 
@@ -670,6 +690,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });
@@ -689,7 +710,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   function pick(o){
     options.forEach(function(b){b.setAttribute('aria-pressed',b===o?'true':'false');});
     btn.setAttribute('href',o.getAttribute('data-link'));
-    if(what)what.textContent=' '+o.getAttribute('data-label');
+    if(what)what.textContent=o.getAttribute('data-label');
   }
   options.forEach(function(b){b.addEventListener('click',function(){pick(b);});});
 

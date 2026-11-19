@@ -11,6 +11,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://downloads.anymeansaudio.com/favicon-16.png" />
 <link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/dm-mono-500.woff2" as="font" type="font/woff2" crossorigin />
 <title>Page not found | AnyMeans Audio</title>
 <meta name="description" content="That page isn't on anymeansaudio.com. Head back to the AnyMeans Audio home page." />
 <meta property="og:site_name" content="AnyMeans Audio" />
@@ -33,7 +34,7 @@
 :root{
   --bg:#0b0d12;--bg-2:#0e1117;--surface:#12161e;--surface-2:#181d27;
   --line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.12);--line-3:rgba(255,255,255,.22);
-  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#646b7c;--wordmark:#e8ebf2;
+  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#7e8598;--wordmark:#e8ebf2;
   --sun:#fce7a0;--amber:#f9a13a;--coral:#e8664a;--magenta:#b83a6e;
   --spectrum:linear-gradient(90deg,#fce7a0 0%,#f9a13a 34%,#e8664a 67%,#b83a6e 100%);
   --tint-a:#f9a13a;--tint-b:#b83a6e;
@@ -46,6 +47,7 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + 20px)}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
 main{overflow-x:clip}
+main:focus{outline:none}
 img,svg{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit}
@@ -85,6 +87,7 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .btn-lg{--h:56px;padding:0 30px;font-size:16.5px}
 .btn .amt{font-variant-numeric:tabular-nums;font-weight:600;opacity:.72}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+@media (max-width:479px){.cta-row>.btn{flex:1 1 auto}}
 .text-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15.5px;text-decoration:none;color:var(--text)}
 .text-link svg{width:15px;height:15px;transition:transform .2s}
 .text-link:hover svg{transform:translateX(3px)}
@@ -115,7 +118,7 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .menu__status{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .menu__status--live{color:var(--amber)}
 .menu__list a[aria-current="page"] .menu__name::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);margin-left:10px;vertical-align:middle}
-.menu__foot{margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
+.menu__foot{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
 .menu__foot a{text-decoration:none}
 .menu__foot a:hover{color:var(--text)}
 .menu__foot .menu__mail{flex-basis:100%;color:var(--body)}
@@ -165,7 +168,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .qa summary::after{content:"";flex-shrink:0;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 12px no-repeat;color:var(--muted);transition:transform .25s}
 .qa[open] summary::after{transform:rotate(45deg)}
 .qa summary:hover::after{color:var(--text)}
-.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch}
+.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch;text-wrap:pretty}
 .qa p + p{margin-top:-10px}
 .qa a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
 
@@ -179,8 +182,9 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .site-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .site-footer li a{color:var(--body);text-decoration:none;font-size:15px}
 .site-footer li a:hover{color:var(--text)}
-.site-footer__soon{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
-.site-footer__bottom{border-top:1px solid var(--line);padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
+.site-footer__soon{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
+.site-footer__bottom::before{content:"";position:absolute;top:0;left:var(--gutter);right:var(--gutter);height:1px;background:var(--line)}
+.site-footer__bottom{position:relative;padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
 
 @media (min-width:768px){
   .menu{position:absolute;top:calc(100% + 6px);left:auto;right:var(--gutter);bottom:auto;width:420px;max-height:calc(100vh - var(--header-h) - 24px);padding:8px;border-radius:18px;border:1px solid var(--line-2);background:rgba(17,20,28,.97);box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(0,0,0,.5)}
@@ -199,7 +203,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 }
 /* @shared:end */
 .nf{position:relative;min-height:calc(100vh - var(--header-h) - 120px);display:flex;align-items:center;padding:clamp(64px,10vw,140px) 0;overflow:hidden}
-.nf__in{position:relative;display:flex;flex-direction:column;gap:20px}
+.nf__in{position:relative;display:flex;flex-direction:column;gap:20px;width:100%}
 .nf .code{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--muted)}
 .nf__lines{position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:min(56vw,720px);opacity:.35;pointer-events:none}
 @media (max-width:767px){.nf__lines{display:none}}
@@ -229,12 +233,12 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </a></li>
         <li><a href="/creme">
           <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
-          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">A smoother top end</span></span>
+          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">Brighter highs that don't get harsh</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
         <li><a href="/vocalyst">
           <span class="el el--vocalyst" aria-hidden="true"><span class="el__n">3</span><span class="el__sym">Vo</span></span>
-          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">A vocal chain in one plug-in</span></span>
+          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">Your whole vocal chain in one plug-in</span></span>
           <span class="menu__status">Soon</span>
         </a></li>
       </ul>
@@ -249,7 +253,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </header>
 <!-- @header:end -->
 
-<main id="main">
+<main id="main" tabindex="-1">
   <section class="nf">
     <svg class="nf__lines" viewBox="0 0 800 400" aria-hidden="true"><defs><linearGradient id="nf-g" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#fce7a0"/><stop offset=".6" stop-color="#f9a13a"/><stop offset=".8" stop-color="#e8664a"/><stop offset="1" stop-color="#b83a6e"/></linearGradient></defs><g stroke="url(#nf-g)" stroke-width="2"><line x1="520" y1="12" x2="800" y2="12"/><line x1="430" y1="28" x2="800" y2="28"/><line x1="380" y1="44" x2="800" y2="44"/><line x1="600" y1="60" x2="800" y2="60"/><line x1="300" y1="76" x2="800" y2="76"/><line x1="360" y1="92" x2="800" y2="92"/><line x1="640" y1="108" x2="800" y2="108"/><line x1="250" y1="124" x2="800" y2="124"/><line x1="410" y1="140" x2="800" y2="140"/><line x1="330" y1="156" x2="800" y2="156"/><line x1="560" y1="172" x2="800" y2="172"/><line x1="290" y1="188" x2="800" y2="188"/><line x1="470" y1="204" x2="800" y2="204"/><line x1="380" y1="220" x2="800" y2="220"/><line x1="610" y1="236" x2="800" y2="236"/><line x1="340" y1="252" x2="800" y2="252"/><line x1="450" y1="268" x2="800" y2="268"/><line x1="520" y1="284" x2="800" y2="284"/><line x1="300" y1="300" x2="800" y2="300"/><line x1="560" y1="316" x2="800" y2="316"/><line x1="420" y1="332" x2="800" y2="332"/><line x1="380" y1="348" x2="800" y2="348"/><line x1="640" y1="364" x2="800" y2="364"/><line x1="470" y1="380" x2="800" y2="380"/></g></svg>
     <div class="wrap nf__in">
@@ -319,6 +323,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
   });
   panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+  panel.addEventListener('focusout',function(e){var to=e.relatedTarget;if(!panel.hidden&&to&&!panel.contains(to)&&to!==btn)setOpen(false);});
   document.addEventListener('click',function(e){
     if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
   });
