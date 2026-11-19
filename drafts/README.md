@@ -35,8 +35,7 @@ Search the draft for `TODO` first. Each one is something to confirm or a screens
 3. **Swap the page in.** Replace the coming-soon page with the draft, e.g. `git mv -f drafts/creme.html creme.html`.
    Then delete the DRAFT comment at the top and the `<meta name="robots" content="noindex">` line.
 4. **Menu and footer.** The header menu and the footer are the same on every page. Edit them once in
-   `index.html` (in the menu, change `Soon` to `Out now` and add `menu__status--live`; in the footer, remove
-   the `Soon` tag), then run `python3 tools/sync-shared.py` to copy them, and the shared CSS, to every page.
+   `index.html` (remove the `Soon` tag next to the plug-in in the menu and in the footer), then run `python3 tools/sync-shared.py` to copy them, and the shared CSS, to every page.
 5. **Home page.** Move the plug-in out of the "Coming soon" grid in `index.html` and give it a card with
    its screenshot, price and a link to its page. The ArtFreq hero at the top of the home page is the model.
 6. **Share image.** `assets/og/<name>.png` still says "Coming soon". Make a new 1200 x 630 image.

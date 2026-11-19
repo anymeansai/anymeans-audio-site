@@ -141,7 +141,6 @@ h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:v
 .menu__name{font-size:24px;font-weight:650;letter-spacing:-.028em;line-height:1.1}
 .menu__desc{font-size:14.5px;color:var(--muted);line-height:1.35}
 .menu__status{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.menu__status--live{color:var(--amber)}
 .menu__list a[aria-current="page"] .menu__name::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);margin-left:10px;vertical-align:middle}
 .menu__foot{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
 .menu__foot a{text-decoration:none}
@@ -362,7 +361,6 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         <li><a href="/artfreq" aria-current="page">
           <span class="el el--artfreq" aria-hidden="true"><span class="el__n">1</span><span class="el__sym">Af</span></span>
           <span class="menu__text"><span class="menu__name">ArtFreq</span><span class="menu__desc">Draw on your spectrogram</span></span>
-          <span class="menu__status menu__status--live">Out now</span>
         </a></li>
         <li><a href="/creme">
           <span class="el el--creme" aria-hidden="true"><span class="el__n">2</span><span class="el__sym">Cr</span></span>
@@ -391,7 +389,6 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   <section class="pp-hero" data-hide-buybar>
     <div class="wrap pp-hero__in">
       <span class="el el--artfreq el--lg pp-icon" aria-hidden="true"><span class="el__n">1</span><span class="el__sym">Af</span><span class="el__name">ArtFreq</span></span>
-      <p class="eyebrow"><span class="dot"></span>Out now</p>
       <h1 class="pp-title">ArtFreq</h1>
       <p class="pp-tagline">Put words and pictures in your spectrogram</p>
       <p class="lede">Type some text or drop in an image and press play. ArtFreq turns it into sound, and that sound draws your picture on any spectrogram analyzer, in time with your project.</p>
@@ -412,7 +409,6 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
     <div class="wrap">
       <div class="frow">
         <div class="frow__copy">
-          <p class="eyebrow">How it works</p>
           <h2 class="h-lg">The canvas is the analyzer screen</h2>
           <p class="copy">Time runs left to right, anywhere from 1&nbsp;beat to 32&nbsp;bars, and it follows your project's tempo, so a 4-bar drawing lasts exactly 4&nbsp;bars. Frequency runs bottom to top, 20&nbsp;Hz to 20&nbsp;kHz on a log scale by default.</p>
         </div>
@@ -477,9 +473,8 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
   <section class="band section" id="fx">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow"><span class="dot"></span>ArtFreq FX · Comes with Pro</p>
         <h2 class="h-lg">Carve the drawing into your own audio</h2>
-        <p class="lede">ArtFreq FX goes on audio you already have, like a vocal, a beat or your whole mix. It cuts the drawing's frequencies out of that audio, so the drawing shows up on the spectrogram inside your track.</p>
+        <p class="lede">ArtFreq FX comes with ArtFreq Pro. It goes on audio you already have, like a vocal, a beat or your whole mix. It cuts the drawing's frequencies out of that audio, so the drawing shows up on the spectrogram inside your track.</p>
       </div>
       <div class="glow"><div class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-fx-gui.png" alt="The ArtFreq FX window, with a drawing carved into the spectrogram of a full song" width="1440" height="880" loading="lazy" /></div></div>
 
