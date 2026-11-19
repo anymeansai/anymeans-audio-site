@@ -7,6 +7,7 @@ comments and copied from one "source" page into the rest:
 
   @shared   CSS for the whole site (fonts, colours, header, menu, footer, buttons...)  source: index.html
   @menu     the header menu script                                                    source: index.html
+  @video    autoplaying demo videos and their Sound button                             source: index.html
   @product  CSS for full product pages (hero, features, pricing, buy bar...)           source: artfreq.html
   @buy      the buy bar script                                                         source: artfreq.html
   @soon     CSS for the "coming soon" pages                                            source: creme.html
@@ -28,6 +29,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 BLOCKS = {
     "shared": "index.html",
     "menu": "index.html",
+    "video": "index.html",
     "product": "artfreq.html",
     "buy": "artfreq.html",
     "soon": "creme.html",

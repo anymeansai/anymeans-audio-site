@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://anymeansaudio.com/assets/og/home.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="ArtFreq by AnyMeans Audio: the plug-in with the word HELLO, a sine wave and a picture drawn on its canvas" />
+<meta property="og:image:alt" content="ArtFreq by AnyMeans Audio: the plug-in's Live view showing the word ArtFreq over a sunset, drawn in sound" />
 <meta name="twitter:image:alt" content="ArtFreq by AnyMeans Audio" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AnyMeans Audio" />
@@ -165,6 +165,12 @@ html.menu-open{overflow:hidden}
 .glow{position:relative;isolation:isolate}
 .glow::before{content:"";position:absolute;z-index:-1;inset:-10% -6% -16%;background:radial-gradient(45% 55% at 30% 45%,var(--tint-a),transparent 70%),radial-gradient(40% 50% at 72% 60%,var(--tint-b),transparent 70%);opacity:.22;filter:blur(60px);pointer-events:none}
 .caption{margin-top:14px;font-size:14px;color:var(--muted)}
+.vid{position:relative}
+.vid video{display:block;width:100%;height:auto;background:#0a0c10}
+.vid__sound{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 13px 0 11px;border-radius:999px;border:1px solid var(--line-3);background:rgba(11,13,18,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
+.vid__sound:hover{background:rgba(30,34,44,.9)}
+.vid__sound svg{width:15px;height:15px}
+.vid__sound[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
 
 
 /* Sections */
@@ -238,9 +244,7 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .home-hero .cta-row{margin-top:6px}
 .home-hero__price{color:var(--muted);font-size:15px}
 .home-hero__price a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
-.home-hero__shot{display:block;border-radius:clamp(10px,1.2vw,16px);transition:transform .3s}
-.home-hero__shot:hover{transform:translateY(-3px)}
-.home-hero__shot .shot{display:block;border-radius:inherit}
+.home-hero__shot .shot{border-radius:clamp(10px,1.2vw,16px)}
 
 .soon-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
 .soon-card{display:flex;flex-direction:column}
@@ -329,9 +333,10 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
         </div>
         <p class="home-hero__price">Pro includes ArtFreq, plus ArtFreq FX for carving the drawing out of audio you already have. <a href="/artfreq">See ArtFreq</a></p>
       </div>
-      <a class="home-hero__shot glow" href="/artfreq" aria-label="See ArtFreq">
-        <span class="shot"><img src="https://downloads.anymeansaudio.com/artfreq-gui.png" alt="The ArtFreq plug-in window, with text, a sine wave and a picture drawn on the canvas" width="2240" height="1440" fetchpriority="high" /></span>
-      </a>
+      <div class="home-hero__shot glow">
+        <div class="vid shot"><video src="/assets/media/artfreq-demo.mp4" poster="/assets/media/artfreq-demo-poster.webp" width="1280" height="822" muted loop playsinline data-autoplay autoplay preload="auto" aria-label="ArtFreq demo: a drawing on the canvas, then the Live view showing the plug-in's real output"></video><button type="button" class="vid__sound" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 6v4h2.5L8.5 13V3L5 6z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6 6 0 0 1 0 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Sound on</span></button></div>
+        <p class="caption">Recorded from the plug-in. Real output, not a mock-up.</p>
+      </div>
     </div>
   </section>
 
@@ -463,6 +468,36 @@ a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
 </footer>
 <!-- @footer:end -->
 
+<script>
+/* @video:start */
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('video[data-autoplay]'));
+  if(!vids.length)return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  vids.forEach(function(v){
+    v.muted=true;
+    if(reduce){v.removeAttribute('autoplay');v.pause();v.controls=true;}
+  });
+  if(!reduce){
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)play(e.target);else e.target.pause();});},{threshold:.2});
+      vids.forEach(function(v){io.observe(v);});
+    }else vids.forEach(play);
+  }
+  var buttons=[].slice.call(document.querySelectorAll('.vid__sound'));
+  function reset(){vids.forEach(function(v){v.muted=true;});buttons.forEach(function(b){b.setAttribute('aria-pressed','false');b.querySelector('span').textContent='Sound on';});}
+  buttons.forEach(function(b){
+    var v=b.parentNode.querySelector('video');
+    b.addEventListener('click',function(){
+      var turnOn=v.muted;
+      reset();
+      if(turnOn){v.muted=false;v.currentTime=0;play(v);b.setAttribute('aria-pressed','true');b.querySelector('span').textContent='Sound off';}
+    });
+  });
+})();
+/* @video:end */
+</script>
 <script>
 /* @menu:start */
 (function(){

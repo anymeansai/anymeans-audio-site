@@ -146,6 +146,12 @@ html.menu-open{overflow:hidden}
 .glow{position:relative;isolation:isolate}
 .glow::before{content:"";position:absolute;z-index:-1;inset:-10% -6% -16%;background:radial-gradient(45% 55% at 30% 45%,var(--tint-a),transparent 70%),radial-gradient(40% 50% at 72% 60%,var(--tint-b),transparent 70%);opacity:.22;filter:blur(60px);pointer-events:none}
 .caption{margin-top:14px;font-size:14px;color:var(--muted)}
+.vid{position:relative}
+.vid video{display:block;width:100%;height:auto;background:#0a0c10}
+.vid__sound{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 13px 0 11px;border-radius:999px;border:1px solid var(--line-3);background:rgba(11,13,18,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
+.vid__sound:hover{background:rgba(30,34,44,.9)}
+.vid__sound svg{width:15px;height:15px}
+.vid__sound[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
 
 
 /* Sections */
