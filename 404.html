@@ -4,24 +4,323 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101012'/%3E%3Crect x='14' y='24' width='8' height='16' fill='%23d95d0a'/%3E%3Crect x='28' y='14' width='8' height='36' fill='%23d95d0a'/%3E%3Crect x='42' y='20' width='8' height='24' fill='%23d95d0a'/%3E%3C/svg%3E" />
-<title>Page Not Found | AnyMeans Audio</title>
+<meta name="theme-color" content="#0b0d12" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="/anymeans-mark.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://downloads.anymeansaudio.com/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://downloads.anymeansaudio.com/favicon-16.png" />
+<link rel="apple-touch-icon" href="https://downloads.anymeansaudio.com/anymeans-icon-1024.png" />
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<title>Page not found | AnyMeans Audio</title>
 <meta name="description" content="That page isn't on anymeansaudio.com. Head back to the AnyMeans Audio home page." />
+<meta property="og:site_name" content="AnyMeans Audio" />
+<meta property="og:title" content="Page not found | AnyMeans Audio" />
+<meta property="og:description" content="That page isn't on anymeansaudio.com. Head back to the AnyMeans Audio home page." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://anymeansaudio.com/" />
+<meta property="og:image" content="https://anymeansaudio.com/assets/og/home.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Page not found | AnyMeans Audio" />
+<meta name="twitter:description" content="That page isn't on anymeansaudio.com. Head back to the AnyMeans Audio home page." />
+<meta name="twitter:image" content="https://anymeansaudio.com/assets/og/home.png" />
 <style>
-  :root { --bg:#101012; --text:#f2f2ef; --muted:#a7a7ab; --line:#26262a; --accent:#d95d0a; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55; }
-  main { max-width:880px; margin:0 auto; padding:64px 24px 48px; }
-  h1 { font-size:44px; margin:0 0 12px; letter-spacing:-.02em; }
-  p { color:var(--muted); font-size:19px; }
-  a { color:var(--accent); text-decoration:none; }
-  a:hover { text-decoration:underline; }
+/* @shared:start
+   Shared design system. Keep this block identical on every page, drafts included.
+   tools/sync-shared.py copies it from index.html into the other pages. */
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/inter-latin.woff2) format("woff2")}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/dm-mono-400.woff2) format("woff2")}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/dm-mono-500.woff2) format("woff2")}
+:root{
+  --bg:#0b0d12;--bg-2:#0e1117;--surface:#12161e;--surface-2:#181d27;
+  --line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.12);--line-3:rgba(255,255,255,.22);
+  --text:#f4f5f8;--body:#c3c8d2;--muted:#9097a6;--faint:#646b7c;--wordmark:#e8ebf2;
+  --sun:#fce7a0;--amber:#f9a13a;--coral:#e8664a;--magenta:#b83a6e;
+  --spectrum:linear-gradient(90deg,#fce7a0 0%,#f9a13a 34%,#e8664a 67%,#b83a6e 100%);
+  --tint-a:#f9a13a;--tint-b:#b83a6e;
+  --max:1200px;--gutter:clamp(18px,4.5vw,40px);--header-h:64px;
+  --r:18px;--r-sm:12px;
+  --sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + 20px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
+main{overflow-x:clip}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+p{margin:0}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+::selection{background:rgba(249,161,58,.3);color:#fff}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;background:var(--text);color:var(--bg);padding:10px 14px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+
+/* Type */
+h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.03em;line-height:1.06;color:var(--text);text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:10px;margin:0}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--tint-a);box-shadow:0 0 0 4px rgba(249,161,58,.16);flex-shrink:0}
+.dot--soon{background:var(--faint);box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+.h-xl{font-size:clamp(46px,8vw,104px);letter-spacing:-.045em;line-height:.98}
+.h-lg{font-size:clamp(32px,4.8vw,58px);letter-spacing:-.037em}
+.h-md{font-size:clamp(24px,2.6vw,30px);letter-spacing:-.025em;line-height:1.15}
+.lede{font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--body);max-width:58ch}
+.copy{font-size:16.5px;line-height:1.65;color:var(--body);max-width:56ch}
+.copy + .copy{margin-top:14px}
+.copy a,.lede a{color:var(--text);text-decoration-color:var(--line-3);text-underline-offset:3px}
+.copy a:hover,.lede a:hover{text-decoration-color:var(--amber)}
+.spectrum-text{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mono{font-family:var(--mono)}
+.formats{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Buttons */
+.btn{--h:50px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--h);padding:0 24px;border-radius:12px;border:1px solid transparent;font:600 15.5px/1 var(--sans);letter-spacing:-.005em;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,transform .2s,box-shadow .2s,filter .2s}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-primary{color:#1d1206;background:linear-gradient(180deg,#ffc574 0%,#f99d34 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 30px -14px rgba(249,161,58,.75)}
+.btn-primary:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn-ghost{color:var(--text);background:rgba(255,255,255,.04);border-color:var(--line-2)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:var(--line-3)}
+.btn-lg{--h:56px;padding:0 30px;font-size:16.5px}
+.btn .amt{font-variant-numeric:tabular-nums;font-weight:600;opacity:.72}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.text-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15.5px;text-decoration:none;color:var(--text)}
+.text-link svg{width:15px;height:15px;transition:transform .2s}
+.text-link:hover svg{transform:translateX(3px)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line)}
+.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(11,13,18,.78);-webkit-backdrop-filter:saturate(160%) blur(18px);backdrop-filter:saturate(160%) blur(18px)}
+.site-header__in{position:relative;max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:var(--header-h);display:flex;align-items:center;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:0;text-decoration:none;color:var(--wordmark);flex-shrink:0}
+.brand img{height:30px;width:auto}
+.brand span{font-size:16px;font-weight:600;letter-spacing:-.012em;line-height:1;margin-left:-1px}
+.menu-btn{margin-left:auto;display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 14px 0 16px;border-radius:12px;border:1px solid var(--line-2);background:rgba(255,255,255,.035);font-size:14.5px;font-weight:550;cursor:pointer;transition:background .2s,border-color .2s}
+.menu-btn:hover{background:rgba(255,255,255,.07);border-color:var(--line-3)}
+.menu-btn__icon{position:relative;width:16px;height:12px}
+.menu-btn__icon i{position:absolute;left:0;width:16px;height:1.6px;border-radius:2px;background:currentColor;transition:transform .25s,top .25s}
+.menu-btn__icon i:nth-child(1){top:2px}
+.menu-btn__icon i:nth-child(2){top:8.4px}
+.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(1){top:5.2px;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] .menu-btn__icon i:nth-child(2){top:5.2px;transform:rotate(-45deg)}
+.menu{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;z-index:59;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;padding:12px var(--gutter) calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column}
+.menu[hidden]{display:none}
+.menu__label{padding:14px 2px 6px}
+.menu__list{list-style:none;margin:0;padding:0}
+.menu__list a{display:flex;align-items:center;gap:16px;padding:16px 2px;border-bottom:1px solid var(--line);text-decoration:none}
+.menu__text{display:flex;flex-direction:column;gap:3px;min-width:0}
+.menu__name{font-size:24px;font-weight:650;letter-spacing:-.028em;line-height:1.1}
+.menu__desc{font-size:14.5px;color:var(--muted);line-height:1.35}
+.menu__status{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.menu__status--live{color:var(--amber)}
+.menu__list a[aria-current="page"] .menu__name::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);margin-left:10px;vertical-align:middle}
+.menu__foot{margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
+.menu__foot a{text-decoration:none}
+.menu__foot a:hover{color:var(--text)}
+.menu__foot .menu__mail{flex-basis:100%;color:var(--body)}
+html.menu-open{overflow:hidden}
+
+/* Product glyphs (small app-icon tiles) */
+.glyph{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;background:#0d0f14;border:1px solid var(--line-2);font-weight:700;font-size:19px;letter-spacing:-.04em;overflow:hidden}
+.glyph img{width:100%;height:100%}
+.glyph--creme span{background:linear-gradient(90deg,#fff6e2,#f0c477 55%,#c9862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glyph--vocalyst{background:linear-gradient(145deg,#8f8fff,#5b4fd6);border-color:rgba(255,255,255,.18);color:#fff}
+
+/* Screenshots */
+.shot{position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:#0a0c10;border:1px solid var(--line-2);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 50px 100px -40px rgba(0,0,0,.9),0 20px 40px -24px rgba(0,0,0,.7)}
+.shot img{width:100%}
+.glow{position:relative;isolation:isolate}
+.glow::before{content:"";position:absolute;z-index:-1;inset:-10% -6% -16%;background:radial-gradient(45% 55% at 30% 45%,var(--tint-a),transparent 70%),radial-gradient(40% 50% at 72% 60%,var(--tint-b),transparent 70%);opacity:.22;filter:blur(60px);pointer-events:none}
+.caption{margin-top:14px;font-size:14px;color:var(--muted)}
+
+
+/* Sections */
+.section{padding:clamp(72px,10vw,136px) 0}
+.section--tight{padding:clamp(56px,7vw,96px) 0}
+.section-head{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(36px,5vw,64px)}
+.section-head--center{align-items:center;text-align:center}
+.section-head--center .lede{margin:0 auto}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* Cards */
+.card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card{display:block}
+a.card{text-decoration:none;transition:border-color .25s,transform .25s}
+a.card:hover{border-color:var(--line-3);transform:translateY(-2px)}
+
+/* FAQ */
+.faq{max-width:820px}
+.qa{border-bottom:1px solid var(--line)}
+.qa:first-child{border-top:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 2px;font-size:17.5px;font-weight:600;letter-spacing:-.01em;line-height:1.4}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";flex-shrink:0;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 12px no-repeat;color:var(--muted);transition:transform .25s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa summary:hover::after{color:var(--text)}
+.qa p{padding:0 40px 24px 2px;color:var(--body);font-size:16px;line-height:1.65;max-width:68ch}
+.qa p + p{margin-top:-10px}
+.qa a{color:var(--text);text-underline-offset:3px;text-decoration-color:var(--line-3)}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line);background:var(--bg-2)}
+.site-footer__top{display:grid;grid-template-columns:1fr;gap:40px;padding-top:56px;padding-bottom:40px}
+.site-footer__brand img{height:26px;width:auto}
+.site-footer__brand p{margin-top:16px;color:var(--muted);font-size:15px;max-width:34ch;line-height:1.55}
+.site-footer__cols{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.site-footer h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:0 0 14px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.site-footer li a{color:var(--body);text-decoration:none;font-size:15px}
+.site-footer li a:hover{color:var(--text)}
+.site-footer__soon{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-left:8px}
+.site-footer__bottom{border-top:1px solid var(--line);padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--faint);font-size:13.5px}
+
+@media (min-width:768px){
+  .menu{position:absolute;top:calc(100% + 6px);left:auto;right:var(--gutter);bottom:auto;width:420px;max-height:calc(100vh - var(--header-h) - 24px);padding:8px;border-radius:18px;border:1px solid var(--line-2);background:rgba(17,20,28,.97);box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 0 1px rgba(0,0,0,.5)}
+  .menu__label{padding:12px 14px 6px}
+  .menu__list a{padding:12px 14px;border-bottom:0;border-radius:12px;transition:background .15s}
+  .menu__list a:hover{background:rgba(255,255,255,.05)}
+  .menu__name{font-size:17px;letter-spacing:-.015em}
+  .menu__desc{font-size:13.5px}
+  .menu__foot{display:none}
+  html.menu-open{overflow:auto}
+  .site-footer__top{grid-template-columns:1.2fr 1fr;padding-top:72px;padding-bottom:56px}
+  .site-footer__cols{grid-template-columns:repeat(3,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+/* @shared:end */
+.nf{position:relative;min-height:calc(100vh - var(--header-h) - 120px);display:flex;align-items:center;padding:clamp(64px,10vw,140px) 0;overflow:hidden}
+.nf__in{position:relative;display:flex;flex-direction:column;gap:20px}
+.nf .code{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--muted)}
+.nf__lines{position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:min(56vw,720px);opacity:.35;pointer-events:none}
+@media (max-width:767px){.nf__lines{display:none}}
 </style>
 </head>
 <body>
-<main>
-  <h1>Page not found</h1>
-  <p>That page isn't here. <a href="/">Back to AnyMeans Audio</a></p>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- @header:start -->
+<header class="site-header">
+  <div class="site-header__in">
+    <a class="brand" href="/" aria-label="AnyMeans Audio home">
+      <img src="/anymeans-lockup.svg" alt="" width="1057" height="256" />
+      <span aria-hidden="true">Audio</span>
+    </a>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel">
+      <span>Menu</span>
+      <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span>
+    </button>
+    <nav class="menu" id="menuPanel" aria-label="Plug-ins" hidden>
+      <p class="eyebrow menu__label">Plug-ins</p>
+      <ul class="menu__list">
+        <li><a href="/artfreq">
+          <span class="glyph"><img src="/assets/img/artfreq-icon.webp" alt="" width="46" height="46" /></span>
+          <span class="menu__text"><span class="menu__name">ArtFreq</span><span class="menu__desc">Draw on your spectrogram</span></span>
+          <span class="menu__status menu__status--live">Out now</span>
+        </a></li>
+        <li><a href="/creme">
+          <span class="glyph glyph--creme" aria-hidden="true"><span>Cr</span></span>
+          <span class="menu__text"><span class="menu__name">Crème</span><span class="menu__desc">A smoother top end</span></span>
+          <span class="menu__status">Soon</span>
+        </a></li>
+        <li><a href="/vocalyst">
+          <span class="glyph glyph--vocalyst" aria-hidden="true"><span>V</span></span>
+          <span class="menu__text"><span class="menu__name">Vocalyst</span><span class="menu__desc">A vocal chain in one plug-in</span></span>
+          <span class="menu__status">Soon</span>
+        </a></li>
+      </ul>
+      <div class="menu__foot">
+        <a class="menu__mail" href="mailto:support@anymeansaudio.com">support@anymeansaudio.com</a>
+        <a href="https://www.instagram.com/anymeansaudio/">Instagram</a>
+        <a href="https://www.youtube.com/@AnyMeansAudio">YouTube</a>
+        <a href="https://www.tiktok.com/@anymeansaudio">TikTok</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- @header:end -->
+
+<main id="main">
+  <section class="nf">
+    <svg class="nf__lines" viewBox="0 0 800 400" aria-hidden="true"><defs><linearGradient id="nf-g" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#fce7a0"/><stop offset=".6" stop-color="#f9a13a"/><stop offset=".8" stop-color="#e8664a"/><stop offset="1" stop-color="#b83a6e"/></linearGradient></defs><g stroke="url(#nf-g)" stroke-width="2"><line x1="520" y1="12" x2="800" y2="12"/><line x1="430" y1="28" x2="800" y2="28"/><line x1="380" y1="44" x2="800" y2="44"/><line x1="600" y1="60" x2="800" y2="60"/><line x1="300" y1="76" x2="800" y2="76"/><line x1="360" y1="92" x2="800" y2="92"/><line x1="640" y1="108" x2="800" y2="108"/><line x1="250" y1="124" x2="800" y2="124"/><line x1="410" y1="140" x2="800" y2="140"/><line x1="330" y1="156" x2="800" y2="156"/><line x1="560" y1="172" x2="800" y2="172"/><line x1="290" y1="188" x2="800" y2="188"/><line x1="470" y1="204" x2="800" y2="204"/><line x1="380" y1="220" x2="800" y2="220"/><line x1="610" y1="236" x2="800" y2="236"/><line x1="340" y1="252" x2="800" y2="252"/><line x1="450" y1="268" x2="800" y2="268"/><line x1="520" y1="284" x2="800" y2="284"/><line x1="300" y1="300" x2="800" y2="300"/><line x1="560" y1="316" x2="800" y2="316"/><line x1="420" y1="332" x2="800" y2="332"/><line x1="380" y1="348" x2="800" y2="348"/><line x1="640" y1="364" x2="800" y2="364"/><line x1="470" y1="380" x2="800" y2="380"/></g></svg>
+    <div class="wrap nf__in">
+      <p class="code">404</p>
+      <h1 class="h-xl">Nothing here.</h1>
+      <p class="lede">That page doesn't exist, or it moved. Try one of these instead.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/">Home</a>
+        <a class="btn btn-ghost" href="/artfreq">ArtFreq</a>
+      </div>
+    </div>
+  </section>
 </main>
+
+<!-- @footer:start -->
+<footer class="site-footer">
+  <div class="wrap site-footer__top">
+    <div class="site-footer__brand">
+      <img src="/anymeans-lockup.svg" alt="AnyMeans" width="1057" height="256" />
+      <p>Audio plug-ins for producers, mix engineers and anyone who likes looking at a spectrogram.</p>
+    </div>
+    <div class="site-footer__cols">
+      <div>
+        <h2>Plug-ins</h2>
+        <ul>
+          <li><a href="/artfreq">ArtFreq</a></li>
+          <li><a href="/creme">Crème</a><span class="site-footer__soon">Soon</span></li>
+          <li><a href="/vocalyst">Vocalyst</a><span class="site-footer__soon">Soon</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Support</h2>
+        <ul>
+          <li><a href="mailto:support@anymeansaudio.com">Email us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow</h2>
+        <ul>
+          <li><a href="https://www.instagram.com/anymeansaudio/">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@AnyMeansAudio">YouTube</a></li>
+          <li><a href="https://www.tiktok.com/@anymeansaudio">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="wrap site-footer__bottom">
+    <span>© 2026 AnyMeans Audio</span>
+    <a href="mailto:support@anymeansaudio.com" style="color:inherit;text-decoration:none">support@anymeansaudio.com</a>
+  </div>
+</footer>
+<!-- @footer:end -->
+
+<script>
+/* @menu:start */
+(function(){
+  var btn=document.getElementById('menuBtn'),panel=document.getElementById('menuPanel');
+  if(!btn||!panel)return;
+  var root=document.documentElement;
+  function setOpen(open){
+    panel.hidden=!open;
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    root.classList.toggle('menu-open',open);
+  }
+  btn.addEventListener('click',function(){
+    var open=panel.hidden;
+    setOpen(open);
+    if(open){var first=panel.querySelector('a');if(first)first.focus({preventScroll:true});}
+  });
+  panel.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+  document.addEventListener('click',function(e){
+    if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&!panel.hidden){setOpen(false);btn.focus();}
+  });
+})();
+/* @menu:end */
+</script>
 </body>
 </html>
